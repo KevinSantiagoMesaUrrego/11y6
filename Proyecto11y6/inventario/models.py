@@ -29,7 +29,7 @@ class estadoMarca(models.TextChoices):
     INACTIVO='I',_("Inactivo")
 
 
-class Presentacion:
+class Presentacion(models.Model):
     #Automatico
     #idPresentacion:int
     
@@ -40,7 +40,7 @@ class estadoPresentacion(models.TextChoices):
     
 
 
-class UnidadMedida:
+class UnidadMedida(models.Model):
     #Automatico
     #idUnidadMedida:int
     nombreUnidadMedida=models.CharField(max_length=45,verbose_name="Medida")
@@ -49,7 +49,7 @@ class estadoUnidadMedida(models.TextChoices):
     INACTIVO='I',_("Inactivo")
 
 
-class ConsumoTrabajador:
+class ConsumoTrabajador(models.Model):
     #Automatico
     #idConsumoTrabajador:int
     #Producto_idProducto:int
