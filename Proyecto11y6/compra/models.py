@@ -2,6 +2,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+class Compra():
+       fecha_compra= models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
+      
+class Detalle_compra():
+        cantidad_producto=models.IntegerField(max_length=45,verbose_name="Cantidad Producto")
+        valor_total=models.FloatField(max_length=45,verbose_name="Valor Total Compra")
+
 class Proveedor(models.Model):
     class Tipo_identificacion(models.TextChoices):
             CEDULA='CC',_("Cédula")
