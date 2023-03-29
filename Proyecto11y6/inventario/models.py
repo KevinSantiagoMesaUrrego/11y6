@@ -17,13 +17,12 @@ class Producto(models.Model):
     # Presentacion_idPresentacion:int
     # UnidadMedida_idUnidadMedida:int
     # Venta_idVenta:int
-    
+
 
 
 class Marca(models.Model):
     #Automatico
     #idMarca:int
-    
     nombreMarca=models.CharField(max_length=45,verbose_name="Marca")
 class estadoMarca(models.TextChoices):
     ACTIVO='A',_("Activo")
