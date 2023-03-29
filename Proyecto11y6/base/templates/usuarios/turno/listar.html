@@ -1,26 +1,23 @@
 {% extends 'partials/body.html' %} {% block contenido %}
-<a href="{% url 'personas-crear' %}" class="btn btn-success w-25"
+<a href="{% url 'turno-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Tipo de Documento</th>
-      <th>Documento</th>
+      <th>Fecha de Ingreso</th>
+      <th>Fecha de Salida</th>
+      <th>Estado</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    {% for persona in personas %} {% if persona.estado != "0" %}
+    {% for turno in turnos %} {% if turnos.estado != "0" %}
 
     <tr>
-      <td>{{persona.nombre}}</td>
-      <td>{{persona.apellido}}</td>
-
-      <td>{{persona.get_tipo_documento_display}}</td>
-      <td>{{persona.documento}}</td>
+      <td>{{turno.fecha_ingreso}}</td>
+      <td>{{turno.fecha_salida}}</td>
+      <td>{{turno.estado}}</td>
       <td>
         <a
           class="btn btn-danger"

@@ -14,46 +14,46 @@ def persona_crear(request):
         form= PersonaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('personas')
     else:
         form= PersonaForm()
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/crear.html", context)
+    return render(request,"usuarios/persona/crear.html", context)
 
 def persona_listar(request):
     titulo="Persona"
-    usuarios= Persona.objects.all()
+    personas= Persona.objects.all()
     context={
         "titulo":titulo,
-        "usuarios":usuarios
+        "personas":personas
     }
-    return render(request,"usuarios/listar.html", context)
+    return render(request,"usuarios/persona/listar.html", context)
 
 def persona_modificar(request,pk):
     titulo="Persona"
-    usuario= Persona.objects.get(id=pk)
+    persona= Persona.objects.get(id=pk)
     if request.method== 'POST':
-        form= PersonaUpdateForm(request.POST, instance=usuario)
+        form= PersonaUpdateForm(request.POST, instance=persona)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('personas')
     else:
-        form= PersonaUpdateForm(instance=usuario)
+        form= PersonaUpdateForm(instance=persona)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/modificar.html", context)
+    return render(request,"usuarios/persona/modificar.html", context)
 
 def persona_eliminar(request,pk):
-    usuario= Persona.objects.filter(id=pk)
-    usuario.update(
+    persona= Persona.objects.filter(id=pk)
+    persona.update(
         estado="0"
     )
-    return redirect('usuarios')
+    return redirect('personas')
 
 
 #views de tabla eps
@@ -63,46 +63,46 @@ def eps_crear(request):
         form= EpsForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('eps')
     else:
         form= EpsForm()
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/crear.html", context)
+    return render(request,"usuarios/eps/crear.html", context)
 
 def eps_listar(request):
     titulo="Eps"
-    usuarios= Eps.objects.all()
+    eps= Eps.objects.all()
     context={
         "titulo":titulo,
-        "usuarios":usuarios
+        "eps":eps
     }
-    return render(request,"usuarios/listar.html", context)
+    return render(request,"usuarios/eps/listar.html", context)
 
 def eps_modificar(request,pk):
     titulo="Eps"
-    usuario= Eps.objects.get(id=pk)
+    eps= Eps.objects.get(id=pk)
     if request.method== 'POST':
-        form= EpsUpdateForm(request.POST, instance=usuario)
+        form= EpsUpdateForm(request.POST, instance=eps)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('eps')
     else:
-        form= EpsUpdateForm(instance=usuario)
+        form= EpsUpdateForm(instance=eps)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/modificar.html", context)
+    return render(request,"usuarios/eps/modificar.html", context)
 
 def eps_eliminar(request,pk):
-    usuario= Eps.objects.filter(id=pk)
-    usuario.update(
+    eps= Eps.objects.filter(id=pk)
+    eps.update(
         estado="0"
     )
-    return redirect('usuarios')
+    return redirect('eps')
 
 #views de tabla turno
 def turno_crear(request):
@@ -111,46 +111,46 @@ def turno_crear(request):
         form= TurnoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('turno')
     else:
         form= TurnoForm()
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/crear.html", context)
+    return render(request,"usuarios/turno/crear.html", context)
 
 def turno_listar(request):
     titulo="Turno"
-    usuarios= Eps.objects.all()
+    turno= Eps.objects.all()
     context={
         "titulo":titulo,
-        "usuarios":usuarios
+        "turnos":turno
     }
-    return render(request,"usuarios/listar.html", context)
+    return render(request,"usuarios/turno/listar.html", context)
 
 def turno_modificar(request,pk):
     titulo="Turno"
-    usuario= Eps.objects.get(id=pk)
+    turno= Eps.objects.get(id=pk)
     if request.method== 'POST':
-        form= TurnoUpdateForm(request.POST, instance=usuario)
+        form= TurnoUpdateForm(request.POST, instance=turno)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('turnos')
     else:
-        form= TurnoUpdateForm(instance=usuario)
+        form= TurnoUpdateForm(instance=turno)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/modificar.html", context)
+    return render(request,"usuarios/turno/modificar.html", context)
 
 def turno_eliminar(request,pk):
-    usuario= Turno.objects.filter(id=pk)
-    usuario.update(
+    turno= Turno.objects.filter(id=pk)
+    turno.update(
         estado="0"
     )
-    return redirect('usuarios')
+    return redirect('turnos')
 
 #views de tabla trabajador
 def trabajador_crear(request):
@@ -159,43 +159,43 @@ def trabajador_crear(request):
         form= TrabajadorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('trabajador')
     else:
         form= TrabajadorForm()
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/crear.html", context)
+    return render(request,"usuarios/trabajador/crear.html", context)
 
 def trabajador_listar(request):
     titulo="Trabajador"
-    usuarios= Trabajador.objects.all()
+    trabajador= Trabajador.objects.all()
     context={
         "titulo":titulo,
-        "usuarios":usuarios
+        "Trabajadores":trabajador
     }
-    return render(request,"usuarios/listar.html", context)
+    return render(request,"usuarios/trabajador/listar.html", context)
 
 def trabajador_modificar(request,pk):
     titulo="Trabajador"
-    usuario= Trabajador.objects.get(id=pk)
+    trabajador= Trabajador.objects.get(id=pk)
     if request.method== 'POST':
-        form= TrabajadorUpdateForm(request.POST, instance=usuario)
+        form= TrabajadorUpdateForm(request.POST, instance=trabajador)
         if form.is_valid():
             form.save()
-            return redirect('usuarios')
+            return redirect('trabajador')
     else:
-        form= TrabajadorUpdateForm(instance=usuario)
+        form= TrabajadorUpdateForm(instance=trabajador)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"usuarios/modificar.html", context)
+    return render(request,"usuarios/trabajador/modificar.html", context)
 
 def trabajador_eliminar(request,pk):
     usuario= Trabajador.objects.filter(id=pk)
     usuario.update(
         estado="0"
     )
-    return redirect('usuarios')
+    return redirect('trabajador')

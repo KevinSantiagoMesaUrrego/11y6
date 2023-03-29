@@ -9,7 +9,12 @@
       <th>Apellido</th>
       <th>Tipo de Documento</th>
       <th>Documento</th>
-      <th>Acciones</th>
+      <th>Rol</th>
+      <th>Direccion</th>
+      <th>Correo</th>
+      <th>Salario</th>
+      <th>Estado</th>
+      <ht>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -18,9 +23,16 @@
     <tr>
       <td>{{persona.nombre}}</td>
       <td>{{persona.apellido}}</td>
-
       <td>{{persona.get_tipo_documento_display}}</td>
       <td>{{persona.documento}}</td>
+      <td>{{persona.rol}}</td>
+      <td>{{persona.direccion}}</td>
+      <td>{{persona.correo}}</td>
+      <td>{{persona.usuario}}</td>
+      <td>{{persona.contrasena}}</td>
+      <td>{{persona.salario}}</td>
+      <td>{{persona.estado}}</td>
+
       <td>
         <a
           class="btn btn-danger"

@@ -18,7 +18,7 @@ class Persona(models.Model):
     direccion=models.CharField(max_length=45,verbose_name="Dirección:")
     correo=models.CharField(max_length=45,verbose_name="Correo electronico:")
     usuario=models.CharField(max_length=45,verbose_name="Usuario:")
-    contraseña=models.CharField(max_length=45,verbose_name="Contraseña:")
+    contrasena=models.CharField(max_length=45,verbose_name="Contraseña:")
     salario=models.CharField(max_length=45,verbose_name="Salario:")
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
@@ -51,7 +51,11 @@ class Trabajador(models.Model):
     correo=models.CharField(max_length=45,verbose_name="Correo electronico:")
     direccion=models.CharField(max_length=45,verbose_name="Dirección:")
     usuario=models.CharField(max_length=45,verbose_name="Usuario:")
-    contraseña=models.CharField(max_length=45,verbose_name="Contraseña:")
+    contrasena=models.CharField(max_length=45,verbose_name="Contraseña:")
+    class Estado(models.TextChoices):
+        ACTIVO='1',_("Activo")
+        INACTIVO='0',_("Inactivo")
+    estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
 
 
 class Turno(models.Model):
