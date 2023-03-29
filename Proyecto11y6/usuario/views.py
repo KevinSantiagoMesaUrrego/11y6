@@ -58,7 +58,7 @@ def persona_eliminar(request,pk):
 
 #views de tabla eps
 def eps_crear(request):
-    titulo="Usuario"
+    titulo="Eps"
     if request.method== 'POST':
         form= EpsForm(request.POST)
         if form.is_valid():
