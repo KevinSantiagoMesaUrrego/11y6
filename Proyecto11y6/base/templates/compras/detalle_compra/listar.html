@@ -1,35 +1,31 @@
 {% extends 'partials/body.html' %} {% block contenido %}
-<a href="{% url 'personas-crear' %}" class="btn btn-success w-25"
+<a href="{% url 'compras-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Tipo de Documento</th>
-      <th>Documento</th>
-      <th>Acciones</th>
+      <th>Cantidad De Compra</th>
+      <th>ValorTotal De Compra</th>
+     
     </tr>
   </thead>
   <tbody>
-    {% for persona in personas %} {% if persona.estado != "0" %}
+    {% for detalle_compra in compras %}
 
     <tr>
-      <td>{{persona.nombre}}</td>
-      <td>{{persona.apellido}}</td>
+      <td>{{detalle_compra.cantidad_producto}}</td>
+      <td>{{detalle_compra.total_venta_detalle_compra}}</td>
 
-      <td>{{persona.get_tipo_documento_display}}</td>
-      <td>{{persona.documento}}</td>
       <td>
         <a
           class="btn btn-danger"
-          href="{% url 'personas-eliminar' persona.id %}"
+          href="{% url 'compras-eliminar' persona.id %}"
           >-</a
         >
         <a
           class="btn btn-primary"
-          href="{% url 'personas-modificar' persona.id %}"
+          href="{% url 'compras-modificar' persona.id %}"
           >+</a
         >
       </td>

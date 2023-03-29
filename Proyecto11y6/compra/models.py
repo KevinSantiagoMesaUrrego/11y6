@@ -3,18 +3,18 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
-class Compra():
+class Compra(models.Model):
        fecha_compra= models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
       
-class Detalle_compra():
+class Detalle_compra(models.Model):
         cantidad_producto=models.IntegerField(max_length=45,verbose_name="Cantidad Producto")
         valor_total=models.FloatField(max_length=45,verbose_name="Valor Total Compra")
 
 class Proveedor(models.Model):
     class Tipo_identificacion(models.TextChoices):
             CEDULA='CC',_("Cédula")
-            CEDULA_EXTRANJERIA='CE',_("Cédula de Extrangería")
-    tipo_identificacion=models.CharField(max_length=2,choices=Tipo_identificacion.choices,verbose_name="Tipo de Identificación")
+            CEDULA_EXTRANJERIA='CE',_("Cédula de Extranjería")
+    tipo_identificacion=models.CharField(max_length=1,choices=Tipo_identificacion.choices,verbose_name="Tipo de Identificación")
     nombre_proveedor= models.CharField(max_length=45,verbose_name="Nombre Proveedor")
     apellido_proveedor= models.CharField(max_length=45,verbose_name="Apellido Proveedor")
     telefono=models.CharField(max_length=10,verbose_name="Teléfono")
