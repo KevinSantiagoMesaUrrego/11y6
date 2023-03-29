@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',#pip install django-bootstrap5
+    'crispy_forms',#pip install django-crispy-forms
+    'crispy_bootstrap5', #pip install crispy-boostrap5
+    'django_boostrap_icons', #pip install django-bootstrap5-icons
 ]
 
 MIDDLEWARE = [

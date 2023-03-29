@@ -1,44 +1,60 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
-class Producto:
-    idProducto:int
-    nombreProducto:str
-    descripcionProducto:str
-    precioProducto:float
-    tipoProducto:str
-    ofertaProducto:int
-    stockProducto:int
-    estadoProducto:Tinyint
-    Marca_idMarca:int
-    Presentacion_idPresentacion:int
-    UnidadMedida_idUnidadMedida:int
-    Venta_idVenta:int
+class Producto(models.Model):
+    nombreProducto=models.CharField(max_length=45,verbose_name="Producto")
+    descripcionProducto=models.CharField(max_length=45,verbose_name="Descripcion")
+    precioProducto=models.FloatField(max_length=45,verbose_name="Precio")
+    ofertaProducto=models.IntegerField(max_length=45,verbose_name="Oferta")
+    stockProducto:=models.IntegerField(max_length=45,verbose_name="Stock")
+    class Estado_producto(models.TextChoices):
+            ACTIVO='A',_("Activo")
+            INACTIVO='I',_("Inactivo")
+    #id automaticas
+    # Marca_idMarca:int
+    # Presentacion_idPresentacion:int
+    # UnidadMedida_idUnidadMedida:int
+    # Venta_idVenta:int
+    
 
 
-
-class Marca:
-    idMarca:int
-    nombreMarca:str
-    estadoMarca:Tinyint
+class Marca(models.Model):
+    #Automatico
+    #idMarca:int
+    
+    nombreMarca=models.CharField(max_length=45,verbose_name="Marca")
+class estadoMarca(models.TextChoices):
+    ACTIVO='A',_("Activo")
+    INACTIVO='I',_("Inactivo")
 
 
 class Presentacion:
-    idPresentacion:int
-    nombrePresentacion:str
-    estadoPresentacion:str
+    #Automatico
+    #idPresentacion:int
+    
+    nombrePresentacion=models.CharField(max_length=45,verbose_name="Presentacion")
+class estadoPresentacion(models.TextChoices):
+    ACTIVO='A',_("Activo")
+    INACTIVO='I',_("Inactivo")
+    
 
 
 class UnidadMedida:
-    idUnidadMedida:int
-    nombreUnidadMedida:str
-    estadoUnidadMedida:Tinyint
+    #Automatico
+    #idUnidadMedida:int
+    nombreUnidadMedida=models.CharField(max_length=45,verbose_name="Medida")
+class estadoUnidadMedida(models.TextChoices):
+    ACTIVO='A',_("Activo")
+    INACTIVO='I',_("Inactivo")
 
 
 class ConsumoTrabajador:
-    idConsumoTrabajador:int
-    Producto_idProducto:int
-    Trabajador_N°DocumentoTrabajador:int
+    #Automatico
+    #idConsumoTrabajador:int
+    #Producto_idProducto:int
+    
+    Trabajador_NDocumentoTrabajador=models.IntegerField(max_length=45,verbose_name="Documento")
 
 
