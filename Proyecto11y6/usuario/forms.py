@@ -1,9 +1,9 @@
 from django import forms
 
 from django.forms import ModelForm, widgets
-from usuarios.models import Usuario
+from usuario.models import Usuario
 
-class UsuarioForm(ModelForm):
+class PersonaForm(ModelForm):
     
     class Meta:
         model = Usuario
@@ -13,7 +13,55 @@ class UsuarioForm(ModelForm):
         widgets={
             'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
         }
-class UsuarioUpdateForm(ModelForm):
+class PersonaUpdateForm(ModelForm):
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        exclude=["documento","rh","fecha_nacimiento"]
+
+class EpsForm(ModelForm):
+    
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        exclude=["estado",]
+        # fields= ["nombre","apellido","documento","tipoDocumento"]
+        widgets={
+            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+        }
+class EpsUpdateForm(ModelForm):
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        exclude=["documento","rh","fecha_nacimiento"]
+
+class TurnoForm(ModelForm):
+    
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        exclude=["estado",]
+        # fields= ["nombre","apellido","documento","tipoDocumento"]
+        widgets={
+            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+        }
+class TurnoUpdateForm(ModelForm):
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        exclude=["documento","rh","fecha_nacimiento"]
+
+class TrabajadorForm(ModelForm):
+    
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+        exclude=["estado",]
+        # fields= ["nombre","apellido","documento","tipoDocumento"]
+        widgets={
+            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+        }
+class TrabajadorUpdateForm(ModelForm):
     class Meta:
         model = Usuario
         fields = "__all__"
