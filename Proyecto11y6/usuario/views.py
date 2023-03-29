@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
-from usuarios.models import Usuario
+from usuarios.models import Persona
+from usuarios.models import Eps
+from usuarios.models import Rol
+from usuarios.models import Trabajador
 from usuarios.forms import UsuarioForm,UsuarioUpdateForm
 # Create your views here.
 def persona_crear(request):

@@ -8,7 +8,7 @@ class Producto(models.Model):
     descripcionProducto=models.CharField(max_length=45,verbose_name="Descripcion")
     precioProducto=models.FloatField(max_length=45,verbose_name="Precio")
     ofertaProducto=models.IntegerField(max_length=45,verbose_name="Oferta")
-    stockProducto:=models.IntegerField(max_length=45,verbose_name="Stock")
+    stockProducto=models.IntegerField(max_length=45,verbose_name="Stock")
     class Estado_producto(models.TextChoices):
             ACTIVO='A',_("Activo")
             INACTIVO='I',_("Inactivo")
