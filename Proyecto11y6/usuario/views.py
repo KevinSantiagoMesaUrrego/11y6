@@ -11,7 +11,7 @@ def persona_crear(request):
         form= PersonaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('persona')
+            return redirect('usuario')
     else:
         form= PersonaForm()
     context={
@@ -22,10 +22,10 @@ def persona_crear(request):
 
 def persona_listar(request):
     titulo="Persona"
-    personas= Persona.objects.all()
+    persona= Persona.objects.all()
     context={
         "titulo":titulo,
-        "personas":personas
+        "personas":persona
     }
     return render(request,"usuarios/persona/listar.html", context)
 

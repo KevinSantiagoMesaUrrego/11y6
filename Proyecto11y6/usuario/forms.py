@@ -19,7 +19,7 @@ class PersonaUpdateForm(ModelForm):
         exclude=["documento","rh","fecha_nacimiento"]
 
 class EpsForm(ModelForm):
-    
+
     class Meta:
         model = Eps
         fields = "__all__"
