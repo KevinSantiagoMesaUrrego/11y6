@@ -14,7 +14,7 @@ class Proveedor(models.Model):
     class Tipo_identificacion(models.TextChoices):
             CEDULA='CC',_("Cédula")
             CEDULA_EXTRANJERIA='CE',_("Cédula de Extranjería")
-    tipo_identificacion=models.CharField(max_length=1,choices=Tipo_identificacion.choices,verbose_name="Tipo de Identificación")
+    tipo_identificacion=models.CharField(max_length=2,choices=Tipo_identificacion.choices,verbose_name="Tipo de Identificación")
     nombre_proveedor= models.CharField(max_length=45,verbose_name="Nombre Proveedor")
     apellido_proveedor= models.CharField(max_length=45,verbose_name="Apellido Proveedor")
     telefono=models.CharField(max_length=10,verbose_name="Teléfono")
@@ -28,12 +28,7 @@ class Proveedor(models.Model):
     def clean(self):
             self.nombre_proveedor= self.nombre_proveedor.title()
             self.apellido_proveedor= self.apellido_proveedor.title()
-            
-            
             self.correo_proveedor= self.correo_proveedor.lower()
-           
-            
-                    
     def __str__(self):
             return "%s %s"%(self.nombre_proveedor,self.apellido_proveedor)
 
@@ -45,7 +40,6 @@ class Evento(models.Model):
     class Estado_evento(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")
-        
     estado_evento=models.CharField(max_length=1,choices=Estado_evento.choices,default=Estado_evento.ACTIVO,verbose_name="Estado Evento")
 
 

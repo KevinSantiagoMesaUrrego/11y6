@@ -1,38 +1,35 @@
 {% extends 'partials/body.html' %} {% block contenido %}
-<a href="{% url 'personas-crear' %}" class="btn btn-success w-25"
+<a href="{% url 'persona-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
+      <th>Nombre Completo</th>
+      <th>Apellido Completo</th>
       <th>Tipo de Documento</th>
       <th>Documento</th>
       <th>Rol</th>
-      <th>Direccion</th>
+      <th>Dirección</th>
       <th>Correo</th>
       <th>Salario</th>
       <th>Estado</th>
-      <ht>Acciones</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    {% for persona in usuario %} {% if persona.estado != "0" %}
+    {% for turno in usuario %} {% if turnos.estado != "0" %}
 
     <tr>
       <td>{{persona.nombre}}</td>
       <td>{{persona.apellido}}</td>
-      <td>{{persona.get_tipo_documento_display}}</td>
+      <td>{{persona.tipo_documento}}</td>
       <td>{{persona.documento}}</td>
       <td>{{persona.rol}}</td>
       <td>{{persona.direccion}}</td>
       <td>{{persona.correo}}</td>
-      <td>{{persona.usuario}}</td>
-      <td>{{persona.contrasena}}</td>
       <td>{{persona.salario}}</td>
       <td>{{persona.estado}}</td>
-
       <td>
         <a
           class="btn btn-danger"

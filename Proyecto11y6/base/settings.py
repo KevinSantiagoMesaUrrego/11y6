@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
-from pathlib import Path
 import os
+from pathlib import Path
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5', #pip install crispy-bootstrap5
     'django_bootstrap_icons', #pip install django-bootstrap5-icons
 ]
-
+CRISPY_ALLOWED_TEMPLATE_PACKS= "bootstrap5"
+CRISPY_TEMPLATE_PACK= "bootstrap5"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -125,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS= [
     os.path.join(BASE_DIR,"static"),
 ]
