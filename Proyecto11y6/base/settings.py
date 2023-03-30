@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,8 +45,8 @@ INSTALLED_APPS = [
     'venta',
     'django_bootstrap5',#pip install django-bootstrap5
     'crispy_forms',#pip install django-crispy-forms
-    'crispy_bootstrap5', #pip install crispy-boostrap5
-    'django_boostrap_icons', #pip install django-bootstrap5-icons
+    'crispy_bootstrap5', #pip install crispy-bootstrap5
+    'django_bootstrap_icons', #pip install django-bootstrap5-icons
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'base.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['base/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -112,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 

@@ -3,10 +3,7 @@ from usuario.models import Persona
 from usuario.models import Eps
 from usuario.models import Turno
 from usuario.models import Trabajador
-from usuario.forms import PersonaForm,PersonaUpdateForm
-from usuario.forms import EpsForm,EpsUpdateForm
-from usuario.forms import TurnoForm,TurnoUpdateForm
-from usuario.forms import TrabajadorForm,TrabajadorUpdateForm
+from usuario.forms import PersonaForm,PersonaUpdateForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
 # Create your views here.
 def persona_crear(request):
     titulo="Persona"
@@ -14,7 +11,7 @@ def persona_crear(request):
         form= PersonaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('personas')
+            return redirect('persona')
     else:
         form= PersonaForm()
     context={
@@ -39,7 +36,7 @@ def persona_modificar(request,pk):
         form= PersonaUpdateForm(request.POST, instance=persona)
         if form.is_valid():
             form.save()
-            return redirect('personas')
+            return redirect('persona')
     else:
         form= PersonaUpdateForm(instance=persona)
     context={
@@ -53,7 +50,7 @@ def persona_eliminar(request,pk):
     persona.update(
         estado="0"
     )
-    return redirect('personas')
+    return redirect('persona')
 
 
 #views de tabla eps
@@ -136,7 +133,7 @@ def turno_modificar(request,pk):
         form= TurnoUpdateForm(request.POST, instance=turno)
         if form.is_valid():
             form.save()
-            return redirect('turnos')
+            return redirect('turno')
     else:
         form= TurnoUpdateForm(instance=turno)
     context={
@@ -150,7 +147,7 @@ def turno_eliminar(request,pk):
     turno.update(
         estado="0"
     )
-    return redirect('turnos')
+    return redirect('turno')
 
 #views de tabla trabajador
 def trabajador_crear(request):

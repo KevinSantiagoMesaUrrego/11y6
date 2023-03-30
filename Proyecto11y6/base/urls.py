@@ -20,5 +20,5 @@ from base.views import principal
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', principal, name="index" ),
-    path('usuarios/', include('usuarios.urls') ),
+    path('usuarios/', include('usuario.urls') ),
 ]

@@ -1,12 +1,11 @@
 from django import forms
 
 from django.forms import ModelForm, widgets
-from usuario.models import Usuario
+from usuario.models import Persona,Eps,Turno,Trabajador
 
 class PersonaForm(ModelForm):
-    
     class Meta:
-        model = Usuario
+        model = Persona
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
@@ -15,14 +14,14 @@ class PersonaForm(ModelForm):
         }
 class PersonaUpdateForm(ModelForm):
     class Meta:
-        model = Usuario
+        model = Persona
         fields = "__all__"
         exclude=["documento","rh","fecha_nacimiento"]
 
 class EpsForm(ModelForm):
     
     class Meta:
-        model = Usuario
+        model = Eps
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
@@ -31,14 +30,14 @@ class EpsForm(ModelForm):
         }
 class EpsUpdateForm(ModelForm):
     class Meta:
-        model = Usuario
+        model = Eps
         fields = "__all__"
         exclude=["documento","rh","fecha_nacimiento"]
 
 class TurnoForm(ModelForm):
     
     class Meta:
-        model = Usuario
+        model = Turno
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
@@ -47,14 +46,14 @@ class TurnoForm(ModelForm):
         }
 class TurnoUpdateForm(ModelForm):
     class Meta:
-        model = Usuario
+        model = Turno
         fields = "__all__"
         exclude=["documento","rh","fecha_nacimiento"]
 
 class TrabajadorForm(ModelForm):
     
     class Meta:
-        model = Usuario
+        model = Trabajador
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
@@ -63,6 +62,6 @@ class TrabajadorForm(ModelForm):
         }
 class TrabajadorUpdateForm(ModelForm):
     class Meta:
-        model = Usuario
+        model = Trabajador
         fields = "__all__"
         exclude=["documento","rh","fecha_nacimiento"]

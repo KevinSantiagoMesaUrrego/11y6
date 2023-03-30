@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
+#Create your models here.
 
 class Persona(models.Model):
     nombre= models.CharField(max_length=45,verbose_name="Nombres Completo:")
