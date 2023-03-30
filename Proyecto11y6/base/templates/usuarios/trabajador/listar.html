@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for trabajador in usuario %} {% if trabajador.estado != "0" %}
+    {% for trabajador in trabajadores %} {% if trabajador.estado != "0" %}
 
     <tr>
       <td>{{trabajador.nombre}}</td>
@@ -35,12 +35,12 @@
       <td>
         <a
           class="btn btn-danger"
-          href="{% url 'trabajadors-eliminar' trabajador.id %}"
+          href="{% url 'trabajador-eliminar' trabajador.id %}"
           >-</a
         >
         <a
           class="btn btn-primary"
-          href="{% url 'trabajadors-modificar' trabajador.id %}"
+          href="{% url 'trabajador-modificar' trabajador.id %}"
           >+</a
         >
       </td>

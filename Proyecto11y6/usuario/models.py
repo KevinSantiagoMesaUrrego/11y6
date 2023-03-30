@@ -10,7 +10,7 @@ class Persona(models.Model):
         CEDULA='CC',_("Cédula")
         CEDULA_EXTRANJERIA='CE',_("Cédula de Extrangería")
     tipo_documento=models.CharField(max_length=2,choices=TipoDocumento.choices,verbose_name="Tipo de Documento:")
-    documento=models.IntegerField(max_length=10,verbose_name="Documento:")
+    documento=models.PositiveIntegerField(verbose_name="Documento:")
     class Rol(models.TextChoices):
         INSTRUCTOR='E',_("Empleado")
         APRENDIZ='A',_("Administrador")
@@ -59,8 +59,8 @@ class Trabajador(models.Model):
 
 
 class Turno(models.Model):
-    fecha_ingreso= models.DateField(verbose_name="Fecha de Nacimiento", help_text="MM/DD/AAAA")
-    fecha_salida= models.DateField(verbose_name="Fecha de Nacimiento", help_text="MM/DD/AAAA")
+    fecha_ingreso= models.DateField(verbose_name="Fecha de Ingreso", help_text="DD/MM/AAAA")
+    fecha_salida= models.DateField(verbose_name="Fecha de Salida", help_text="DD/MM/AAAA")
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")

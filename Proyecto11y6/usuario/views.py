@@ -11,7 +11,7 @@ def persona_crear(request):
         form= PersonaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuario')
+            return redirect('persona')
     else:
         form= PersonaForm()
     context={
