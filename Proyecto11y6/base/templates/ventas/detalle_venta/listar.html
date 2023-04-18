@@ -1,4 +1,5 @@
-{% extends 'partials/body.html' %} {% block contenido %}
+{% extends 'partials/body.html' %}
+{% block contenido %}
 <a href="{% url 'detalle_venta-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
@@ -6,6 +7,7 @@
   <thead>
     <tr>
       <th>Cantidad Producto</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>

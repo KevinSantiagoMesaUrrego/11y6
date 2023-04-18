@@ -14,17 +14,17 @@ def venta_crear (request):
         form=VentaForm()
     context={
         "titulo":titulo,
-        "form":form
+        "form":form,
     }
-    return render(request,"venta/crear.html",context)
+    return render(request,"ventas/venta/crear.html",context)
 def venta_listar(request):
     titulo="Venta"
     venta=Venta.objects.all()
     context={
         "titulo":titulo,
-        "venta":venta
+        "ventas":venta
     }
-    return render(request,"venta/listar.html",context)
+    return render(request,"ventas/venta/listar.html",context)
 def venta_modificar(request,pk):
     titulo="Venta"
     venta=Venta.objects.get(id=pk)
@@ -39,15 +39,17 @@ def venta_modificar(request,pk):
         "titulo":titulo,
         "form":form
         }
-    return render(request,"venta/modificar.html", context)
+    return render(request,"ventas/venta/modificar.html", context)
 def venta_eliminar(request,pk):
     venta= Venta.objects.filter(id=pk)
+    venta.delete()
     venta.update(
     )
     return redirect('venta')
 #DETALLE VENTA
 def detalle_venta_crear (request):
     titulo="Detalle_venta"
+
     if request.method=='POST':
         form=Detalle_ventaForm(request.POST)
         if form.is_valid():
@@ -65,30 +67,30 @@ def detalle_venta_listar(request):
     detalle_venta=Detalle_venta.objects.all()
     context={
         "titulo":titulo,
-        "venta":detalle_venta
+        "detalle_ventas":detalle_venta
     }
     return render(request,"ventas/detalle_venta/listar.html",context)
 def detalle_venta_modificar(request,pk):
     titulo="Detalle_venta"
     detalle_venta=Detalle_venta.objects.get(id=pk)
     if request.method== 'POST':
-        form= VentaUpadteForm(request.POST, instance=detalle_venta)
+        form= Detalle_ventaUpadteForm(request.POST, instance=detalle_venta)
         if form.is_valid():
             form.save()
-            return redirect('venta')
+            return redirect('detalle_venta')
     else:
         form= Detalle_ventaUpadteForm(instance=detalle_venta)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"venta/modificar.html", context)
+    return render(request,"ventas/detalle_venta/modificar.html", context)
 def detalle_venta_eliminar(request,pk):
     detalle_venta= Detalle_venta.objects.filter(id=pk)
     detalle_venta.delete()
     detalle_venta.update(
-    )
-    return redirect('venta')
+)
+    return redirect('detalle_venta')
 #RESERVA
 def reserva_crear (request):
     titulo="Reserva"

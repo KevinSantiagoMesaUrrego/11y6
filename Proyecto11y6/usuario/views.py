@@ -167,10 +167,10 @@ def trabajador_crear(request):
 
 def trabajador_listar(request):
     titulo="Trabajador"
-    trabajador= Trabajador.objects.all()
+    tra= Trabajador.objects.all()
     context={
         "titulo":titulo,
-        "Trabajadores":trabajador
+        "tra":tra
     }
     return render(request,"usuarios/trabajador/listar.html", context)
 

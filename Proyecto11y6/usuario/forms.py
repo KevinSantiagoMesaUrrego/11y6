@@ -42,7 +42,8 @@ class TurnoForm(ModelForm):
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
         widgets={
-            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+            'fecha_ingreso': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'fecha_salida': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
         }
 class TurnoUpdateForm(ModelForm):
     class Meta:
