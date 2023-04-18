@@ -24,8 +24,8 @@ def venta_listar(request):
         "titulo":titulo,
         "venta":venta
     }
-    return render(request,"venta/listar.hmtl",context)
-def vetna_modificar(request,pk):
+    return render(request,"venta/listar.html",context)
+def venta_modificar(request,pk):
     titulo="Venta"
     venta=Venta.objects.get(id=pk)
     if request.method== 'POST':
@@ -52,14 +52,14 @@ def detalle_venta_crear (request):
         form=Detalle_ventaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('venta')
+            return redirect('detalle_venta')
     else:
         form=Detalle_ventaForm()
     context={
         "titulo":titulo,
         "form":form
     }
-    return render(request,"venta/crear.html",context)
+    return render(request,"ventas/detalle_venta/crear.html",context)
 def detalle_venta_listar(request):
     titulo="Detalle_venta"
     detalle_venta=Detalle_venta.objects.all()
@@ -67,7 +67,7 @@ def detalle_venta_listar(request):
         "titulo":titulo,
         "venta":detalle_venta
     }
-    return render(request,"venta/listar.hmtl",context)
+    return render(request,"ventas/detalle_venta/listar.html",context)
 def detalle_venta_modificar(request,pk):
     titulo="Detalle_venta"
     detalle_venta=Detalle_venta.objects.get(id=pk)
