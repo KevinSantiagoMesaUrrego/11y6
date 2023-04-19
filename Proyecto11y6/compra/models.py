@@ -10,7 +10,7 @@ class Detalle_compra(models.Model):
         cantidad_producto=models.IntegerField(max_length=45,verbose_name="Cantidad Producto")
         valor_total=models.FloatField(max_length=45,verbose_name="Valor Total Compra")
 
-class Proveedor(models.Model):
+class  Proveedor(models.Model):
     class Tipo_identificacion(models.TextChoices):
             CEDULA='CC',_("Cédula")
             CEDULA_EXTRANJERIA='CE',_("Cédula de Extranjería")
