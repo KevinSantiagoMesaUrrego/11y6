@@ -208,7 +208,7 @@ def proveedor_listar(request):
     proveedor = Proveedor.objects.all()
     context = {
         "titulo": titulo,
-        "Proveedores": proveedor
+        "proveedores":proveedor
     }
     return render(request, "compras/proveedor/listar.html", context)
 
@@ -233,7 +233,7 @@ def proveedor_modificar(request, pk):
 
 def proveedor_eliminar(request, pk):
     proveedor = Proveedor.objects.filter(id=pk)
+    proveedor.delete()
     proveedor.update(
-        estado="0"
     )
     return redirect('proveedor')

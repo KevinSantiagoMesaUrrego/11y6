@@ -1,4 +1,5 @@
-{% extends 'partials/body.html' %} {% block contenido %}
+{% extends 'partials/body.html' %} 
+{% block contenido %}
 <a href="{% url 'proveedor-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
@@ -7,6 +8,7 @@
     <tr>
       <th>Tipo De Identificacion</th>
       <th>Nombre Del Proveedor</th>
+      <th>Apellido Del Proveedor</th>
       <th>Telefono Del Proveedor</th>
       <th>Corre Del Proveedor</th>
       <th>Direccion Del Proveedor</th>
@@ -14,11 +16,12 @@
     </tr>
   </thead>
   <tbody>
-    {% for proveedor in compras %} {% if proveedor.estado != "0" %}
+    {% for proveedor in proveedores %} {% if proveedor.estado != "0" %}
 
     <tr>
       <td>{{proveedor.tipo_identificacion}}</td>
       <td>{{proveedor.nombre_proveedor}}</td>
+      <td>{{proveedor.apellido_proveedor}}</td>
       <td>{{proveedor.telefono_proveedor}}</td>
       <td>{{proveedor.corre_proveedor}}</td>
       <td>{{proveedor.direccion_proveedor}}</td>

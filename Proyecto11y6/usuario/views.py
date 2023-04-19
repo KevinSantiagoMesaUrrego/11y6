@@ -65,7 +65,10 @@ def eps_crear(request):
         form= EpsForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'La persona se creo correctamente.')
             return redirect('eps')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
     else:
         form= EpsForm()
     context={
@@ -90,6 +93,7 @@ def eps_modificar(request,pk):
         form= EpsUpdateForm(request.POST, instance=eps)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se modifico correctamente.')
             return redirect('eps')
     else:
         form= EpsUpdateForm(instance=eps)
@@ -113,7 +117,10 @@ def turno_crear(request):
         form= TurnoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'La persona se creo correctamente.')
             return redirect('turno')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
     else:
         form= TurnoForm()
     context={
@@ -138,6 +145,7 @@ def turno_modificar(request,pk):
         form= TurnoUpdateForm(request.POST, instance=turno)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se modificado correctamente.')
             return redirect('turno')
     else:
         form= TurnoUpdateForm(instance=turno)
@@ -160,7 +168,10 @@ def trabajador_crear(request):
         form= TrabajadorForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'La persona se creo correctamente.')
             return redirect('trabajador')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
     else:
         form= TrabajadorForm()
     context={
@@ -185,6 +196,7 @@ def trabajador_modificar(request,pk):
         form= TrabajadorUpdateForm(request.POST, instance=trabajador)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se modificado correctamente.')
             return redirect('trabajador')
     else:
         form= TrabajadorUpdateForm(instance=trabajador)
