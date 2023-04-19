@@ -18,7 +18,6 @@ class Detalle_ventaForm(ModelForm):
     class Meta:
         model=Detalle_venta
         fields="__all__"
-
 class Detalle_ventaUpadteForm(ModelForm):
     class Meta:
         model=Detalle_venta
@@ -28,7 +27,13 @@ class ReservaForm(ModelForm):
     class Meta:
         model=Reserva
         fields="__all__"
-
+        widgets={
+            'fecha_reserva': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'hora_inicio': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'hora_fin': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'fecha_abono': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'fecha_pago_total': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),       
+        }
 class ReservaUpdateForm(ModelForm):
     class Meta:
         model=Reserva
