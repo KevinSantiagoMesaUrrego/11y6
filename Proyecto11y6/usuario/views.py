@@ -40,7 +40,7 @@ def persona_modificar(request,pk):
         form= PersonaUpdateForm(request.POST, instance=persona)
         if form.is_valid():
             form.save()
-            messages.success(request, 'El formulario se ha enviado correctamente.')
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('persona')
     else:
         form= PersonaUpdateForm(instance=persona)
