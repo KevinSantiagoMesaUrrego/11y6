@@ -98,82 +98,85 @@ def reserva_crear (request):
         form=ReservaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('venta')
+            return redirect('reserva')
     else:
         form=ReservaForm()
     context={
         "titulo":titulo,
         "form":form
     }
-    return render(request,"venta/crear.html",context)
+    return render(request,"ventas/reserva/crear.html",context)
 def reserva_listar(request):
     titulo="Reserva"
     reserva=Reserva.objects.all()
     context={
         "titulo":titulo,
-        "venta":reserva
+        "reservas":reserva
     }
-    return render(request,"venta/listar.hmtl",context)
+    return render(request,"ventas/reserva/listar.html",context)
 def reserva_modificar(request,pk):
     titulo="Reserva"
     reserva=Reserva.objects.get(id=pk)
     if request.method== 'POST':
-        form= VentaUpadteForm(request.POST, instance=reserva)
+        form= ReservaUpdateForm(request.POST, instance=reserva)
         if form.is_valid():
             form.save()
-            return redirect('venta')
+            return redirect('reserva')
     else:
         form= ReservaUpdateForm(instance=reserva)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"venta/modificar.html", context)
+    return render(request,"ventas/reserva/modificar.html", context)
 def reserva_eliminar(request,pk):
     reserva= Reserva.objects.filter(id=pk)
+    reserva.delete()
     reserva.update(
     )
-    return redirect('venta')
+    return redirect('reserva')
 #UBICACION
 def ubicacion_crear (request):
-    titulo="Reserva"
+    titulo="Ubicacion"
     if request.method=='POST':
         form=UbicacionForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('venta')
+            return redirect('ubicacion')
     else:
         form=UbicacionForm()
     context={
         "titulo":titulo,
-        "form":form
+        "form":form    
     }
-    return render(request,"venta/crear.html",context)
+    return render(request,"ventas/ubicacion/crear.html",context)
 def ubicacion_listar(request):
     titulo="Ubicacion"
-    ubicacion=Reserva.objects.all()
+    ubicacion=Ubicacion.objects.all()
     context={
         "titulo":titulo,
-        "venta":ubicacion
+        "ubicaciones":ubicacion
+        
     }
-    return render(request,"venta/listar.hmtl",context)
+    return render(request,"ventas/ubicacion/listar.html",context)
 def ubicacion_modificar(request,pk):
     titulo="Ubicacion"
     ubicacion=Ubicacion.objects.get(id=pk)
     if request.method== 'POST':
-        form= VentaUpadteForm(request.POST, instance=ubicacion)
+        form= UbicacionUpdateForm(request.POST, instance=ubicacion)
         if form.is_valid():
             form.save()
-            return redirect('venta')
+            return redirect('ubicacion')
     else:
-        form= ReservaUpdateForm(instance=ubicacion)
+        form= UbicacionUpdateForm(instance=ubicacion)
     context={
         "titulo":titulo,
         "form":form
         }
-    return render(request,"venta/modificar.html", context)
+    return render(request,"ventas/ubicacion/modificar.html", context)
 def ubicacion_eliminar(request,pk):
-    reserva= Reserva.objects.filter(id=pk)
-    reserva.update(
+    ubicacion= Ubicacion.objects.filter(id=pk)
+    ubicacion.delete()
+    ubicacion.update(
     )
-    return redirect('venta')
+    return redirect('ubicacion')
