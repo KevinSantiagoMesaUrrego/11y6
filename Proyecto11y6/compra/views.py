@@ -4,6 +4,7 @@ from compra.models import Detalle_compra
 from compra.models import Evento
 from compra.models import Proveedor
 from compra.forms import CompraForm, CompraUpdateForm, Detalle_compraForm, Detalle_compraUpdateForm, EventoForm, EventoUpdateForm, ProveedorForm, ProveedorUpdateForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -13,6 +14,10 @@ def compra_crear(request):
         form = CompraForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'La Compra se creo correctamente.')
+            return redirect('compra')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
             return redirect('compra')
     else:
         form = CompraForm()
@@ -40,6 +45,7 @@ def compra_modificar(request, pk):
         form = CompraUpdateForm(request.POST, instance=compra)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha enviado correctamente.')
             return redirect('compra')
     else:
         form = CompraUpdateForm(instance=compra)
@@ -66,6 +72,10 @@ def detalle_compra_crear(request):
         form = Detalle_compraForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'El Detalle de compra se creo correctamente.')
+            return redirect('detalle_compra')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
             return redirect('detalle_compra')
     else:
         form = Detalle_compraForm()
@@ -93,6 +103,7 @@ def detalle_compra_modificar(request, pk):
         form = Detalle_compraUpdateForm(request.POST, instance=detalle_compra)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha enviado correctamente.')
             return redirect('detalle_compra')
     else:
         form = Detalle_compraUpdateForm(instance=detalle_compra)
@@ -119,6 +130,10 @@ def evento_crear(request):
         form = EventoForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'El Evento se creo correctamente.')
+            return redirect('evento')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
             return redirect('evento')
     else:
         form = EventoForm()
@@ -147,6 +162,7 @@ def evento_modificar(request, pk):
         form = EventoUpdateForm(request.POST, instance=evento)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha enviado correctamente.')
             return redirect('evento')
     else:
         form = EventoUpdateForm(instance=evento)
@@ -173,6 +189,10 @@ def proveedor_crear(request):
         form = ProveedorForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'El Proveedor se creo correctamente.')
+            return redirect('proveedor')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
             return redirect('proveedor')
     else:
         form = ProveedorForm()
@@ -200,6 +220,7 @@ def proveedor_modificar(request, pk):
         form = ProveedorUpdateForm(request.POST, instance=proveedor)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha enviado correctamente.')
             return redirect('proveedor')
     else:
         form = ProveedorUpdateForm(instance=proveedor)
