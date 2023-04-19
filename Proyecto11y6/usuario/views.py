@@ -4,6 +4,7 @@ from usuario.models import Eps
 from usuario.models import Turno
 from usuario.models import Trabajador
 from usuario.forms import PersonaForm,PersonaUpdateForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
+from django.contrib import messages
 # Create your views here.
 def persona_crear(request):
     titulo="Persona"
@@ -11,7 +12,10 @@ def persona_crear(request):
         form= PersonaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'La persona se creo correctamente.')
             return redirect('persona')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
     else:
         form= PersonaForm()
     context={
@@ -36,6 +40,7 @@ def persona_modificar(request,pk):
         form= PersonaUpdateForm(request.POST, instance=persona)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha enviado correctamente.')
             return redirect('persona')
     else:
         form= PersonaUpdateForm(instance=persona)
