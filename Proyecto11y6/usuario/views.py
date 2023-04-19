@@ -119,7 +119,7 @@ def turno_crear(request):
 
 def turno_listar(request):
     titulo="Turno"
-    turno= Eps.objects.all()
+    turno= Turno.objects.all()
     context={
         "titulo":titulo,
         "turnos":turno
@@ -128,7 +128,7 @@ def turno_listar(request):
 
 def turno_modificar(request,pk):
     titulo="Turno"
-    turno= Eps.objects.get(id=pk)
+    turno= Turno.objects.get(id=pk)
     if request.method== 'POST':
         form= TurnoUpdateForm(request.POST, instance=turno)
         if form.is_valid():
@@ -144,9 +144,8 @@ def turno_modificar(request,pk):
 
 def turno_eliminar(request,pk):
     turno= Turno.objects.filter(id=pk)
-    turno.update(
-        estado="0"
-    )
+    turno.delete()
+    turno.update()
     return redirect('turno')
 
 #views de tabla trabajador

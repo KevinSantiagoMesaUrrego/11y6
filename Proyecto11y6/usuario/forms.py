@@ -9,9 +9,6 @@ class PersonaForm(ModelForm):
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
-        widgets={
-            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
-        }
 class PersonaUpdateForm(ModelForm):
     class Meta:
         model = Persona
@@ -25,9 +22,6 @@ class EpsForm(ModelForm):
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
-        widgets={
-            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
-        }
 class EpsUpdateForm(ModelForm):
     class Meta:
         model = Eps
@@ -35,12 +29,9 @@ class EpsUpdateForm(ModelForm):
         exclude=["documento","rh","fecha_nacimiento"]
 
 class TurnoForm(ModelForm):
-    
     class Meta:
         model = Turno
         fields = "__all__"
-        exclude=["estado",]
-        # fields= ["nombre","apellido","documento","tipoDocumento"]
         widgets={
             'fecha_ingreso': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
             'fecha_salida': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
@@ -49,7 +40,10 @@ class TurnoUpdateForm(ModelForm):
     class Meta:
         model = Turno
         fields = "__all__"
-        exclude=["documento","rh","fecha_nacimiento"]
+        widgets={
+            'fecha_ingreso': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'fecha_salida': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+        }
 
 class TrabajadorForm(ModelForm):
     
@@ -58,9 +52,6 @@ class TrabajadorForm(ModelForm):
         fields = "__all__"
         exclude=["estado",]
         # fields= ["nombre","apellido","documento","tipoDocumento"]
-        widgets={
-            'fecha_nacimiento': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
-        }
 class TrabajadorUpdateForm(ModelForm):
     class Meta:
         model = Trabajador

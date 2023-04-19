@@ -13,12 +13,12 @@
     </tr>
   </thead>
   <tbody>
-    {% for turno in turnos%} {% if turno.estado != "0" %}
+    {% for turno in turnos %}
 
     <tr>
-      <td>{{turno.fecha_ingreso}}</td>
-      <td>{{turno.fecha_salida}}</td>
-      <td>{{turno.estado}}</td>
+      <td>{{turno.fecha_ingreso|date:"d/m/Y"}}</td>
+      <td>{{turno.fecha_salida|date:"d/m/Y"}}</td>
+      <td>{{ turno.estado }}</td>
       <td>
         <a
           class="btn btn-danger"
@@ -32,7 +32,7 @@
         >
       </td>
     </tr>
-    {% endif %} {% endfor %}
+    {% endfor %}
   </tbody>
 </table>
 {% endblock contenido %}
