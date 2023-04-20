@@ -35,6 +35,7 @@
     <div class="container">
       <div class="row g-5">{% block contenido %} {% endblock contenido %}</div>
     </div>
+    {% include 'partials/modal.html' %}
     {% include 'partials/footer.html' %}
     {% if messages %}
     {% for message in messages %}

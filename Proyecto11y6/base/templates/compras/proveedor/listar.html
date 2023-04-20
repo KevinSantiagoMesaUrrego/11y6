@@ -1,4 +1,5 @@
 {% extends 'partials/body.html' %} 
+{% load bootstrap_icons %}
 {% block contenido %}
 <a href="{% url 'proveedor-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
@@ -10,7 +11,7 @@
       <th>Nombre Del Proveedor</th>
       <th>Apellido Del Proveedor</th>
       <th>Telefono Del Proveedor</th>
-      <th>Corre Del Proveedor</th>
+      <th>Correo Del Proveedor</th>
       <th>Direccion Del Proveedor</th>
       <th>Estado Del Proveedor</th>
     </tr>
@@ -22,20 +23,19 @@
       <td>{{proveedor.tipo_identificacion}}</td>
       <td>{{proveedor.nombre_proveedor}}</td>
       <td>{{proveedor.apellido_proveedor}}</td>
-      <td>{{proveedor.telefono_proveedor}}</td>
-      <td>{{proveedor.corre_proveedor}}</td>
+      <td>{{proveedor.telefono}}</td>
+      <td>{{proveedor.correo_proveedor}}</td>
       <td>{{proveedor.direccion_proveedor}}</td>
-      <td>{{proveedor.estado_proveedor}}</td>
+      <td>{{proveedor.get_estado_proveedor_display}}</td>
       <td>
-        <a
-          class="btn btn-danger"
-          href="{% url 'proveedor-eliminar' proveedor.id %}"
-          >-</a
-        >
+        <button  type="button" data-cafe-bar="{{proveedor.id}}" class="btnEliminar btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#modalConf">
+        {% bs_icon 'trash' %}
+    </button>
         <a
           class="btn btn-primary"
           href="{% url 'proveedor-modificar' proveedor.id %}"
-          >+</a
+          >Modificar</a
         >
       </td>
     </tr>

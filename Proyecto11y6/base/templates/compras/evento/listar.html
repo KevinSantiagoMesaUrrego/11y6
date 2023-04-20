@@ -1,4 +1,5 @@
 {% extends 'partials/body.html' %} 
+{% load bootstrap_icons %}
 {% block contenido %}
 <a href="{% url 'evento-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
@@ -22,17 +23,18 @@
       <td>{{evento.fecha_inicio}}</td>
       <td>{{evento.fecha_fin}}</td>
       <td>{{evento.descripcion}}</td>
-      <td>{{evento.estado_evento}}</td>
+      <td>{{evento.get_estado_evento_display}}</td>
       
       <td>
-        <a class="btn btn-danger" href="{% url 'evento-eliminar' evento.id %}"
-          >-</a
-        >
+        <button  type="button" data-cafe-bar="{{evento.id}}" class="btnEliminar btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#modalConf">
+        {% bs_icon 'trash' %}
+    </button>
         <a
           class="btn btn-primary"
           href="{% url 'evento-modificar' evento.id %}"
          
-          >+</a
+          >Modificar</a
         >
       </td>
     </tr>

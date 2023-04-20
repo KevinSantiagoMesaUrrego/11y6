@@ -1,4 +1,6 @@
-{% extends 'partials/body.html' %} {% block contenido %}
+{% extends 'partials/body.html' %}
+{% load bootstrap_icons %}
+{% block contenido %}
 <a href="{% url 'reserva-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
@@ -28,15 +30,14 @@
       <td>{{reserva.pago_total}}</td>
       <td>{{reserva.fecha_pago_total}}</td>
       <td>
-        <a
-          class="btn btn-danger"
-          href="{% url 'reserva-eliminar' reserva.id %}"
-          >-</a
-        >
+        <button  type="button" data-cafe-bar="{{reserva.id}}" class="btnEliminar btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#modalConf">
+        {% bs_icon 'trash' %}
+    </button>
         <a
           class="btn btn-primary"
           href="{% url 'reserva-modificar' reserva.id %}"
-          >+</a
+          >Modificar</a
         >
       </td>
     </tr>

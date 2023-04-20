@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from venta.models import Venta,Detalle_venta,Reserva,Ubicacion
 from venta.forms import VentaForm,VentaUpadteForm,Detalle_ventaForm,Detalle_ventaUpadteForm,ReservaForm,ReservaUpdateForm,UbicacionForm,UbicacionUpdateForm
+from django.contrib import messages
 # Create your views here.
 #VENTA
 def venta_crear (request):
@@ -9,7 +10,10 @@ def venta_crear (request):
         form=VentaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('venta')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
     else:
         form=VentaForm()
     context={
@@ -19,9 +23,11 @@ def venta_crear (request):
     return render(request,"ventas/venta/crear.html",context)
 def venta_listar(request):
     titulo="Venta"
+    modulo="ventas"
     venta=Venta.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "ventas":venta
     }
     return render(request,"ventas/venta/listar.html",context)
@@ -32,6 +38,7 @@ def venta_modificar(request,pk):
         form= VentaUpadteForm(request.POST, instance=venta)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('venta')
     else:
         form= VentaUpadteForm(instance=venta)
@@ -49,12 +56,14 @@ def venta_eliminar(request,pk):
 #DETALLE VENTA
 def detalle_venta_crear (request):
     titulo="Detalle_venta"
-
     if request.method=='POST':
         form=Detalle_ventaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('detalle_venta')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
     else:
         form=Detalle_ventaForm()
     context={
@@ -64,9 +73,11 @@ def detalle_venta_crear (request):
     return render(request,"ventas/detalle_venta/crear.html",context)
 def detalle_venta_listar(request):
     titulo="Detalle_venta"
+    modulo="ventas"
     detalle_venta=Detalle_venta.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "detalle_ventas":detalle_venta
     }
     return render(request,"ventas/detalle_venta/listar.html",context)
@@ -77,6 +88,7 @@ def detalle_venta_modificar(request,pk):
         form= Detalle_ventaUpadteForm(request.POST, instance=detalle_venta)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('detalle_venta')
     else:
         form= Detalle_ventaUpadteForm(instance=detalle_venta)
@@ -98,6 +110,7 @@ def reserva_crear (request):
         form=ReservaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('reserva')
     else:
         form=ReservaForm()
@@ -108,9 +121,11 @@ def reserva_crear (request):
     return render(request,"ventas/reserva/crear.html",context)
 def reserva_listar(request):
     titulo="Reserva"
+    modulo="ventas"
     reserva=Reserva.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "reservas":reserva
     }
     return render(request,"ventas/reserva/listar.html",context)
@@ -121,6 +136,7 @@ def reserva_modificar(request,pk):
         form= ReservaUpdateForm(request.POST, instance=reserva)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('reserva')
     else:
         form= ReservaUpdateForm(instance=reserva)
@@ -142,21 +158,23 @@ def ubicacion_crear (request):
         form=UbicacionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('ubicacion')
     else:
         form=UbicacionForm()
     context={
         "titulo":titulo,
-        "form":form    
+        "form":form
     }
     return render(request,"ventas/ubicacion/crear.html",context)
 def ubicacion_listar(request):
     titulo="Ubicacion"
+    modulo="ventas"
     ubicacion=Ubicacion.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "ubicaciones":ubicacion
-        
     }
     return render(request,"ventas/ubicacion/listar.html",context)
 def ubicacion_modificar(request,pk):
@@ -166,6 +184,7 @@ def ubicacion_modificar(request,pk):
         form= UbicacionUpdateForm(request.POST, instance=ubicacion)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('ubicacion')
     else:
         form= UbicacionUpdateForm(instance=ubicacion)

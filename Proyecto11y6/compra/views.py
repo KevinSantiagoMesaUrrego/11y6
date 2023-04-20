@@ -30,9 +30,11 @@ def compra_crear(request):
 
 def compra_listar(request):
     titulo = "Compra"
+    modulo="compras"
     compra = Compra.objects.all()
     context = {
         "titulo": titulo,
+        "modulo":modulo,
         "compras": compra
     }
     return render(request, "compras/compra/listar.html", context)
@@ -88,9 +90,11 @@ def detalle_compra_crear(request):
 
 def detalle_compra_listar(request):
     titulo = "Detalle_compra"
+    modulo="compras"
     detalle_compra = Detalle_compra.objects.all()
     context = {
         "titulo": titulo,
+        "modulo": modulo,
         "detalle_compras": detalle_compra
     }
     return render(request, "compras/detalle_compra/listar.html", context)
@@ -146,9 +150,11 @@ def evento_crear(request):
 
 def evento_listar(request):
     titulo = "Evento"
+    modulo="compras"
     evento = Evento.objects.all()
     context = {
         "titulo": titulo,
+        "modulo":modulo,
         "eventos": evento
 
     }
@@ -175,8 +181,9 @@ def evento_modificar(request, pk):
 
 def evento_eliminar(request, pk):
     evento = Evento.objects.filter(id=pk)
+    evento.delete()
     evento.update(
-        estado="0"
+        estado_evento="0"
     )
     return redirect('evento')
 
@@ -205,9 +212,11 @@ def proveedor_crear(request):
 
 def proveedor_listar(request):
     titulo = "Proveedor"
+    modulo="compras"
     proveedor = Proveedor.objects.all()
     context = {
         "titulo": titulo,
+        "modulo": modulo,
         "proveedores":proveedor
     }
     return render(request, "compras/proveedor/listar.html", context)

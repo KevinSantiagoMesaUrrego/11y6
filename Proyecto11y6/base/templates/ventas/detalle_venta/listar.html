@@ -1,4 +1,5 @@
 {% extends 'partials/body.html' %}
+{% load bootstrap_icons %}
 {% block contenido %}
 <a href="{% url 'detalle_venta-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
@@ -15,15 +16,14 @@
     <tr>
       <td>{{detalle_venta.cantidad_producto}}</td>
       <td>
-        <a
-          class="btn btn-danger"
-          href="{% url 'detalle_venta-eliminar' detalle_venta.id %}"
-          >-</a
-        >
+        <button  type="button" data-cafe-bar="{{detalle_venta.id}}" class="btnEliminar btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#modalConf">
+        {% bs_icon 'trash' %}
+    </button>
         <a
           class="btn btn-primary"
           href="{% url 'detalle_venta-modificar' detalle_venta.id %}"
-          >+</a
+          >Modificar</a
         >
       </td>
     </tr>

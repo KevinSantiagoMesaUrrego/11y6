@@ -1,4 +1,6 @@
-{% extends 'partials/body.html' %} {% block contenido %}
+{% extends 'partials/body.html' %}
+{% load bootstrap_icons %}
+{% block contenido %}
 <a href="{% url 'ubicacion-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
@@ -15,17 +17,16 @@
     {% for ubicacion in ubicaciones %} {% if ubicacion.estado != "0" %}
     <tr>
       <td>{{ubicacion.nombre}}</td>
-      <td>{{ubicacion.estado}}</td>
+      <td>{{ubicacion.get_estado_display}}</td>
       <td>
-        <a
-          class="btn btn-danger"
-          href="{% url 'ubicacion-eliminar' ubicacion.id %}"
-          >-</a
-        >
+        <button  type="button" data-cafe-bar="{{ubicacion.id}}" class="btnEliminar btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#modalConf">
+        {% bs_icon 'trash' %}
+    </button>
         <a
           class="btn btn-primary"
           href="{% url 'ubicacion-modificar' ubicacion.id %}"
-          >+</a
+          >Modificar</a
         >
       </td>
     </tr>

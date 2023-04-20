@@ -1,4 +1,6 @@
-{% extends 'partials/body.html' %} {% block contenido %}
+{% extends 'partials/body.html' %}
+{% load bootstrap_icons %}
+{% block contenido %}
 <a href="{% url 'eps-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
@@ -15,17 +17,16 @@
 
     <tr>
       <td>{{eps.nombre}}</td>
-      <td>{{eps.estado}}</td>
+      <td>{{eps.get_estado_display}}</td>
       <td>
-        <a
-          class="btn btn-danger"
-          href="{% url 'eps-eliminar' eps.id %}"
-          >-</a
-        >
+        <button  type="button" data-cafe-bar="{{eps.id}}" class="btnEliminar btn btn-danger"
+        data-bs-toggle="modal" data-bs-target="#modalConf">
+        {% bs_icon 'trash' %}
+    </button>
         <a
           class="btn btn-primary"
           href="{% url 'eps-modificar' eps.id %}"
-          >+</a
+          >Modificar</a
         >
       </td>
     </tr>

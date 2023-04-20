@@ -1,2 +1,8 @@
 {% load static %}
 <script src="{% static 'js/sweetalert2/sweetalert2.all.min.js' %}"></script>
+<script>
+    $(".btnEliminar").click(function () {
+        var cafebar = $(this).data("cafe-bar");
+        $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar);
+    });
+</script>

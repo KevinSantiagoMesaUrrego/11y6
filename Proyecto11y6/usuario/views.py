@@ -26,9 +26,11 @@ def persona_crear(request):
 
 def persona_listar(request):
     titulo="Persona"
+    modulo="Usuarios"
     persona= Persona.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "personas":persona
     }
     return render(request,"usuarios/persona/listar.html", context)
@@ -65,7 +67,7 @@ def eps_crear(request):
         form= EpsForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'La persona se creo correctamente.')
+            messages.success(request,'La eps se creo correctamente.')
             return redirect('eps')
         else:
             messages.error(request, 'El formulario tiene errores.')
@@ -79,9 +81,11 @@ def eps_crear(request):
 
 def eps_listar(request):
     titulo="Eps"
+    modulo="Usuarios"
     eps= Eps.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "eps":eps
     }
     return render(request,"usuarios/eps/listar.html", context)
@@ -117,7 +121,7 @@ def turno_crear(request):
         form= TurnoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'La persona se creo correctamente.')
+            messages.success(request,'El turno se creo correctamente.')
             return redirect('turno')
         else:
             messages.error(request, 'El formulario tiene errores.')
@@ -131,9 +135,11 @@ def turno_crear(request):
 
 def turno_listar(request):
     titulo="Turno"
+    modulo="Usuarios"
     turno= Turno.objects.all()
     context={
         "titulo":titulo,
+        "modulo":modulo,
         "turnos":turno
     }
     return render(request,"usuarios/turno/listar.html", context)
@@ -168,7 +174,7 @@ def trabajador_crear(request):
         form= TrabajadorForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'La persona se creo correctamente.')
+            messages.success(request,'El trabajador se creo correctamente.')
             return redirect('trabajador')
         else:
             messages.error(request, 'El formulario tiene errores.')
@@ -182,10 +188,12 @@ def trabajador_crear(request):
 
 def trabajador_listar(request):
     titulo="Trabajador"
-    tra= Trabajador.objects.all()
+    modulo="Usuarios"
+    trabajadores= Trabajador.objects.all()
     context={
         "titulo":titulo,
-        "tra":tra
+        "modulo":modulo,
+        "trabajadores":trabajadores
     }
     return render(request,"usuarios/trabajador/listar.html", context)
 
