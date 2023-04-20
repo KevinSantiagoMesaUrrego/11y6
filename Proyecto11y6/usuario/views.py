@@ -136,11 +136,11 @@ def turno_crear(request):
 def turno_listar(request):
     titulo="Turno"
     modulo="Usuarios"
-    turno= Turno.objects.all()
+    turnos= Turno.objects.all()
     context={
         "titulo":titulo,
         "modulo":modulo,
-        "turnos":turno
+        "turnos":turnos
     }
     return render(request,"usuarios/turno/listar.html", context)
 

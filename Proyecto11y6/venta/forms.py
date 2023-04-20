@@ -43,8 +43,8 @@ class ReservaUpdateForm(ModelForm):
         fields="__all__"
         widgets={
             'fecha_reserva': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
-            'hora_inicio': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
-            'hora_fin': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
+            'hora_inicio': widgets.DateTimeInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
+            'hora_fin': widgets.DateTimeInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
             'fecha_abono': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
             'fecha_pago_total': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
         }

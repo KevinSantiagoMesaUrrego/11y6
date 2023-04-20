@@ -59,8 +59,8 @@ class Trabajador(models.Model):
 
 
 class Turno(models.Model):
-    fecha_ingreso= models.DateField(verbose_name="Fecha de Ingreso", help_text="DD/MM/AAAA")
-    fecha_salida= models.DateField(verbose_name="Fecha de Salida", help_text="DD/MM/AAAA")
+    fecha_ingreso= models.DateTimeField(verbose_name="Fecha de Ingreso", help_text="HH/MM/SS")
+    fecha_salida= models.DateTimeField(verbose_name="Fecha de Salida", help_text="HH/MM/SS")
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")

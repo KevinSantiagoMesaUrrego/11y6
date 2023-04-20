@@ -33,16 +33,16 @@ class TurnoForm(ModelForm):
         model = Turno
         fields = "__all__"
         widgets={
-            'fecha_ingreso': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
-            'fecha_salida': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+            'fecha_ingreso': widgets.DateInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
+            'fecha_salida': widgets.DateInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
         }
 class TurnoUpdateForm(ModelForm):
     class Meta:
         model = Turno
         fields = "__all__"
         widgets={
-            'fecha_ingreso': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d'),
-            'fecha_salida': widgets.DateInput(attrs={'type':'date'},format='%Y-%m-%d')
+            'fecha_ingreso': widgets.DateTimeInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
+            'fecha_salida': widgets.DateTimeInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
         }
 
 class TrabajadorForm(ModelForm):

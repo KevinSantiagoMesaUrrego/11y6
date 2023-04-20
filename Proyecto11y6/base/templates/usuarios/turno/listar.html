@@ -17,8 +17,8 @@
     {% for turno in turnos %}
 
     <tr>
-      <td>{{turno.fecha_ingreso|date:"d/m/Y"}}</td>
-      <td>{{turno.fecha_salida|date:"d/m/Y"}}</td>
+      <td>{{turno.fecha_ingreso}}</td>
+      <td>{{turno.fecha_salida}}</td>
       <td>{{ turno.get_estado_display}}</td>
       <td>
         <button  type="button" data-cafe-bar="{{turno.id}}" class="btnEliminar btn btn-danger"
