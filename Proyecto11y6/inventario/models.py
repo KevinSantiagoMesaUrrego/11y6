@@ -4,14 +4,16 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 class Producto(models.Model):
-    nombreProducto=models.CharField(max_length=45,verbose_name="Producto")
-    descripcionProducto=models.CharField(max_length=45,verbose_name="Descripcion")
-    precioProducto=models.FloatField(max_length=45,verbose_name="Precio")
-    ofertaProducto=models.IntegerField(max_length=45,verbose_name="Oferta")
-    stockProducto=models.IntegerField(max_length=45,verbose_name="Stock")
-    class Estado_producto(models.TextChoices):
-            ACTIVO='A',_("Activo")
-            INACTIVO='I',_("Inactivo")
+    nombre=models.CharField(max_length=45,verbose_name="Producto")
+    descripcion=models.CharField(max_length=45,verbose_name="Descripcion")
+    precio=models.FloatField(verbose_name="Precio")
+    oferta=models.IntegerField(verbose_name="Oferta")
+    stock=models.IntegerField(verbose_name="Stock")
+    class Estado(models.TextChoices):
+            ACTIVO='1',_("Activo")
+            INACTIVO='0',_("Inactivo")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
+
     #id automaticas
     # Marca_idMarca:int
     # Presentacion_idPresentacion:int
@@ -23,37 +25,40 @@ class Producto(models.Model):
 class Marca(models.Model):
     #Automatico
     #idMarca:int
-    nombreMarca=models.CharField(max_length=45,verbose_name="Marca")
-class estadoMarca(models.TextChoices):
-    ACTIVO='A',_("Activo")
-    INACTIVO='I',_("Inactivo")
+    nombre=models.CharField(max_length=45,verbose_name="Marca")
+    class Estado(models.TextChoices):
+            ACTIVO='1',_("Activo")
+            INACTIVO='0',_("Inactivo")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
 
 
-class Presentacion:
+class Presentacion(models.Model):
     #Automatico
     #idPresentacion:int
-    
-    nombrePresentacion=models.CharField(max_length=45,verbose_name="Presentacion")
-class estadoPresentacion(models.TextChoices):
-    ACTIVO='A',_("Activo")
-    INACTIVO='I',_("Inactivo")
+    presentacion=models.CharField(max_length=45,verbose_name="Presentacion")
+    class Estado(models.TextChoices):
+            ACTIVO='1',_("Activo")
+            INACTIVO='0',_("Inactivo")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
+
     
 
 
-class UnidadMedida:
+class UnidadMedida(models.Model):
     #Automatico
     #idUnidadMedida:int
-    nombreUnidadMedida=models.CharField(max_length=45,verbose_name="Medida")
-class estadoUnidadMedida(models.TextChoices):
-    ACTIVO='A',_("Activo")
-    INACTIVO='I',_("Inactivo")
+    unidadmedida=models.CharField(max_length=45,verbose_name="Medida")
+    class Estado(models.TextChoices):
+        ACTIVO='1',_("Activo")
+        INACTIVO='0',_("Inactivo")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
 
 
-class ConsumoTrabajador:
+class ConsumoTrabajador(models.Model):
     #Automatico
     #idConsumoTrabajador:int
     #Producto_idProducto:int
     
-    Trabajador_NDocumentoTrabajador=models.IntegerField(max_length=45,verbose_name="Documento")
+    documentotrabajador=models.IntegerField(max_length=45,verbose_name="Documento")
 
 

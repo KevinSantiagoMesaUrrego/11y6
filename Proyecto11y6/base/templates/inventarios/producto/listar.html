@@ -1,36 +1,40 @@
-{% extends 'partials/body.html' %} {% block contenido %}
-<a href="{% url 'personas-crear' %}" class="btn btn-success w-25"
-  >Crear {{titulo}}</a
+{% extends 'partials/body.html' %}
+{% block contenido %}
+<a href="{% url 'producto-crear' %}" class="btn btn-success w-25"
+  >{{titulo}}</a
 >
 <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Tipo de Documento</th>
-      <th>Documento</th>
-      <th>Acciones</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th>Oferta</th>
+      <th>Stock</th>
+      <th>Estado</th>
     </tr>
   </thead>
   <tbody>
-    {% for persona in personas %} {% if persona.estado != "0" %}
+    {% for producto in productos %} {% if producto.estado != "0" %}
 
     <tr>
-      <td>{{persona.nombre}}</td>
-      <td>{{persona.apellido}}</td>
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.descripcion}}</td>
+      <td>{{producto.precio}}</td>
+      <td>{{producto.oferta}}</td>
+      <td>{{producto.stock}}</td>
+      <td>{{producto.get_estado_display}}</td>
 
-      <td>{{persona.get_tipo_documento_display}}</td>
-      <td>{{persona.documento}}</td>
       <td>
         <a
           class="btn btn-danger"
-          href="{% url 'personas-eliminar' persona.id %}"
-          >-</a
+          href="{% url 'producto-eliminar' producto.id %}"
+          >Eliminar</a
         >
         <a
           class="btn btn-primary"
-          href="{% url 'personas-modificar' persona.id %}"
-          >+</a
+          href="{% url 'producto-modificar' producto.id %}"
+          >Modificar</a
         >
       </td>
     </tr>
