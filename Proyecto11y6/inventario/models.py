@@ -12,7 +12,7 @@ class Producto(models.Model):
     class Estado(models.TextChoices):
             ACTIVO='1',_("Activo")
             INACTIVO='0',_("Inactivo")
-    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado",default=Estado.ACTIVO)
 
     #id automaticas
     # Marca_idMarca:int
@@ -29,7 +29,7 @@ class Marca(models.Model):
     class Estado(models.TextChoices):
             ACTIVO='1',_("Activo")
             INACTIVO='0',_("Inactivo")
-    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado",default=Estado.ACTIVO)
 
 
 class Presentacion(models.Model):
@@ -39,9 +39,7 @@ class Presentacion(models.Model):
     class Estado(models.TextChoices):
             ACTIVO='1',_("Activo")
             INACTIVO='0',_("Inactivo")
-    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
-
-    
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado",default=Estado.ACTIVO)
 
 
 class UnidadMedida(models.Model):
@@ -51,14 +49,13 @@ class UnidadMedida(models.Model):
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")
-    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado",default=Estado.ACTIVO)
 
 
 class ConsumoTrabajador(models.Model):
     #Automatico
     #idConsumoTrabajador:int
     #Producto_idProducto:int
-    
     documentotrabajador=models.IntegerField(max_length=45,verbose_name="Documento")
 
 

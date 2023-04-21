@@ -53,8 +53,9 @@ class UbicacionForm(ModelForm):
     class Meta:
         model=Ubicacion
         fields="__all__"
-
+        exclude=["estado",]
 class UbicacionUpdateForm(ModelForm):
     class Meta:
         model=Ubicacion
         fields="__all__"
+        exclude=["estado",]

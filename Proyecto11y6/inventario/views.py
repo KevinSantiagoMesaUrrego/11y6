@@ -19,7 +19,6 @@ def producto_crear (request):
         "form":form,
     }
     return render(request,"inventarios/producto/crear.html",context)
-
 def producto_listar(request):
     titulo="Producto"
     modulo="productos"
@@ -30,7 +29,6 @@ def producto_listar(request):
         "productos":producto
     }
     return render(request,"inventarios/producto/listar.html",context)
-
 def producto_modificar(request,pk):
     titulo="Producto"
     producto=Producto.objects.get(id=pk)
@@ -46,7 +44,6 @@ def producto_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/producto/modificar.html", context)
-
 def producto_eliminar(request,pk):
     producto= Producto.objects.filter(id=pk)
     producto.delete()
@@ -69,7 +66,6 @@ def marca_crear (request):
         "form":form,
     }
     return render(request,"inventarios/marca/crear.html",context)
-
 def marca_listar(request):
     titulo="Marca"
     modulo="marcas"
@@ -80,7 +76,6 @@ def marca_listar(request):
         "marcas":marca
     }
     return render(request,"inventarios/marca/listar.html",context)
-
 def marca_modificar(request,pk):
     titulo="Marca"
     marca=Marca.objects.get(id=pk)
@@ -96,7 +91,6 @@ def marca_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/marca/modificar.html", context)
-
 def marca_eliminar(request,pk):
     marca= Marca.objects.filter(id=pk)
     marca.delete()
@@ -119,7 +113,6 @@ def presentacion_crear (request):
         "form":form,
     }
     return render(request,"inventarios/presentacion/crear.html",context)
-
 def presentacion_listar(request):
     titulo="Presentacion"
     modulo="presentaciones"
@@ -130,7 +123,6 @@ def presentacion_listar(request):
         "presentaciones":presentacion
     }
     return render(request,"inventarios/presentacion/listar.html",context)
-
 def presentacion_modificar(request,pk):
     titulo="Presentacion"
     presentacion=Presentacion.objects.get(id=pk)
@@ -146,7 +138,6 @@ def presentacion_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/presentacion/modificar.html", context)
-
 def presentacion_eliminar(request,pk):
     presentacion= Presentacion.objects.filter(id=pk)
     presentacion.delete()
