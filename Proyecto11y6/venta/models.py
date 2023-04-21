@@ -20,4 +20,4 @@ class Ubicacion(models.Model):
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")
-    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
+    estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado",default=Estado.ACTIVO)

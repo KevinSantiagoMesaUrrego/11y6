@@ -37,30 +37,27 @@ class EventoForm(ModelForm):
     class Meta:
         model = Evento
         fields = "__all__"
-        exclude = ["estado",]
         widgets = {
             'fecha_inicio': widgets.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'),
             'fecha_fin': widgets.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d')
-
         }
-
+        exclude=('estado_evento',)
 
 class EventoUpdateForm(ModelForm):
     class Meta:
         model = Evento
         fields = "__all__"
-
-
+        exclude=('estado_evento',)
 class ProveedorForm(ModelForm):
 
     class Meta:
         model = Proveedor
         fields = "__all__"
-        exclude = ["estado",]
+        exclude=["estado_proveedor",]
 
 
 class ProveedorUpdateForm(ModelForm):
     class Meta:
         model = Proveedor
         fields = "__all__"
-        exclude = [" tipo_identificacion"]
+        exclude = [" tipo_identificacion","estado_proveedor"]

@@ -1,36 +1,31 @@
 {% extends 'partials/body.html' %} {% block contenido %}
-<a href="{% url 'personas-crear' %}" class="btn btn-success w-25"
+<a href="{% url 'marca-crear' %}" class="btn btn-success w-25"
   >Crear {{titulo}}</a
 >
 <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Tipo de Documento</th>
-      <th>Documento</th>
-      <th>Acciones</th>
+      <th>Estado</th>
     </tr>
   </thead>
   <tbody>
-    {% for persona in personas %} {% if persona.estado != "0" %}
+    {% for marca in marcas %} {% if marca.estado != "0" %}
 
     <tr>
-      <td>{{persona.nombre}}</td>
-      <td>{{persona.apellido}}</td>
+      <td>{{marca.nombre}}</td>
+      <td>{{marca.get_estado_display}}</td>
 
-      <td>{{persona.get_tipo_documento_display}}</td>
-      <td>{{persona.documento}}</td>
       <td>
         <a
           class="btn btn-danger"
-          href="{% url 'personas-eliminar' persona.id %}"
-          >-</a
+          href="{% url 'marca-eliminar' marca.id %}"
+          >Eliminar</a
         >
         <a
           class="btn btn-primary"
-          href="{% url 'personas-modificar' persona.id %}"
-          >+</a
+          href="{% url 'marca-modificar' marca.id %}"
+          >Modificar</a
         >
       </td>
     </tr>

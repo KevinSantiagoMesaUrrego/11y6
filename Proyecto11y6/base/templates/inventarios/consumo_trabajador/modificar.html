@@ -1,9 +1,8 @@
-{% extends 'partials/body.html' %} {% load crispy_forms_tags %} {% block
-contenido %}
-
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %} 
+{% block contenido %}
 <form action="" method="POST">
   {% csrf_token %} {{form|crispy}}
-  <input type="submit" value="Modificar {{titulo}}" />
+  <input type="submit" value="Agregar {{titulo}}" />
 </form>
-
 {% endblock contenido %}

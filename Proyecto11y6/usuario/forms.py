@@ -23,6 +23,7 @@ class EpsUpdateForm(ModelForm):
     class Meta:
         model = Eps
         fields = "__all__"
+        exclude=["documento","rh","estado","fecha_nacimiento"]
 
 class TurnoForm(ModelForm):
     class Meta:
@@ -32,6 +33,7 @@ class TurnoForm(ModelForm):
             'fecha_ingreso': widgets.DateInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
             'fecha_salida': widgets.DateInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
         }
+        exclude=["estado",]
 class TurnoUpdateForm(ModelForm):
     class Meta:
         model = Turno
@@ -40,7 +42,7 @@ class TurnoUpdateForm(ModelForm):
             'fecha_ingreso': widgets.DateTimeInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
             'fecha_salida': widgets.DateTimeInput(attrs={'type':'datetime-local'},format='%Y-%m-%dT%H:%M'),
         }
-
+        exclude=["estado",]
 class TrabajadorForm(ModelForm):
     
     class Meta:
@@ -52,3 +54,4 @@ class TrabajadorUpdateForm(ModelForm):
     class Meta:
         model = Trabajador
         fields = "__all__"
+        exclude=["documento","rh","estado","fecha_nacimiento"]
