@@ -7,23 +7,24 @@ class PersonaForm(ModelForm):
     class Meta:
         model = Persona
         fields = "__all__"
-        # fields= ["nombre","apellido","documento","tipoDocumento"]
+        exclude=["estado"]
 class PersonaUpdateForm(ModelForm):
     class Meta:
         model = Persona
         fields = "__all__"
+        exclude=["estado"]
 
 class EpsForm(ModelForm):
 
     class Meta:
         model = Eps
         fields = "__all__"
-        # fields= ["nombre","apellido","documento","tipoDocumento"]
+        exclude=["estado"]
 class EpsUpdateForm(ModelForm):
     class Meta:
         model = Eps
         fields = "__all__"
-        exclude=["documento","rh","estado","fecha_nacimiento"]
+        exclude=["estado"]
 
 class TurnoForm(ModelForm):
     class Meta:
@@ -48,10 +49,11 @@ class TrabajadorForm(ModelForm):
     class Meta:
         model = Trabajador
         fields = "__all__"
+        exclude=["estado"]
 
         # fields= ["nombre","apellido","documento","tipoDocumento"]
 class TrabajadorUpdateForm(ModelForm):
     class Meta:
         model = Trabajador
         fields = "__all__"
-        exclude=["documento","rh","estado","fecha_nacimiento"]
+        exclude=["estado"]
