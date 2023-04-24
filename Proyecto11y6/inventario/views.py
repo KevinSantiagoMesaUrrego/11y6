@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from inventario.models import Producto,Marca,Presentacion,UnidadMedida,ConsumoTrabajador
 from inventario.forms import Productoform,ProductoUpdateForm,Marcaform,MarcaUpdateForm,Presentacionform,PresentacionUpdateForm,UnidadMedidaform,UnidadMedidaUpdateForm,ConsumoTrabjadorform,ConsumoTrabajadorUpdateForm
-
+from django.contrib import messages
 # Create your views here.
 
 #PRODUCTO
@@ -11,7 +11,11 @@ def producto_crear (request):
         form=Productoform(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('producto')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
+            
     else:
         form=Productoform()
     context={
@@ -36,6 +40,7 @@ def producto_modificar(request,pk):
         form=ProductoUpdateForm(request.POST,instance=producto)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('producto')
     else:
         form= ProductoUpdateForm(instance=producto)
@@ -58,7 +63,11 @@ def marca_crear (request):
         form=Marcaform(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('marca')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
+            
     else:
         form=Marcaform()
     context={
@@ -83,6 +92,7 @@ def marca_modificar(request,pk):
         form=MarcaUpdateForm(request.POST,instance=marca)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('marca')
     else:
         form= MarcaUpdateForm(instance=marca)
@@ -105,7 +115,11 @@ def presentacion_crear (request):
         form=Presentacionform(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('presentacion')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
+            
     else:
         form=Presentacionform()
     context={
@@ -130,6 +144,7 @@ def presentacion_modificar(request,pk):
         form=PresentacionUpdateForm(request.POST,instance=presentacion)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('presentacion')
     else:
         form= PresentacionUpdateForm(instance=presentacion)
@@ -152,7 +167,11 @@ def unidadmedida_crear (request):
         form=UnidadMedidaform(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('unidadmedida')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
+            
     else:
         form=UnidadMedidaform()
     context={
@@ -179,6 +198,7 @@ def unidadmedida_modificar(request,pk):
         form=UnidadMedidaUpdateForm(request.POST,instance=unidadmedida)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('unidadmedida')
     else:
         form= UnidadMedidaUpdateForm(instance=unidadmedida)
@@ -202,7 +222,11 @@ def consumotrabajador_crear (request):
         form=ConsumoTrabjadorform(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'se creo correctamente.')
             return redirect('consumotrabajador')
+        else:
+            messages.error(request, 'El formulario tiene errores.')
+            
     else:
         form=ConsumoTrabjadorform()
     context={
@@ -229,6 +253,7 @@ def consumotrabajador_modificar(request,pk):
         form=ConsumoTrabajadorUpdateForm(request.POST,instance=consumotrabajador)
         if form.is_valid():
             form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
             return redirect('consumotrabajador')
     else:
         form= ConsumoTrabajadorUpdateForm(instance=consumotrabajador)
