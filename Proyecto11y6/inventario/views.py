@@ -25,7 +25,7 @@ def producto_crear (request):
     return render(request,"inventarios/producto/crear.html",context)
 def producto_listar(request):
     titulo="Producto"
-    modulo="productos"
+    modulo="inventarios"
     producto=Producto.objects.all()
     context={
         "titulo":titulo,
@@ -77,7 +77,7 @@ def marca_crear (request):
     return render(request,"inventarios/marca/crear.html",context)
 def marca_listar(request):
     titulo="Marca"
-    modulo="marcas"
+    modulo="inventarios"
     marca=Marca.objects.all()
     context={
         "titulo":titulo,
@@ -129,7 +129,7 @@ def presentacion_crear (request):
     return render(request,"inventarios/presentacion/crear.html",context)
 def presentacion_listar(request):
     titulo="Presentacion"
-    modulo="presentaciones"
+    modulo="inventarios"
     presentacion=Presentacion.objects.all()
     context={
         "titulo":titulo,
@@ -179,10 +179,9 @@ def unidadmedida_crear (request):
         "form":form,
         }
     return render(request,"inventarios/unidad_medida/crear.html",context)
-
 def unidadmedida_listar(request):
     titulo="UnidadMedida"
-    modulo="unidadmedidas"
+    modulo="inventarios"
     unidadmedida=UnidadMedida.objects.all()
     context={
         "titulo":titulo,
@@ -237,7 +236,7 @@ def consumotrabajador_crear (request):
 
 def consumotrabajador_listar(request):
     titulo="ConsumoTrabajador"
-    modulo="consumotrabajadores"
+    modulo="inventarios"
     consumotrabajador=ConsumoTrabajador.objects.all()
     context={
         "titulo":titulo,
