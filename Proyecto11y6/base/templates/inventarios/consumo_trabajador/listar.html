@@ -8,7 +8,8 @@
   <thead>
     <tr>
       <th>Documento</th>
-      
+      <th>Nombre Trabajador</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,7 @@
 
     <tr>
       <td>{{consumotrabajador.documentotrabajador}}</td>
-      
+      <td>{{ consumotrabajador.trabajador }}</td>
       <td>
         <button  type="button" data-cafe-bar="{{consumotrabajador.id}}" class="btnEliminar btn btn-danger"
         data-bs-toggle="modal" data-bs-target="#modalConf">

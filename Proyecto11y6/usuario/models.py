@@ -56,6 +56,10 @@ class Trabajador(models.Model):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
+    def __str__(self):
+        return "%s %s"%(self.nombre,self.apellido)
+    class Meta:
+        verbose_name_plural = "Personas"
 
 
 class Turno(models.Model):
@@ -66,10 +70,6 @@ class Turno(models.Model):
         INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
 
-
-class Trabajador_Turno(models.Model):
-    trabajador=models.ForeignKey(Trabajador, on_delete=models.CASCADE,verbose_name="trabajador")
-    turno=models.ForeignKey(Turno, on_delete=models.CASCADE,verbose_name="Turno")
 
 
 

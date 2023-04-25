@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from usuario.models import Trabajador
 # Create your models here.
 
 class Producto(models.Model):
@@ -57,5 +57,7 @@ class ConsumoTrabajador(models.Model):
     #idConsumoTrabajador:int
     #Producto_idProducto:int
     documentotrabajador=models.IntegerField(max_length=45,verbose_name="Documento")
+    trabajador=models.ForeignKey(Trabajador, on_delete=models.CASCADE,verbose_name="Trabajador")
+
 
 
