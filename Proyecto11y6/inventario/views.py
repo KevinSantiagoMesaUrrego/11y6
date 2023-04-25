@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from inventario.models import Producto,Marca,Presentacion,UnidadMedida,ConsumoTrabajador
-from inventario.forms import Productoform,ProductoUpdateForm,Marcaform,MarcaUpdateForm,Presentacionform,PresentacionUpdateForm,UnidadMedidaform,UnidadMedidaUpdateForm,ConsumoTrabjadorform,ConsumoTrabajadorUpdateForm
+from inventario.models import Producto,Marca,Presentacion,Unidad_medida,Consumo_trabajador
+from inventario.forms import Productoform,ProductoUpdateForm,Marcaform,MarcaUpdateForm,Presentacionform,PresentacionUpdateForm,Unidad_medidaform,Unidad_medidaUpdateForm,Consumo_trabjadorform,Consumo_trabajadorUpdateForm
 
 # Create your views here.
 
@@ -158,12 +158,12 @@ def presentacion_eliminar(request,pk):
 def unidadmedida_crear (request):
     titulo="UnidadMedida"
     if request.method=='POST':
-        form=UnidadMedidaform(request.POST)
+        form=Unidad_medidaform(request.POST)
         if form.is_valid():
             form.save()
             return redirect('unidadmedida')
     else:
-        form=UnidadMedidaform()
+        form=Unidad_medidaform()
     context={
         "titulo":titulo,
         "form":form,
@@ -173,7 +173,7 @@ def unidadmedida_crear (request):
 def unidadmedida_listar(request):
     titulo="UnidadMedida"
     modulo="unidadmedidas"
-    unidadmedida=UnidadMedida.objects.all()
+    unidadmedida=Unidad_medida.objects.all()
     context={
         "titulo":titulo,
         "modulo":modulo,
@@ -183,14 +183,14 @@ def unidadmedida_listar(request):
 
 def unidadmedida_modificar(request,pk):
     titulo="UnidadMedida"
-    unidadmedida=UnidadMedida.objects.get(id=pk)
+    unidadmedida=Unidad_medida.objects.get(id=pk)
     if request.method=='POST':
-        form=UnidadMedidaUpdateForm(request.POST,instance=unidadmedida)
+        form=Unidad_medidaUpdateForm(request.POST,instance=unidadmedida)
         if form.is_valid():
             form.save()
             return redirect('unidadmedida')
     else:
-        form= UnidadMedidaUpdateForm(instance=unidadmedida)
+        form= Unidad_medidaUpdateForm(instance=unidadmedida)
     context={
         "titulo":titulo,
         "form":form
@@ -198,7 +198,7 @@ def unidadmedida_modificar(request,pk):
     return render(request,"inventarios/unidad_medida/modificar.html", context)
 
 def unidadmedida_eliminar(request,pk):
-    unidadmedida= UnidadMedida.objects.filter(id=pk)
+    unidadmedida= Unidad_medida.objects.filter(id=pk)
     unidadmedida.delete()
     unidadmedida.update(
     )
@@ -208,12 +208,12 @@ def unidadmedida_eliminar(request,pk):
 def consumotrabajador_crear (request):
     titulo="ConsumoTrabajador"
     if request.method=='POST':
-        form=ConsumoTrabjadorform(request.POST)
+        form=Consumo_trabjadorform(request.POST)
         if form.is_valid():
             form.save()
             return redirect('consumotrabajador')
     else:
-        form=ConsumoTrabjadorform()
+        form=Consumo_trabjadorform()
     context={
         "titulo":titulo,
         "form":form,
@@ -223,7 +223,7 @@ def consumotrabajador_crear (request):
 def consumotrabajador_listar(request):
     titulo="ConsumoTrabajador"
     modulo="consumotrabajadores"
-    consumotrabajador=ConsumoTrabajador.objects.all()
+    consumotrabajador=Consumo_trabajador.objects.all()
     context={
         "titulo":titulo,
         "modulo":modulo,
@@ -233,14 +233,14 @@ def consumotrabajador_listar(request):
 
 def consumotrabajador_modificar(request,pk):
     titulo="ConsumoTrabajador"
-    consumotrabajador=ConsumoTrabajador.objects.get(id=pk)
+    consumotrabajador=Consumo_trabajador.objects.get(id=pk)
     if request.method=='POST':
-        form=ConsumoTrabajadorUpdateForm(request.POST,instance=consumotrabajador)
+        form=Consumo_trabajadorUpdateForm(request.POST,instance=consumotrabajador)
         if form.is_valid():
             form.save()
             return redirect('consumotrabajador')
     else:
-        form= ConsumoTrabajadorUpdateForm(instance=consumotrabajador)
+        form= Consumo_trabajadorUpdateForm(instance=consumotrabajador)
     context={
         "titulo":titulo,
         "form":form
@@ -248,7 +248,7 @@ def consumotrabajador_modificar(request,pk):
     return render(request,"inventarios/consumo_trabajador/modificar.html", context)
 
 def consumotrabajador_eliminar(request,pk):
-    consumotrabajador= ConsumoTrabajador.objects.filter(id=pk)
+    consumotrabajador= Consumo_trabajador.objects.filter(id=pk)
     consumotrabajador.delete()
     consumotrabajador.update(
     )

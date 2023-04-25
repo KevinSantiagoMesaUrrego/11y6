@@ -44,7 +44,7 @@ class Presentacion(models.Model):
     
 
 
-class UnidadMedida(models.Model):
+class Unidad_medida(models.Model):
     #Automatico
     #idUnidadMedida:int
     unidadmedida=models.CharField(max_length=45,verbose_name="Medida")
@@ -54,7 +54,7 @@ class UnidadMedida(models.Model):
     estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado")
 
 
-class ConsumoTrabajador(models.Model):
+class Consumo_trabajador(models.Model):
     #Automatico
     #idConsumoTrabajador:int
     #Producto_idProducto:int

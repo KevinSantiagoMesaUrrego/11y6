@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from inventario.models import Producto,Marca,Presentacion,UnidadMedida,ConsumoTrabajador
+from inventario.models import Producto,Marca,Presentacion,Unidad_medida,Consumo_trabajador
 
 #PRODUCTO
 
@@ -40,24 +40,24 @@ class PresentacionUpdateForm(ModelForm):
 
 #UNIDADMEDIDA
 
-class UnidadMedidaform(ModelForm):
+class Unidad_medidaform(ModelForm):
     class Meta:
-        model=UnidadMedida
+        model=Unidad_medida
         fields="__all__"
 
-class UnidadMedidaUpdateForm(ModelForm):
+class Unidad_medidaUpdateForm(ModelForm):
     class Meta:
-        model=Producto
+        model=Unidad_medida
         fields="__all__"
 
 #CONSUMOTRABJADOR
 
-class ConsumoTrabjadorform(ModelForm):
+class Consumo_trabjadorform(ModelForm):
     class Meta:
-        model=ConsumoTrabajador
+        model=Consumo_trabajador
         fields="__all__"
 
-class ConsumoTrabajadorUpdateForm(ModelForm):
+class Consumo_trabajadorUpdateForm(ModelForm):
     class Meta:
-        model=Producto
+        model=Consumo_trabajador
         fields="__all__"
