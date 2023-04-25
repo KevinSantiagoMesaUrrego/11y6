@@ -57,7 +57,7 @@ class Trabajador(models.Model):
         INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
     def __str__(self):
-        return "%s %s"%(self.nombre,self.apellido)
+        return "%s %s"%(self.nombre,self.documento)
     class Meta:
         verbose_name_plural = "Personas"
 
