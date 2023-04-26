@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+
 #Create your models here.
 
 class Persona(models.Model):
@@ -32,16 +33,28 @@ class Persona(models.Model):
         return "%s %s"%(self.nombre,self.apellido)
     class Meta:
         verbose_name_plural = "Personas"
-
-
-
 class Eps(models.Model):
     nombre=models.CharField(max_length=45,verbose_name="Nombre EPS:")
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
+    def __str__(self):
+        return "%s "%(self.nombre)
+    class Meta:
+        verbose_name_plural = "Eps"
 
+class Turno(models.Model):
+    fecha_ingreso= models.DateTimeField(verbose_name="Fecha de Ingreso", help_text="HH/MM/SS")
+    fecha_salida= models.DateTimeField(verbose_name="Fecha de Salida", help_text="HH/MM/SS")
+    class Estado(models.TextChoices):
+        ACTIVO='1',_("Activo")
+        INACTIVO='0',_("Inactivo")
+    estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
+    def __str__(self):
+        return "%s %s"%(self.fecha_ingreso,self.fecha_salida)
+    class Meta:
+        verbose_name_plural = "Turnos"
 
 class Trabajador(models.Model):
     nombre= models.CharField(max_length=45,verbose_name="Nombre:")
@@ -56,19 +69,16 @@ class Trabajador(models.Model):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
+    turno_trabajador=models.ForeignKey(Turno, on_delete=models.CASCADE,verbose_name="Turno Trabajador")
+    def __str__(self):
+        return "%s"%(self.turno_trabajador)
+    eps_trabajador=models.ForeignKey(Eps, on_delete=models.CASCADE,verbose_name="Eps Trabajador")
+    def __str__(self):
+        return "%s "%(self.eps_trabajador)
     def __str__(self):
         return "%s %s"%(self.nombre,self.documento)
     class Meta:
-        verbose_name_plural = "Personas"
-
-
-class Turno(models.Model):
-    fecha_ingreso= models.DateTimeField(verbose_name="Fecha de Ingreso", help_text="HH/MM/SS")
-    fecha_salida= models.DateTimeField(verbose_name="Fecha de Salida", help_text="HH/MM/SS")
-    class Estado(models.TextChoices):
-        ACTIVO='1',_("Activo")
-        INACTIVO='0',_("Inactivo")
-    estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
+        verbose_name_plural = "Trabajadores"
 
 
 

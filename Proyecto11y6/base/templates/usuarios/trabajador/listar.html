@@ -14,6 +14,9 @@
       <th>Usuario</th>
       <th>Contraseña</th>
       <th>Estado</th>
+      <th>Eps</th>
+      <th>Entrada</th>
+      <th>Salida</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -30,6 +33,9 @@
       <td>{{trabajador.usuario}}</td>
       <td>{{trabajador.contrasena}}</td>
       <td>{{trabajador.get_estado_display}}</td>
+      <td>{{ trabajador.eps_trabajador.nombre }}</td>
+      <td>{{ trabajador.turno_trabajador.fecha_ingreso }}
+        <td>{{ trabajador.turno_trabajador.fecha_salida }}
 
       <td>
         <button  type="button" data-cafe-bar="{{trabajador.id}}" class="btnEliminar btn btn-danger"

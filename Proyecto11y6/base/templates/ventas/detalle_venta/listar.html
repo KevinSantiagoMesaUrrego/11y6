@@ -15,6 +15,7 @@
     {% for detalle_venta in detalle_ventas %}
     <tr>
       <td>{{detalle_venta.cantidad_producto}}</td>
+
       <td>
         <button  type="button" data-cafe-bar="{{detalle_venta.id}}" class="btnEliminar btn btn-danger"
         data-bs-toggle="modal" data-bs-target="#modalConf">

@@ -7,6 +7,7 @@
 <table class="table table-striped table-hover">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Fecha Venta</th>
       <th>Acciones</th>
     </tr>
@@ -15,6 +16,7 @@
     {% for venta in ventas %}
 
     <tr>
+      <td>{{venta.id}}</td>
       <td>{{venta.fecha_venta}}</td>
       <td>
         <button  type="button" data-cafe-bar="{{venta.id}}" class="btnEliminar btn btn-danger"

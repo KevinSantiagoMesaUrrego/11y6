@@ -1,11 +1,20 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
-class Venta (models.Model):
+class Venta(models.Model):
     fecha_venta=models.DateField(verbose_name="fecha venta",help_text="MM/DD/AAAA")
+    def __str__(self):
+        return " %s"%(self.fecha_venta)
+    class Meta:
+        verbose_name_plural = "ventas"
+
 
 class Detalle_venta(models.Model):
     cantidad_producto=models.IntegerField(verbose_name="Cantidad Producto")
+    def __str__(self):
+        return " %s"%(self.cantidad_producto)
+    class Meta:
+        verbose_name_plural = "detalle_ventas"
 class Reserva(models.Model):
         fecha_reserva=models.DateField(verbose_name="Fecha Reserva",help_text="MM/DD/AAAA")
         hora_inicio=models.DateTimeField(verbose_name="Hora de Inicio",help_text="HH/MM/SS")

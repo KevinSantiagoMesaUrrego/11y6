@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from usuario.models import Trabajador
+from venta.models import Venta
+
 # Create your models here.
 
 class Producto(models.Model):
@@ -13,6 +15,8 @@ class Producto(models.Model):
             ACTIVO='1',_("Activo")
             INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,verbose_name="Estado",default=Estado.ACTIVO)
+    def __str__(self):
+        return "%s "%(self.nombre)
 
     #id automaticas
     # Marca_idMarca:int
@@ -56,8 +60,10 @@ class ConsumoTrabajador(models.Model):
     #Automatico
     #idConsumoTrabajador:int
     #Producto_idProducto:int
-    documentotrabajador=models.IntegerField(max_length=45,verbose_name="Documento")
-    trabajador=models.ForeignKey(Trabajador, on_delete=models.CASCADE,verbose_name="Trabajador")
+    trabajador=models.ForeignKey(Trabajador, on_delete=models.CASCADE,verbose_name="Nombre Trabajador")
+
+    class Meta:
+        verbose_name_plural = "Consumostrabajadores"
 
 
 
