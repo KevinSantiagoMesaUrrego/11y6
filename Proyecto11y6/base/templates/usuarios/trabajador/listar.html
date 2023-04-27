@@ -34,7 +34,6 @@
             <tbody>
               {% for trabajador in trabajadores %}
               {% if trabajador.estado != "0" %}
-          
               <tr>
                 <td>{{ trabajador.id }}</td>
                 <td>{{trabajador.nombre}}</td>
@@ -46,9 +45,8 @@
                 <td>{{trabajador.contrasena}}</td>
                 <td>{{trabajador.get_estado_display}}</td>
                 <td>{{ trabajador.eps_trabajador.nombre }}</td>
-                <td>{{ trabajador.turno_trabajador.fecha_ingreso }}
-                  <td>{{ trabajador.turno_trabajador.fecha_salida }}
-          
+                <td>{{ trabajador.turno_trabajador.fecha_ingreso }}</td>
+                <td>{{ trabajador.turno_trabajador.fecha_salida }}</td>
                 <td>
                   <button  type="button" data-cafe-bar="{{trabajador.id}}" class="btnEliminar btn btn-danger"
                   data-bs-toggle="modal" data-bs-target="#modalConf">

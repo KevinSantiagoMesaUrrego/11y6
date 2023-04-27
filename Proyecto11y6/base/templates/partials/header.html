@@ -25,29 +25,28 @@
         <button type="button" class="btn btn-outline-light me-2">Login</button>
         <button type="button" class="btn btn-warning">Sign-up</button>
       </div>
-      <div class="d-flex flex-wrap">
+      <div class="d-flex justify-content-center flex-wrap">
         <div>
-          <div class="dropdown  desplegable">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Usuario
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li>
-            <a href="{% url 'persona' %}" class="dropdown-item">Persona</a>
-          </li>
-          <li>
-            <a href="{% url 'eps' %}" class="dropdown-item">Eps</a>
-          </li>
-          <li>
-            <a href="{% url 'turno' %}" class="dropdown-item">Turno</a>
-          </li>
-          <li>
-            <a href="{% url 'trabajador' %}" class="dropdown-item" >trabajador</a>
-          </li>
-          <li>
-        </ul>
-      </div>
-    </div>
+          <div class="dropdown ">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuario
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{% url 'persona' %}" class="dropdown-item">Persona</a>
+              </li>
+              <li>
+                <a href="{% url 'eps' %}" class="dropdown-item">Eps</a>
+              </li>
+              <li>
+                <a href="{% url 'turno' %}" class="dropdown-item">Turno</a>
+              </li>
+              <li>
+                <a href="{% url 'trabajador' %}" class="dropdown-item">Trabajador</a>
+              </li>
+            </ul>
+          </div>
+        </div>
     <div>
       <div class="dropdown ">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

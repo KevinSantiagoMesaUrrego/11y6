@@ -21,7 +21,13 @@
 <script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
 <script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
 <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
-
+<script src="{% static 'js/sweetalert2/sweetalert2.all.min.js' %}"></script>
+<script>
+    $(".btnEliminar").click(function () {
+        var cafebar = $(this).data("cafe-bar");
+        $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar);
+    });
+</script>
 <!-- libreria sweetalert -->
 <script src="{% static 'plugins/sweetalert2/sweetalert2.all.min.js' %}"></script>
 <!-- Toastr -->
@@ -35,10 +41,4 @@
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
-<script src="{% static 'js/sweetalert2/sweetalert2.all.min.js' %}"></script>
-<script>
-    $(".btnEliminar").click(function () {
-        var cafebar = $(this).data("cafe-bar");
-        $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar);
-    });
-</script>
+

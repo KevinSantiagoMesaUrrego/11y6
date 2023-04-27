@@ -32,34 +32,35 @@
                   </tr>
               </thead>
             <tbody>
-                  {% for persona in personas %}
-                  {% if persona.estado != "0" %}
-                  <tr>
-                    <td>{{ persona.id }}
-                    <td>{{persona.nombre}}</td>
-                    <td>{{persona.apellido}}</td>
-                    <td>{{persona.get_tipo_documento_display}}</td>
-                    <td>{{persona.documento}}</td>
-                    <td>{{persona.get_rol_display}}</td>
-                    <td>{{persona.direccion}}</td>
-                    <td>{{persona.correo}}</td>
-                    <td>{{persona.usuario}}</td>
-                    <td>{{persona.contrasena}}</td>
-                    <td>{{persona.salario}}</td>
-                    <td>{{persona.get_estado_display}}</td>
-                    <td>
-                      <button  type="button" data-cafe-bar="{{persona.id}}" class="btnEliminar btn btn-danger"
-                                  data-bs-toggle="modal" data-bs-target="#modalConf">
-                                  {% bs_icon 'trash' %}
-                              </button>
-                      <a
-                        class="btn btn-primary"
-                        href="{% url 'persona-modificar' persona.id %}"
-                        >Modificar</a
-                      >
-                    </td>
-                  </tr>
-                  {% endif %} {% endfor %}
+              {% for persona in personas %} {% if persona.estado != "0" %}
+
+              <tr>
+                <td>{{persona.id }}</td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>{{persona.get_tipo_documento_display}}</td>
+                <td>{{persona.documento}}</td>
+                <td>{{persona.get_rol_display}}</td>
+                <td>{{persona.direccion}}</td>
+                <td>{{persona.correo}}</td>
+                <td>{{persona.usuario}}</td>
+                <td>{{persona.contrasena}}</td>
+                <td>{{persona.salario}}</td>
+                <td>{{persona.get_estado_display}}</td>
+                <td>
+                  <button  type="button" data-cafe-bar="{{persona.id}}" class="btnEliminar btn btn-danger"
+                  data-bs-toggle="modal" data-bs-target="#modalConf">
+                  {% bs_icon 'trash' %}
+                  
+              </button>
+                  <a
+                    class="btn btn-primary"
+                    href="{% url 'persona-modificar' persona.id %}"
+                    >Modificar</a
+                  >
+                </td>
+              </tr>
+              {% endif %} {% endfor %}
             </tbody>
             <tfoot>
               <tr>
@@ -94,3 +95,4 @@
   <a href="{% url 'persona-crear' %}" class="btn btn-success w-25">Crear {{titulo}}</a>
 </div>
 {% endblock contenido %}
+
