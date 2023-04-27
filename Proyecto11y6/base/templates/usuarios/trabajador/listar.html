@@ -1,55 +1,98 @@
 {% extends 'partials/body.html' %}
 {% load bootstrap_icons %}
 {% block contenido %}
-<a href="{% url 'trabajador-crear' %}" class="btn btn-success w-25">Crear {{titulo}}</a
->
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Documento</th>
-      <th>Correo</th>
-      <th>Direccion</th>
-      <th>Usuario</th>
-      <th>Contraseña</th>
-      <th>Estado</th>
-      <th>Eps</th>
-      <th>Entrada</th>
-      <th>Salida</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for trabajador in trabajadores %}
-    {% if trabajador.estado != "0" %}
-
-    <tr>
-      <td>{{trabajador.nombre}}</td>
-      <td>{{trabajador.apellido}}</td>
-      <td>{{trabajador.documento}}</td>
-      <td>{{trabajador.correo}}</td>
-      <td>{{trabajador.direccion}}</td>
-      <td>{{trabajador.usuario}}</td>
-      <td>{{trabajador.contrasena}}</td>
-      <td>{{trabajador.get_estado_display}}</td>
-      <td>{{ trabajador.eps_trabajador.nombre }}</td>
-      <td>{{ trabajador.turno_trabajador.fecha_ingreso }}
-        <td>{{ trabajador.turno_trabajador.fecha_salida }}
-
-      <td>
-        <button  type="button" data-cafe-bar="{{trabajador.id}}" class="btnEliminar btn btn-danger"
-        data-bs-toggle="modal" data-bs-target="#modalConf">
-        {% bs_icon 'trash' %}
-    </button>
-        <a
-          class="btn btn-primary"
-          href="{% url 'trabajador-modificar' trabajador.id %}"
-          >Modificar</a
-        >
-      </td>
-    </tr>
-    {% endif %} {% endfor %}
-  </tbody>
-</table>
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"> {{titulo}} </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped table-dark">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Documento</th>
+                    <th>Correo</th>
+                    <th>Direccion</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Estado</th>
+                    <th>Eps</th>
+                    <th>Entrada</th>
+                    <th>Salida</th>
+                    <th>Acciones</th>
+                  </tr>
+              </thead>
+            <tbody>
+              {% for trabajador in trabajadores %}
+              {% if trabajador.estado != "0" %}
+          
+              <tr>
+                <td>{{ trabajador.id }}</td>
+                <td>{{trabajador.nombre}}</td>
+                <td>{{trabajador.apellido}}</td>
+                <td>{{trabajador.documento}}</td>
+                <td>{{trabajador.correo}}</td>
+                <td>{{trabajador.direccion}}</td>
+                <td>{{trabajador.usuario}}</td>
+                <td>{{trabajador.contrasena}}</td>
+                <td>{{trabajador.get_estado_display}}</td>
+                <td>{{ trabajador.eps_trabajador.nombre }}</td>
+                <td>{{ trabajador.turno_trabajador.fecha_ingreso }}
+                  <td>{{ trabajador.turno_trabajador.fecha_salida }}
+          
+                <td>
+                  <button  type="button" data-cafe-bar="{{trabajador.id}}" class="btnEliminar btn btn-danger"
+                  data-bs-toggle="modal" data-bs-target="#modalConf">
+                  {% bs_icon 'trash' %}
+              </button>
+                  <a
+                    class="btn btn-primary"
+                    href="{% url 'trabajador-modificar' trabajador.id %}"
+                    >Modificar</a
+                  >
+                </td>
+              </tr>
+              {% endif %} {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Documento</th>
+                <th>Correo</th>
+                <th>Direccion</th>
+                <th>Usuario</th>
+                <th>Contraseña</th>
+                <th>Estado</th>
+                <th>Eps</th>
+                <th>Entrada</th>
+                <th>Salida</th>
+                <th>Acciones</th>
+              </tr>
+            </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+  <a href="{% url 'trabajador-crear' %}" class="btn btn-success w-25">Crear {{titulo}}</a>
+</div>
 {% endblock contenido %}

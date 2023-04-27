@@ -1,22 +1,32 @@
-{% extends 'partials/body.html' %} 
+{% extends 'partials/body.html' %}
 {% load bootstrap_icons %}
 {% block contenido %}
-<a href="{% url 'evento-crear' %}" class="btn btn-success w-25"
-  >Crear {{titulo}}</a
->
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>Nombre Del Evento</th>
-      <th>Fecha Incio Evento</th>
-      <th>Fecha Fin Evento</th>
-      <th>Descrpción Del Evento</th>
-      <th>Estado Del Evento</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    {% for evento in eventos %} {% if evento.estado_evento != "0" %}
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"> {{titulo}} </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped table-dark">
+                <thead>
+                  <tr>
+                    <th>Nombre Del Evento</th>
+                    <th>Fecha Incio Evento</th>
+                    <th>Fecha Fin Evento</th>
+                    <th>Descrpción Del Evento</th>
+                    <th>Estado Del Evento</th>
+                    <th>Fecha de compra</th>
+                   
+                  </tr>
+              </thead>
+            <tbody>
+              {% for evento in eventos %} {% if evento.estado_evento != "0" %}
 
     <tr>
       <td>{{evento.nombre_evento}}</td>
@@ -24,6 +34,7 @@
       <td>{{evento.fecha_fin}}</td>
       <td>{{evento.descripcion}}</td>
       <td>{{evento.get_estado_evento_display}}</td>
+      <td>{{ evento.id_compra.fecha_compra }}</td>
       
       <td>
         <button  type="button" data-cafe-bar="{{evento.id}}" class="btnEliminar btn btn-danger"
@@ -39,6 +50,31 @@
       </td>
     </tr>
     {% endif %} {% endfor %}
-  </tbody>
-</table>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Nombre Del Evento</th>
+                <th>Fecha Incio Evento</th>
+                <th>Fecha Fin Evento</th>
+                <th>Descrpción Del Evento</th>
+                <th>Estado Del Evento</th>
+                <th>Fecha de compra</th>
+               
+              </tr>
+            </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+  <a href="{% url 'evento-crear' %}" class="btn btn-success w-25">Crear {{titulo}}</a>
+</div>
 {% endblock contenido %}
