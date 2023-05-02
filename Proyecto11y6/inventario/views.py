@@ -2,9 +2,11 @@ from django.shortcuts import render,redirect
 from inventario.models import Producto,Marca,Presentacion,UnidadMedida,ConsumoTrabajador
 from inventario.forms import Productoform,ProductoUpdateForm,Marcaform,MarcaUpdateForm,Presentacionform,PresentacionUpdateForm,UnidadMedidaform,UnidadMedidaUpdateForm,ConsumoTrabjadorform,ConsumoTrabajadorUpdateForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 #PRODUCTO
+@login_required
 def producto_crear (request):
     titulo="Producto"
     if request.method=='POST':
@@ -23,6 +25,7 @@ def producto_crear (request):
         "form":form,
     }
     return render(request,"inventarios/producto/crear.html",context)
+@login_required
 def producto_listar(request):
     titulo="Producto"
     modulo="inventarios"
@@ -33,6 +36,7 @@ def producto_listar(request):
         "productos":producto
     }
     return render(request,"inventarios/producto/listar.html",context)
+@login_required
 def producto_modificar(request,pk):
     titulo="Producto"
     producto=Producto.objects.get(id=pk)
@@ -49,6 +53,7 @@ def producto_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/producto/modificar.html", context)
+@login_required
 def producto_eliminar(request,pk):
     producto= Producto.objects.filter(id=pk)
     producto.delete()
@@ -57,6 +62,7 @@ def producto_eliminar(request,pk):
     return redirect('producto')
 
 #MARCA
+@login_required
 def marca_crear (request):
     titulo="Marca"
     if request.method=='POST':
@@ -75,6 +81,7 @@ def marca_crear (request):
         "form":form,
     }
     return render(request,"inventarios/marca/crear.html",context)
+@login_required
 def marca_listar(request):
     titulo="Marca"
     modulo="inventarios"
@@ -85,6 +92,7 @@ def marca_listar(request):
         "marcas":marca
     }
     return render(request,"inventarios/marca/listar.html",context)
+@login_required
 def marca_modificar(request,pk):
     titulo="Marca"
     marca=Marca.objects.get(id=pk)
@@ -101,6 +109,7 @@ def marca_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/marca/modificar.html", context)
+@login_required
 def marca_eliminar(request,pk):
     marca= Marca.objects.filter(id=pk)
     marca.delete()
@@ -109,6 +118,7 @@ def marca_eliminar(request,pk):
     return redirect('marca')
 
 #PRESENTACION
+@login_required
 def presentacion_crear (request):
     titulo="Presentacion"
     if request.method=='POST':
@@ -119,7 +129,6 @@ def presentacion_crear (request):
             return redirect('presentacion')
         else:
             messages.error(request, 'El formulario tiene errores.')
-            
     else:
         form=Presentacionform()
     context={
@@ -127,6 +136,7 @@ def presentacion_crear (request):
         "form":form,
     }
     return render(request,"inventarios/presentacion/crear.html",context)
+@login_required
 def presentacion_listar(request):
     titulo="Presentacion"
     modulo="inventarios"
@@ -137,6 +147,7 @@ def presentacion_listar(request):
         "presentaciones":presentacion
     }
     return render(request,"inventarios/presentacion/listar.html",context)
+@login_required
 def presentacion_modificar(request,pk):
     titulo="Presentacion"
     presentacion=Presentacion.objects.get(id=pk)
@@ -153,6 +164,7 @@ def presentacion_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/presentacion/modificar.html", context)
+@login_required
 def presentacion_eliminar(request,pk):
     presentacion= Presentacion.objects.filter(id=pk)
     presentacion.delete()
@@ -161,6 +173,7 @@ def presentacion_eliminar(request,pk):
     return redirect('presentacion')
 
 #UNIDADMEDIDA
+@login_required
 def unidadmedida_crear (request):
     titulo="UnidadMedida"
     if request.method=='POST':
@@ -171,7 +184,6 @@ def unidadmedida_crear (request):
             return redirect('unidadmedida')
         else:
             messages.error(request, 'El formulario tiene errores.')
-            
     else:
         form=UnidadMedidaform()
     context={
@@ -179,6 +191,7 @@ def unidadmedida_crear (request):
         "form":form,
         }
     return render(request,"inventarios/unidad_medida/crear.html",context)
+@login_required
 def unidadmedida_listar(request):
     titulo="UnidadMedida"
     modulo="inventarios"
@@ -189,7 +202,7 @@ def unidadmedida_listar(request):
         "unidadmedidas":unidadmedida
     }
     return render(request,"inventarios/unidad_medida/listar.html",context)
-
+@login_required
 def unidadmedida_modificar(request,pk):
     titulo="UnidadMedida"
     unidadmedida=UnidadMedida.objects.get(id=pk)
@@ -206,7 +219,7 @@ def unidadmedida_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/unidad_medida/modificar.html", context)
-
+@login_required
 def unidadmedida_eliminar(request,pk):
     unidadmedida= UnidadMedida.objects.filter(id=pk)
     unidadmedida.delete()
@@ -215,6 +228,7 @@ def unidadmedida_eliminar(request,pk):
     return redirect('unidadmedida')
 
 #CONSUMOTRABAJADOR
+@login_required
 def consumotrabajador_crear (request):
     titulo="ConsumoTrabajador"
     if request.method=='POST':
@@ -225,7 +239,6 @@ def consumotrabajador_crear (request):
             return redirect('consumotrabajador')
         else:
             messages.error(request, 'El formulario tiene errores.')
-            
     else:
         form=ConsumoTrabjadorform()
     context={
@@ -233,7 +246,7 @@ def consumotrabajador_crear (request):
         "form":form,
         }
     return render(request,"inventarios/consumo_trabajador/crear.html",context)
-
+@login_required
 def consumotrabajador_listar(request):
     titulo="ConsumoTrabajador"
     modulo="inventarios"
@@ -244,7 +257,7 @@ def consumotrabajador_listar(request):
         "consumotrabajadores":consumotrabajador
     }
     return render(request,"inventarios/consumo_trabajador/listar.html",context)
-
+@login_required
 def consumotrabajador_modificar(request,pk):
     titulo="ConsumoTrabajador"
     consumotrabajador=ConsumoTrabajador.objects.get(id=pk)
@@ -261,7 +274,7 @@ def consumotrabajador_modificar(request,pk):
         "form":form
         }
     return render(request,"inventarios/consumo_trabajador/modificar.html", context)
-
+@login_required
 def consumotrabajador_eliminar(request,pk):
     consumotrabajador= ConsumoTrabajador.objects.filter(id=pk)
     consumotrabajador.delete()

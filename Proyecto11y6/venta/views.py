@@ -2,8 +2,10 @@ from django.shortcuts import render,redirect
 from venta.models import Venta,Detalle_venta,Reserva,Ubicacion
 from venta.forms import VentaForm,VentaUpadteForm,Detalle_ventaForm,Detalle_ventaUpadteForm,ReservaForm,ReservaUpdateForm,UbicacionForm,UbicacionUpdateForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 #VENTA
+@login_required
 def venta_crear (request):
     titulo="Venta"
     if request.method=='POST':
@@ -21,6 +23,7 @@ def venta_crear (request):
         "form":form,
     }
     return render(request,"ventas/venta/crear.html",context)
+@login_required
 def venta_listar(request):
     titulo="Venta"
     modulo="ventas"
@@ -31,6 +34,7 @@ def venta_listar(request):
         "ventas":venta
     }
     return render(request,"ventas/venta/listar.html",context)
+@login_required
 def venta_modificar(request,pk):
     titulo="Venta"
     venta=Venta.objects.get(id=pk)
@@ -47,6 +51,7 @@ def venta_modificar(request,pk):
         "form":form
         }
     return render(request,"ventas/venta/modificar.html", context)
+@login_required
 def venta_eliminar(request,pk):
     venta= Venta.objects.filter(id=pk)
     venta.delete()
@@ -54,6 +59,7 @@ def venta_eliminar(request,pk):
     )
     return redirect('venta')
 #DETALLE VENTA
+@login_required
 def detalle_venta_crear (request):
     titulo="Detalle_venta"
     if request.method=='POST':
@@ -71,6 +77,7 @@ def detalle_venta_crear (request):
         "form":form
     }
     return render(request,"ventas/detalle_venta/crear.html",context)
+@login_required
 def detalle_venta_listar(request):
     titulo="Detalle_venta"
     modulo="ventas"
@@ -81,6 +88,7 @@ def detalle_venta_listar(request):
         "detalle_ventas":detalle_venta
     }
     return render(request,"ventas/detalle_venta/listar.html",context)
+@login_required
 def detalle_venta_modificar(request,pk):
     titulo="Detalle_venta"
     detalle_venta=Detalle_venta.objects.get(id=pk)
@@ -97,6 +105,7 @@ def detalle_venta_modificar(request,pk):
         "form":form
         }
     return render(request,"ventas/detalle_venta/modificar.html", context)
+@login_required
 def detalle_venta_eliminar(request,pk):
     detalle_venta= Detalle_venta.objects.filter(id=pk)
     detalle_venta.delete()
@@ -104,6 +113,7 @@ def detalle_venta_eliminar(request,pk):
 )
     return redirect('detalle_venta')
 #RESERVA
+@login_required
 def reserva_crear (request):
     titulo="Reserva"
     if request.method=='POST':
@@ -119,6 +129,7 @@ def reserva_crear (request):
         "form":form
     }
     return render(request,"ventas/reserva/crear.html",context)
+@login_required
 def reserva_listar(request):
     titulo="Reserva"
     modulo="ventas"
@@ -129,6 +140,7 @@ def reserva_listar(request):
         "reservas":reserva
     }
     return render(request,"ventas/reserva/listar.html",context)
+@login_required
 def reserva_modificar(request,pk):
     titulo="Reserva"
     reserva=Reserva.objects.get(id=pk)
@@ -145,6 +157,7 @@ def reserva_modificar(request,pk):
         "form":form
         }
     return render(request,"ventas/reserva/modificar.html", context)
+@login_required
 def reserva_eliminar(request,pk):
     reserva= Reserva.objects.filter(id=pk)
     reserva.delete()
@@ -152,6 +165,7 @@ def reserva_eliminar(request,pk):
     )
     return redirect('reserva')
 #UBICACION
+@login_required
 def ubicacion_crear (request):
     titulo="Ubicacion"
     if request.method=='POST':
@@ -167,6 +181,7 @@ def ubicacion_crear (request):
         "form":form
     }
     return render(request,"ventas/ubicacion/crear.html",context)
+@login_required
 def ubicacion_listar(request):
     titulo="Ubicacion"
     modulo="ventas"
@@ -177,6 +192,7 @@ def ubicacion_listar(request):
         "ubicaciones":ubicacion
     }
     return render(request,"ventas/ubicacion/listar.html",context)
+@login_required
 def ubicacion_modificar(request,pk):
     titulo="Ubicacion"
     ubicacion=Ubicacion.objects.get(id=pk)
@@ -193,6 +209,7 @@ def ubicacion_modificar(request,pk):
         "form":form
         }
     return render(request,"ventas/ubicacion/modificar.html", context)
+@login_required
 def ubicacion_eliminar(request,pk):
     ubicacion= Ubicacion.objects.filter(id=pk)
     ubicacion.delete()

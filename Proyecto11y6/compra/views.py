@@ -5,9 +5,10 @@ from compra.models import Evento
 from compra.models import Proveedor
 from compra.forms import CompraForm, CompraUpdateForm, Detalle_compraForm, Detalle_compraUpdateForm, EventoForm, EventoUpdateForm, ProveedorForm, ProveedorUpdateForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required
 def compra_crear(request):
     titulo = "Compra"
     if request.method == 'POST':
@@ -27,7 +28,7 @@ def compra_crear(request):
     }
     return render(request, "compras/compra/crear.html", context)
 
-
+@login_required
 def compra_listar(request):
     titulo = "Compra"
     modulo="compras"
@@ -39,7 +40,7 @@ def compra_listar(request):
     }
     return render(request, "compras/compra/listar.html", context)
 
-
+@login_required
 def compra_modificar(request, pk):
     titulo = "Compra"
     compra = Compra.objects.get(id=pk)
@@ -57,7 +58,7 @@ def compra_modificar(request, pk):
     }
     return render(request, "compras/compra/modificar.html", context)
 
-
+@login_required
 def compra_eliminar(request, pk):
     compra = Compra.objects.filter(id=pk)
     compra.delete()
@@ -68,6 +69,7 @@ def compra_eliminar(request, pk):
 
 
 # views de tabla detalle_compra
+@login_required
 def detalle_compra_crear(request):
     titulo = "Detalle_compra"
     if request.method == 'POST':
@@ -87,7 +89,7 @@ def detalle_compra_crear(request):
     }
     return render(request, "compras/detalle_compra/crear.html", context)
 
-
+@login_required
 def detalle_compra_listar(request):
     titulo = "Detalle_compra"
     modulo="compras"
@@ -99,7 +101,7 @@ def detalle_compra_listar(request):
     }
     return render(request, "compras/detalle_compra/listar.html", context)
 
-
+@login_required
 def detalle_compra_modificar(request, pk):
     titulo = "Detalle_compra"
     detalle_compra = Detalle_compra.objects.get(id=pk)
@@ -117,17 +119,16 @@ def detalle_compra_modificar(request, pk):
     }
     return render(request, "compras/detalle_compra/modificar.html", context)
 
-
+@login_required
 def detalle_compra_eliminar(request, pk):
     detalle_compra = Detalle_compra.objects.filter(id=pk)
     detalle_compra.delete()
     detalle_compra.update()
-        
     return redirect('detalle_compra')
 
 # views de tabla evento
 
-
+@login_required
 def evento_crear(request):
     titulo = "Evento"
     if request.method == 'POST':
@@ -147,7 +148,7 @@ def evento_crear(request):
     }
     return render(request, "compras/evento/crear.html", context)
 
-
+@login_required
 def evento_listar(request):
     titulo = "Evento"
     modulo="compras"
@@ -160,7 +161,7 @@ def evento_listar(request):
     }
     return render(request, "compras/evento/listar.html", context)
 
-
+@login_required
 def evento_modificar(request, pk):
     titulo = "Evento"
     evento = Evento.objects.get(id=pk)
@@ -178,7 +179,7 @@ def evento_modificar(request, pk):
     }
     return render(request, "compras/evento/modificar.html", context)
 
-
+@login_required
 def evento_eliminar(request, pk):
     evento = Evento.objects.filter(id=pk)
     evento.delete()
@@ -189,7 +190,7 @@ def evento_eliminar(request, pk):
 
 # views de tabla Proveedor
 
-
+@login_required
 def proveedor_crear(request):
     titulo = "Proveedor"
     if request.method == 'POST':
@@ -209,7 +210,7 @@ def proveedor_crear(request):
     }
     return render(request, "compras/proveedor/crear.html", context)
 
-
+@login_required
 def proveedor_listar(request):
     titulo = "Proveedor"
     modulo="compras"
@@ -221,7 +222,7 @@ def proveedor_listar(request):
     }
     return render(request, "compras/proveedor/listar.html", context)
 
-
+@login_required
 def proveedor_modificar(request, pk):
     titulo = "Proveedor"
     proveedor = Proveedor.objects.get(id=pk)
@@ -239,7 +240,7 @@ def proveedor_modificar(request, pk):
     }
     return render(request, "compras/proveedor/modificar.html", context)
 
-
+@login_required
 def proveedor_eliminar(request, pk):
     proveedor = Proveedor.objects.filter(id=pk)
     proveedor.delete()
