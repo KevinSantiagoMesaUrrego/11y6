@@ -1,5 +1,4 @@
 from django import forms
-
 from django.forms import ModelForm, widgets
 from compra.models import Compra, Detalle_compra, Evento, Proveedor
 

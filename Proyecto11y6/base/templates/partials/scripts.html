@@ -23,10 +23,17 @@
 <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
 <script src="{% static 'js/sweetalert2/sweetalert2.all.min.js' %}"></script>
 <script>
-    $(".btnEliminar").click(function () {
-        var cafebar = $(this).data("cafe-bar");
-        $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar);
-    });
+
+
+$( document ).ready(function() {
+    $(document).on('click', function(evt) {
+        if(!$(evt.target).is('.btnEliminar')) {
+            var cafebar = $(".btnEliminar").data("cafe-bar");
+            $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar+"/");
+        }
+    });    
+});
+
 </script>
 <!-- libreria sweetalert -->
 <script src="{% static 'plugins/sweetalert2/sweetalert2.all.min.js' %}"></script>

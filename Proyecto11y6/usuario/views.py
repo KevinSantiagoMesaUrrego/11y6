@@ -54,8 +54,9 @@ def persona_modificar(request,pk):
 
 def persona_eliminar(request,pk):
     persona= Persona.objects.filter(id=pk)
-    persona.delete()
-    persona.update()
+    persona.update(
+        estado="0"
+    )
     return redirect('persona')
 
 
@@ -108,8 +109,9 @@ def eps_modificar(request,pk):
 
 def eps_eliminar(request,pk):
     eps= Eps.objects.filter(id=pk)
-    eps.delete()
-    eps.update()
+    eps.update(
+        estado="0"
+    )
     return redirect('eps')
 
 #views de tabla turno
@@ -161,8 +163,9 @@ def turno_modificar(request,pk):
 
 def turno_eliminar(request,pk):
     turno= Turno.objects.filter(id=pk)
-    turno.delete()
-    turno.update()
+    turno.update(
+        estado="0"
+    )
     return redirect('turno')
 
 #views de tabla trabajador
@@ -214,6 +217,7 @@ def trabajador_modificar(request,pk):
 
 def trabajador_eliminar(request,pk):
     trabajador= Trabajador.objects.filter(id=pk)
-    trabajador.delete()
-    trabajador.update()
+    trabajador.update(
+        estado="0"
+    )
     return redirect('trabajador')
