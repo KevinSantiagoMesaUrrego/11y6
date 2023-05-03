@@ -23,15 +23,16 @@
 <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
 <script src="{% static 'js/sweetalert2/sweetalert2.all.min.js' %}"></script>
 <script>
+function changeURL(cafebar){
+    $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar+"/");
+    return false;//Returning false prevents the event from continuing up the chain
+}
 
-
-$( document ).ready(function() {
-    $(document).on('click', function(evt) {
-        if(!$(evt.target).is('.btnEliminar')) {
-            var cafebar = $(".btnEliminar").data("cafe-bar");
-            $("#btnConfElim").attr("href", "/{{modulo|lower}}/{{titulo|lower}}/eliminar/" + cafebar+"/");
-        }
-    });    
+$( document ).ready(function() { // Cuando cargue la pagina completamente
+    $('.btnEliminar').on('click', function(evt) { //Cuando se le de click
+        var cafebar = $(this).data("cafe-bar");
+        changeURL(cafebar);
+    });
 });
 
 </script>
