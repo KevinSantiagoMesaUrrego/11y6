@@ -48,7 +48,7 @@
                 <td>{{ trabajador.turno_trabajador.fecha_ingreso }}</td>
                 <td>{{ trabajador.turno_trabajador.fecha_salida }}</td>
                 <td>
-                  <button  type="button" onclick="changeURL('{{persona.id}}') "data-cafe-bar="{{trabajador.id}}" class="btnEliminar btn btn-danger"
+                  <button  type="button" onclick="changeURL('{{trabajador.id}}') "data-cafe-bar="{{trabajador.id}}" class="btnEliminar btn btn-danger"
                   data-bs-toggle="modal" data-bs-target="#modalConf">
                   {% bs_icon 'trash' %}
               </button>
