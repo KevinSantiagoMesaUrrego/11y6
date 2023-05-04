@@ -1,118 +1,89 @@
 {% load static %}
-<header class="p-3 bg-dark text-white">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-      </a>
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 flex">
-        <li>
-          <a href="{% url 'index' %}" class="nav-link px-2 text-secondary">Inicio</a>
-        </li>
-        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-      </ul>
-      </div>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input
-          type="search"
-          class="form-control form-control-dark"
-          placeholder="Search..."
-          aria-label="Search"
-        />
-      </form>
-      <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" class="btn btn-warning">Sign-up</button>
-      </div>
-      <div class="d-flex justify-content-center flex-wrap">
-        <div>
-          <div class="dropdown ">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Usuario
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="{% url 'persona' %}" class="dropdown-item">Persona</a>
-              </li>
-              <li>
-                <a href="{% url 'eps' %}" class="dropdown-item">Eps</a>
-              </li>
-              <li>
-                <a href="{% url 'turno' %}" class="dropdown-item">Turno</a>
-              </li>
-              <li>
-                <a href="{% url 'trabajador' %}" class="dropdown-item">Trabajador</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    <div>
-      <div class="dropdown ">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Venta
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="{% url 'detalle_venta' %}" class="dropdown-item">Detalle Venta</a>
-          </li>
-          <li>
-            <a href="{% url 'venta' %}" class="dropdown-item">Venta</a>
-          </li>
-          <li>
-            <a href="{% url 'reserva' %}" class="dropdown-item">Reserva</a>
-          </li>
-          <li>
-            <a href="{% url 'ubicacion' %}" class="dropdown-item">Ubicación</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-      <div>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Compra
-          </button>
-          <ul class="dropdown-menu">
-            <a href="{% url 'compra' %}" class="dropdown-item">Compra</a>
-        </li>
-        <li>
-          <a href="{% url 'detalle_compra' %}" class="dropdown-item">Detalle Compra</a>
-        </li>
-        <li>
-          <a href="{% url 'evento' %}" class="dropdown-item">Eventos</a>
-        </li>
-        <li>
-          <a href="{% url 'proveedor' %}" class="dropdown-item">Proveedor</a>
-        </li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Inventario
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="{% url 'producto' %}" class="dropdown-item">Producto</a>
-            </li>
-            <li>
-              <a href="{% url 'marca' %}" class="dropdown-item">Marcas</a>
-            </li>
-            <li>
-              <a href="{% url 'presentacion' %}" class="dropdown-item">Presentacion</a>
-            </li>
-            <li>
-              <a href="{% url 'unidadmedida' %}" class="dropdown-item">Unidad Medida</a>
-            </li>
-            <li>
-              <a href="{% url 'consumotrabajador' %}" class="dropdown-item">Consumo Trabajador</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-black">
+<a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none ">
+<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+</a>
+<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+<li><button type="button" class="btn btn-light"><a href="{% url 'index' %}" class="dropdown-item">inicio</a></button> </li>
+<li> <div class="dropdown ">
+  <button class="btn btn-secondary dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Usuario
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{% url 'persona' %}" class="dropdown-item">Persona</a>
+    </li>
+    <li>
+      <a href="{% url 'eps' %}" class="dropdown-item">Eps</a>
+    </li>
+    <li>
+      <a href="{% url 'turno' %}" class="dropdown-item">Turno</a>
+    </li>
+    <li>
+      <a href="{% url 'trabajador' %}" class="dropdown-item">Trabajador</a>
+    </li>
+  </ul>
+</div></li>
+<li><div class="dropdown ">
+  <button class="btn btn-secondary dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Venta
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{% url 'detalle_venta' %}" class="dropdown-item">Detalle Venta</a>
+    </li>
+    <li>
+      <a href="{% url 'venta' %}" class="dropdown-item">Venta</a>
+    </li>
+    <li>
+      <a href="{% url 'reserva' %}" class="dropdown-item">Reserva</a>
+    </li>
+    <li>
+      <a href="{% url 'ubicacion' %}" class="dropdown-item">Ubicación</a>
+    </li>
+  </ul>
+</div></li>
+<li><div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+   Compra
+  </button>
+  <ul class="dropdown-menu">
+    <a href="{% url 'compra' %}" class="dropdown-item">Compra</a>
+    <li>
+      <a href="{% url 'detalle_compra' %}" class="dropdown-item">Detalle Compra</a>
+    </li>
+    <li>
+      <a href="{% url 'evento' %}" class="dropdown-item">Eventos</a>
+    </li>
+    <li>
+      <a href="{% url 'proveedor' %}" class="dropdown-item">Proveedor</a>
+    </li>
+  </ul>
+</div></li>
+<li><div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Inventario
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a href="{% url 'producto' %}" class="dropdown-item">Producto</a>
+    </li>
+    <li>
+      <a href="{% url 'marca' %}" class="dropdown-item">Marcas</a>
+    </li>
+    <li>
+      <a href="{% url 'presentacion' %}" class="dropdown-item">Presentacion</a>
+    </li>
+    <li>
+      <a href="{% url 'unidadmedida' %}" class="dropdown-item">Unidad Medida</a>
+    </li>
+    <li>
+      <a href="{% url 'consumotrabajador' %}" class="dropdown-item">Consumo Trabajador</a>
+    </li>
+  </ul>
+</div></li>
+</ul>
+<div class="col-md-3 text-end">
+  
+</div>
 </header>
