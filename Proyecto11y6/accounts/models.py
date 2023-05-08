@@ -3,9 +3,10 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Register(models.Model):
-    correo= models.EmailField(max_length=45,verbose_name="Correo:")
+    username= models.EmailField(max_length=45,verbose_name="Correo:")
     usuario= models.CharField(max_length=45,verbose_name="Usuario:")
     contraseña= models.CharField(max_length=45,verbose_name="Contraseña:")
+    activo = models.BooleanField(default=False)
     def clean(self):
         self.correo= self.correo.title()
         self.usuario= self.usuario.title()

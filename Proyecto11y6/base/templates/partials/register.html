@@ -4,32 +4,12 @@
   <h2>Registro de usuario</h2>
   <form method="post">
     {% csrf_token %}
-    <div class="mb-1">
-      <label for="" class="form-label">Usuario</label>
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-      <small id="helpId" class="form-text text-muted">Digite su usuario</small>
-    </div>
-    <div class="mb-2">
-      <label for="" class="form-label">Correo</label>
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-      <small id="helpId" class="form-text text-muted">Digite su Correo</small>
-    </div>
-    <div class="mb-3">
-      <label for="" class="form-label">Contraseña</label>
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-      <small id="helpId" class="form-text text-muted">Digite su Contraseña</small>
-    </div>
-    <div class="mb-4">
-      <label for="" class="form-label">Repita la Contraseña</label>
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-      <small id="helpId" class="form-text text-muted">Repita la Contraseña</small>
-    </div>
-    <a href="inicio/">
-      <button>Registrarse</button>
-    </a>
+    <table>  
+      {{ form.as_table }}  
+       <tr>  
+          <td></td>  
+          <td><input type="submit" name="submit" value="Registrar" /></td>  
+      </tr>  
+   </table> 
   </form>
 {% endblock %}

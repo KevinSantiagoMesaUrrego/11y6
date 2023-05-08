@@ -17,7 +17,6 @@ def producto_crear (request):
             return redirect('producto')
         else:
             messages.error(request, 'El formulario tiene errores.')
-            
     else:
         form=Productoform()
     context={

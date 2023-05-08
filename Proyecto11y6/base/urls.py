@@ -36,6 +36,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('inicio/', principal, name="index" ),
+    path('inicio-guest/', principal, name="body-login" ),
     path('usuarios/', include('usuario.urls') ),
     path('ventas/', include('venta.urls')),
     path('compras/', include('compra.urls')),
