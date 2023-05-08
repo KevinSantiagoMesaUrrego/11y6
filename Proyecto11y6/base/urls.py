@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts import views
 
 from base.views import principal, logout_user
 # para las iamgenes
@@ -22,6 +23,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 # para la gestion de login y contraseña
 from django.contrib.auth import views as auth_views
+from accounts.views import register
 
 urlpatterns = [
     #gestion de login y contraseña
@@ -37,7 +39,10 @@ urlpatterns = [
     path('usuarios/', include('usuario.urls') ),
     path('ventas/', include('venta.urls')),
     path('compras/', include('compra.urls')),
-    path('inventarios/',include('inventario.urls'))
+    path('inventarios/',include('inventario.urls')),
+    path('templates/partials/', include('accounts.urls')),
+    path('account-register',  views.register, name='Registrarse')
+
 
 ]
 if settings.DEBUG:
