@@ -59,6 +59,7 @@ def persona_eliminar(request,pk):
     persona.update(
         estado="0"
     )
+    messages.success(request,'La persona se elimino correctamente.')
     return redirect('persona')
 
 
@@ -115,6 +116,7 @@ def eps_eliminar(request,pk):
     eps.update(
         estado="0"
     )
+    messages.success(request,'La eps se elimino correctamente.')
     return redirect('eps')
 
 #views de tabla turno
@@ -170,6 +172,7 @@ def turno_eliminar(request,pk):
     turno.update(
         estado="0"
     )
+    messages.success(request,'El turno se elimino correctamente.')
     return redirect('turno')
 
 #views de tabla trabajador
@@ -225,4 +228,5 @@ def trabajador_eliminar(request,pk):
     trabajador.update(
         estado="0"
     )
+    messages.success(request,'El trabajador se elimino correctamente.')
     return redirect('trabajador')

@@ -65,6 +65,7 @@ def compra_eliminar(request, pk):
     compra.update(
 
     )
+    messages.success(request,'La compra se elimino correctamente.')
     return redirect('compra')
 
 
@@ -124,6 +125,7 @@ def detalle_compra_eliminar(request, pk):
     detalle_compra = Detalle_compra.objects.filter(id=pk)
     detalle_compra.delete()
     detalle_compra.update()
+    messages.success(request,'El detalle de compra se elimino correctamente.')
     return redirect('detalle_compra')
 
 # views de tabla evento
@@ -186,6 +188,7 @@ def evento_eliminar(request, pk):
     evento.update(
         estado_evento="0"
     )
+    messages.success(request,'El evento se elimino correctamente.')
     return redirect('evento')
 
 # views de tabla Proveedor
@@ -246,4 +249,5 @@ def proveedor_eliminar(request, pk):
     proveedor.delete()
     proveedor.update(
     )
+    messages.success(request,'El proveedor se elimino correctamente.')
     return redirect('proveedor')

@@ -57,6 +57,7 @@ def venta_eliminar(request,pk):
     venta.delete()
     venta.update(
     )
+    messages.success(request,'La venta se elimino correctamente.')
     return redirect('venta')
 #DETALLE VENTA
 @login_required
@@ -111,6 +112,7 @@ def detalle_venta_eliminar(request,pk):
     detalle_venta.delete()
     detalle_venta.update(
 )
+    messages.success(request,'El detalle de venta se elimino correctamente.')
     return redirect('detalle_venta')
 #RESERVA
 @login_required
@@ -163,6 +165,7 @@ def reserva_eliminar(request,pk):
     reserva.delete()
     reserva.update(
     )
+    messages.success(request,'La reserva se elimino correctamente.')
     return redirect('reserva')
 #UBICACION
 @login_required
@@ -215,4 +218,5 @@ def ubicacion_eliminar(request,pk):
     ubicacion.delete()
     ubicacion.update(
     )
+    messages.success(request,'La ubicación se elimino correctamente.')
     return redirect('ubicacion')

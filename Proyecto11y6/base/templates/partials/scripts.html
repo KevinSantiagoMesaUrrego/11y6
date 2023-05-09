@@ -43,7 +43,20 @@ $( document ).ready(function() { // Cuando cargue la pagina completamente
 <script>
     $(function () {
       $("#example1").DataTable({
-
+        "languaje":{
+            "lengthMenu": "Mostrar MENU filas por página",
+            "zeroRecords": "No se encontraron registros",
+            "info": "Mostrando página PAGE de _PAGES_",
+            "infoEmpty": "No hay registros dispobles",
+            "infoFiltered": "(Filtrado de MAX filas en total)",
+            "search":       	"Buscar",
+            "paginate": {
+                "sFirst":    	"Primero",
+                "sPrevious": 	"Anterior",
+                "sNext":     	"Siguiente",
+                "sLast":     	"Último"
+        }
+    }
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');

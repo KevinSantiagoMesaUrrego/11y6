@@ -58,6 +58,7 @@ def producto_eliminar(request,pk):
     producto.delete()
     producto.update(
     )
+    messages.success(request,'El producto se elimino correctamente.')
     return redirect('producto')
 
 #MARCA
@@ -114,6 +115,7 @@ def marca_eliminar(request,pk):
     marca.delete()
     marca.update(
     )
+    messages.success(request,'La marca se elimino correctamente.')
     return redirect('marca')
 
 #PRESENTACION
@@ -169,6 +171,7 @@ def presentacion_eliminar(request,pk):
     presentacion.delete()
     presentacion.update(
     )
+    messages.success(request,'La presentación se elimino correctamente.')
     return redirect('presentacion')
 
 #UNIDADMEDIDA
@@ -224,6 +227,7 @@ def unidadmedida_eliminar(request,pk):
     unidadmedida.delete()
     unidadmedida.update(
     )
+    messages.success(request,'La unidad de medida se elimino correctamente.')
     return redirect('unidadmedida')
 
 #CONSUMOTRABAJADOR
@@ -279,6 +283,7 @@ def consumotrabajador_eliminar(request,pk):
     consumotrabajador.delete()
     consumotrabajador.update(
     )
+    messages.success(request,'El consumo de trabajador se elimino correctamente.')
     return redirect('consumotrabajador')
 
 
