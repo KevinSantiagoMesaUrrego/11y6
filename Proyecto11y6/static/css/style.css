@@ -1,3 +1,28 @@
 .tamaño_logo{
     width: 50px;
 }
+.color_negro{
+    background-color:#000000;
+
+}
+.color_dorado{
+    background-color:#E89E2E;
+    color: #ffffff;
+}
+.color_dorado:hover{
+    background-color:#ffffff;
+    color: #000000;
+}
+.color_plata{
+    background-color:#F2F3F7;
+}
+.color_verde{
+    background-color:#3F6C51;
+}
+.color_rojo{
+    background-color:#C03221;
+}
+
+.color_toggle{
+    background-color: #E89E2E;
+}
