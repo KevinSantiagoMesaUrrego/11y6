@@ -1,51 +1,53 @@
 {% load static %}
 <link rel="stylesheet" href="/static/css/style.css">
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-black">
-<a href="/inicio/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none ">
+<div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none ">
+  <a href="/inicio/" >
 <img class="tamaño_logo" src="/static/img/logo11y6.png" alt=""> <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
 </a>
+</div>
 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 <li><button type="button" class="color_dorado btn"><a href="{% url 'index' %}" class="dropdown-item">inicio</a></button> </li>
-<li> <div class="dropdown ">
-  <button class="color_dorado btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<li> <div class="dropdown rounded color_dorado">
+  <button class="color_dorado btn btn.secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Usuario
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu color_dorado ">
     <li>
-      <a href="{% url 'persona' %}" class="dropdown-item">Persona</a>
+      <a href="{% url 'persona' %}" class="dropdown-item color_dorado">Persona</a>
     </li>
     <li>
-      <a href="{% url 'eps' %}" class="dropdown-item">Eps</a>
+      <a href="{% url 'eps' %}" class="dropdown-item color_dorado">Eps</a>
     </li>
     <li>
-      <a href="{% url 'turno' %}" class="dropdown-item">Turno</a>
-    </li>
+      <a href="{% url 'turno' %}" class="dropdown-item color_dorado">Turno</a>
+    </li> 
     <li>
-      <a href="{% url 'trabajador' %}" class="dropdown-item">Trabajador</a>
+      <a href="{% url 'trabajador' %}" class="dropdown-item color_dorado">Trabajador</a>
     </li>
   </ul>
 </div></li>
-<li><div class="dropdown ">
-  <button class="color_dorado btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<li><div class="dropdown color_dorado rounded ">
+  <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Venta
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu color_dorado">
     <li>
-      <a href="{% url 'detalle_venta' %}" class="dropdown-item">Detalle Venta</a>
+      <a href="{% url 'detalle_venta' %}" class="dropdown-item color_dorado">Detalle Venta</a>
     </li>
     <li>
-      <a href="{% url 'venta' %}" class="dropdown-item">Venta</a>
+      <a href="{% url 'venta' %}" class="dropdown-item color_dorado">Venta</a>
     </li>
     <li>
-      <a href="{% url 'reserva' %}" class="dropdown-item">Reserva</a>
+      <a href="{% url 'reserva' %}" class="dropdown-item color_dorado">Reserva</a>
     </li>
     <li>
-      <a href="{% url 'ubicacion' %}" class="dropdown-item">Ubicación</a>
+      <a href="{% url 'ubicacion' %}" class="dropdown-item color_dorado">Ubicación</a>
     </li>
   </ul>
 </div></li>
-<li><div class="dropdown">
-  <button class="color_dorado btn" style="background-color: #E89E2E;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<li><div class="dropdown color_dorado rounded">
+  <button class="color_dorado btn btn.secondary dropdown-toggle "  type="button" data-bs-toggle="dropdown" aria-expanded="false">
    Compra
   </button>
   <ul class="dropdown-menu color_dorado">
@@ -61,25 +63,25 @@
     </li>
   </ul>
 </div></li>
-<li><div class="dropdown">
-  <button class="color_dorado btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<li><div class="dropdown color_dorado rounded">
+  <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Inventario
   </button>
   <ul class="dropdown-menu">
     <li>
-      <a href="{% url 'producto' %}" class="dropdown-item">Producto</a>
+      <a href="{% url 'producto' %}" class="dropdown-item color_dorado">Producto</a>
     </li>
     <li>
-      <a href="{% url 'marca' %}" class="dropdown-item">Marcas</a>
+      <a href="{% url 'marca' %}" class="dropdown-item color_dorado">Marcas</a>
     </li>
     <li>
-      <a href="{% url 'presentacion' %}" class="dropdown-item">Presentacion</a>
+      <a href="{% url 'presentacion' %}" class="dropdown-item color_dorado">Presentacion</a>
     </li>
     <li>
-      <a href="{% url 'unidadmedida' %}" class="dropdown-item">Unidad Medida</a>
+      <a href="{% url 'unidadmedida' %}" class="dropdown-item color_dorado">Unidad Medida</a>
     </li>
     <li>
-      <a href="{% url 'consumotrabajador' %}" class="dropdown-item">Consumo Trabajador</a>
+      <a href="{% url 'consumotrabajador' %}" class="dropdown-item color_dorado">Consumo Trabajador</a>
     </li>
   </ul>
 </div></li>
