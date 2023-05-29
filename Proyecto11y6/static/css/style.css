@@ -26,3 +26,8 @@
 .color_toggle{
     background-color: #E89E2E;
 }
+
+.gradient-form {
+    background-image: url('/static/img/462280.jpg');
+    background-size: cover;
+}
