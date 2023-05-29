@@ -33,7 +33,6 @@ urlpatterns = [
     path('reiniciar/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reiniciar/completo',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
     path('logout/',logout_user,name="logout"),
-
     path('admin/', admin.site.urls),
     path('inicio/', principal, name="index" ),
     path('inicio-guest/', principal, name="body-login" ),

@@ -26,3 +26,17 @@
 .color_toggle{
     background-color: #E89E2E;
 }
+
+.ancho_imagen{
+    width: 90%;
+}
+
+.color_blanco{
+    color:#ffffff;
+}
+
+.color_blanco:hover{
+    color:#ffffff;
+}
+
+

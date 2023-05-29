@@ -19,15 +19,24 @@
 
     <title>11y6  Cafe-bar</title>
   </head>
+
+
   <body>
+    
     {% include 'partials/header.html' %}
+    
     <div class="container">
-      <div class="row g-5">{% block contenido %} {% endblock contenido %}</div>
+      <div class="row g-5">{% block contenido %} {% endblock contenido %}
+      
+      </div>
+      
     </div>
-    {% include 'partials/modal.html' %}
     {% include 'partials/footer.html' %}
+    {% include 'partials/modal.html' %}
+    
     {% if messages %}
     {% for message in messages %}
+    
         <script>
             Swal.fire(
                 {position: 'top-end',
@@ -46,5 +55,6 @@
     {% endfor %}
 {% endif %}
 
-  </body>
+  </body> 
+  
 </html>
