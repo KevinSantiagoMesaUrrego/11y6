@@ -1,82 +1,75 @@
 {% extends 'partials/body-login.html' %}
 {% load static %}
 {% block contenido %}
-
-<div class="login-box elevation-5">
-    <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <img src="{% static 'img/logoSena.png' %}" alt="AdminLTE Logo" class="brand-image img-circle w-50 " style="opacity: .8">
-
-            <div class="h1"><b>11</b>y6</div>
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4">
+  
+                  <div class="text-center">
+                    <img src="static/img/logo11y6.png"
+                      style="width: 185px;" alt="logo">
+                    <h4 class="mt-1 mb-5 pb-1">Bienvendio</h4>
+                  </div>
+  
+                  <form method="post">
+                    {% csrf_token %}
+                    <p>Por favor ingrese su Usuario</p>
+  
+                    <div class="form-outline mb-4">
+                      <input type="text" name="{{ form.username.name }}" id="form2Example11" class="form-control"
+                        placeholder="Ingrese su Usuario" />
+                      <label class="form-label" for="form2Example11"></label>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <input type="password" name="{{ form.password.name }}" id="form2Example22" class="form-control" placeholder="Contraseña" />
+                      <label class="form-label" for="form2Example22"></label>
+                    </div>
+  
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Ingresar</button>
+                      <a class="text-muted" href="{% url 'password_reset' %}">Olvide mi contraseña?</a>
+                    </div>
+  
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">No estoy Registrado?</p>
+                      <a href="account-register">
+                      <button type="button" class="btn btn-outline-danger">Registrarse</button>
+                      </a>
+                    </div>
+  
+                  </form>
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+    
+                {% if form.username.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.username.errors }}
+                </div>
+                {% endif %}
+    
+                {% if form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.password.errors }}
+                </div>
+                {% endif %}
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <img src="static/img/fondo login.jpg" width="450" height="600">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-            <p class="login-box-msg">Para comenzar a usar nuestro servicio, por favor inicie sesión con su Usuario.</p>
-
-            <form method="post">
-                {% csrf_token %}
-                <div class="input-group mb-3">
-                    <input type="text" name="{{ form.username.name }}" class="form-control" placeholder="Usuario">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <i class="bi bi-person-fill"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" name="{{ form.password.name }}" class="form-control" placeholder="Contraseña">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <i class="bi bi-lock-fill"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" name="{{ form.RememberMeCheckbox.name }}" id="remember">
-                            <label for="remember">
-                                Recuérdame
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                    </div>
-                    
-                    <!-- /.col -->
-                </div>
-            </form>
-            <a href="account-register">
-                <button>Registrarse</button>
-              </a>
-            {% if form.non_field_errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ form.non_field_errors }}
-            </div>
-            {% endif %}
-
-            {% if form.username.errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ form.username.errors }}
-            </div>
-            {% endif %}
-
-            {% if form.password.errors %}
-            <div class="alert alert-danger" role="alert">
-                {{ form.password.errors }}
-            </div>
-            {% endif %}
-
-            <p class="mb-1">
-                <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
-            </p>
-        </div>
-        <!-- /.card-body -->
+      </div>
     </div>
-    <!-- /.card -->
-</div>
-<!-- /.login-box -->
-
-{% endblock contenido %}
+  </section>
+  {% endblock contenido %}
