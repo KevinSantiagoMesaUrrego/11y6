@@ -44,4 +44,19 @@
     background-image: url('/static/img/462280.jpg');
     background-size: cover;
 }
+html, body {
+    height: 100%;
+  }
+  
+  .wrapper {
+    min-height: 100%;
+    /* Opcional: agrega margen inferior para separar el contenido del footer */
+    margin-bottom: 60px; /* Ajusta el valor según sea necesario */
+  }
+  
+  .footer {
+    padding: 20px;
+  }
+  
+
 
