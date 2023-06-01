@@ -46,7 +46,7 @@ class Detalle_compra(models.Model):
 class Compra(models.Model):
         fecha_compra= models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
         id_proveedor=models.ForeignKey(Proveedor, on_delete=models.CASCADE,verbose_name="Nombre Proveedor")
-        id_detalle_compra=models.ForeignKey(Detalle_compra, on_delete=models.CASCADE,verbose_name="Fecha detalle compra")
+        id_detalle_compra=models.ForeignKey(Detalle_compra, on_delete=models.CASCADE,verbose_name="Valor Compra")
         def __str__(self):
                 return "%s"%(self.id_proveedor)
         def __str__(self):
