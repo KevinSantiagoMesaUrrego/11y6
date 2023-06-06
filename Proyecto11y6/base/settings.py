@@ -139,15 +139,17 @@ STATIC_ROOT ="/static"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'benjamingarcia10decimotercero@gmail.com'
-EMAIL_HOST_PASSWORD = 'wwkeqgnfvmwqkdlv'
+EMAIL_HOST_PASSWORD = 'hoqndsduujswwtyz'
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'benjamingarcia10decimotercero@gmail.com'
+SERVER_EMAIL = 'benjamingarcia10decimotercero@gmail.com'
 
 LOGIN_URL = 'inicio'
 LOGIN_REDIRECT_URL = 'index'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 5 * 60
