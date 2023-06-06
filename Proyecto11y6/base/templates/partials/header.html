@@ -89,6 +89,16 @@
 </div></li>
 </ul>
 <div class="col-md-3 text-end">
+    <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Cerrar Sesión
+  </button>
+    <ul class="dropdown-menu">
+    <li>
+      <a href="{% url 'cerrar_sesion' %}" class="dropdown-item color_dorado">Cerrar sesión</a>
+    </li>
+    </ul>
 
+        <p>Bienvenido, {{ usuario.username }}!</p>
+        <p>Tu rol es: {{ rol }}</p>
 </div>
 </header>
