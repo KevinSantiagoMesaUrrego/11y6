@@ -4,7 +4,7 @@
 <div class="row justify-content-center align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none ">
   <div class="col-auto">
   <a href="/inicio/" >
-<img class="tamaño_logo" src="/static/img/logo11y6.png" alt=""><svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+<img class="tamaño_logo" src="/static/img/logo11y6.png" alt="logo"><svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
 </a>
 </div>
 </div>
@@ -88,9 +88,9 @@
   </ul>
 </div></li>
 </ul>
-<div class="col-md-3 text-end">
+<div class="col-md-3 ">
     <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Cerrar Sesión
+    {{ request.user.username }}
   </button>
     <ul class="dropdown-menu">
     <li>
@@ -98,7 +98,7 @@
     </li>
     </ul>
 
-        <p>Bienvenido, {{ usuario.username }}!</p>
-        <p>Tu rol es: {{ rol }}</p>
+{#        <p>Bienvenido, {{ usuario.username }}! <br> Tu rol es: {{ rol }}</p>#}
+
 </div>
 </header>

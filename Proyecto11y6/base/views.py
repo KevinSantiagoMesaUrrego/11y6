@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 @login_required
 def principal(request):
-    titulo="Bienvenido al Sistema Apprendiz"
+
+    titulo="Bienvenido al Sistema de william"
     persona=Persona.objects.all().count()
     eps=Eps.objects.all().count()
     turno=Turno.objects.all().count()

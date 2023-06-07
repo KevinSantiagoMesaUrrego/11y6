@@ -14,8 +14,8 @@
     <!-- Libreria sweetalert2 no borrar-->
     <link rel="stylesheet" href="{% static '/node_modules/sweetalert2/dist/sweetalert2.min.css' %}">
     <!-- DataTables no borrar de aqui para abajo-->
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}"><link rel="stylesheet" href="{% static '/node_modules/datatables.net-responsive/css/responsive.bootstrap4.min.css' %}">#}
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}">#}
+    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}"><link rel="stylesheet" href="{% static '/node_modules/datatables.net-responsive/css/responsive.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}">
 
     <title>11y6 - Cafe-bar</title>
   </head>
@@ -24,26 +24,8 @@
       <div class="row g-5">{% block contenido %} {% endblock contenido %}</div>
     </div>
     {% include 'partials/modal.html' %}
-    {% include 'partials/footer.html' %}
-    {% if messages %}
-    {% for message in messages %}
-        <script>
-            Swal.fire(
-                {position: 'top-end',
-            toast: true,
-            showConfirmButton: false,
-            timer:10000,
-            timerProgressBar: true,
-            background: '#fffff',        
-            icon:'{{ message.tags }}',
-            text:'{{ message }}',
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }        });
-        </script>
-    {% endfor %}
-{% endif %}
+
+
 
   </body>
 </html>

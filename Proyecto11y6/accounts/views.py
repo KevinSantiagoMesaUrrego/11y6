@@ -1,12 +1,11 @@
 from django.contrib import messages
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from accounts.models import Register
 from django.contrib.auth import logout
-
+from django.template import RequestContext
 
 def register(request):
-    if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
@@ -15,9 +14,7 @@ def register(request):
         else:
             messages.error(request, form.error_messages)
             return render(request, 'partials/register.html', {'form': form})
-    else:
-        form = CustomUserCreationForm()
-        return render(request, 'registration/login.html', {'form': form})
+
 def cerrar_sesion(request):
     logout(request)
     return redirect('inicio')
