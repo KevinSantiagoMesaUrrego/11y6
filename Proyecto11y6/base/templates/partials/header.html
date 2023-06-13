@@ -89,10 +89,11 @@
 </div></li>
 </ul>
 <div class="col-md-3 ">
-    <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {{ request.user.username }}
+   <li><div class="dropdown color_dorado rounded">
+  <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+   {{ request.user.username }}
   </button>
-    <ul class="dropdown-menu">
+  <ul class="dropdown-menu">
     <li>
       <a href="{% url 'cerrar_sesion' %}" class="dropdown-item color_dorado">Cerrar sesión</a>
     </li>
@@ -100,5 +101,5 @@
 
 {#        <p>Bienvenido, {{ usuario.username }}! <br> Tu rol es: {{ rol }}</p>#}
 
-</div>
+   </div></li>
 </header>
