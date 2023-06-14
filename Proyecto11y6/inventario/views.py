@@ -177,7 +177,7 @@ def presentacion_eliminar(request,pk):
 #UNIDADMEDIDA
 @login_required
 def unidadmedida_crear (request):
-    titulo="UnidadMedida"
+    titulo="Unidad Medida"
     if request.method=='POST':
         form=UnidadMedidaform(request.POST)
         if form.is_valid():
@@ -195,7 +195,7 @@ def unidadmedida_crear (request):
     return render(request,"inventarios/unidad_medida/crear.html",context)
 @login_required
 def unidadmedida_listar(request):
-    titulo="UnidadMedida"
+    titulo="Unidad Medida"
     modulo="inventarios"
     unidadmedida=UnidadMedida.objects.all()
     context={
@@ -206,7 +206,7 @@ def unidadmedida_listar(request):
     return render(request,"inventarios/unidad_medida/listar.html",context)
 @login_required
 def unidadmedida_modificar(request,pk):
-    titulo="UnidadMedida"
+    titulo="Unidad Medida"
     unidadmedida=UnidadMedida.objects.get(id=pk)
     if request.method=='POST':
         form=UnidadMedidaUpdateForm(request.POST,instance=unidadmedida)
@@ -233,7 +233,7 @@ def unidadmedida_eliminar(request,pk):
 #CONSUMOTRABAJADOR
 @login_required
 def consumotrabajador_crear (request):
-    titulo="ConsumoTrabajador"
+    titulo="Consumo Trabajador"
     if request.method=='POST':
         form=ConsumoTrabjadorform(request.POST)
         if form.is_valid():
@@ -251,7 +251,7 @@ def consumotrabajador_crear (request):
     return render(request,"inventarios/consumo_trabajador/crear.html",context)
 @login_required
 def consumotrabajador_listar(request):
-    titulo="ConsumoTrabajador"
+    titulo="Consumo Trabajador"
     modulo="inventarios"
     consumotrabajador=ConsumoTrabajador.objects.all()
     context={
@@ -262,7 +262,7 @@ def consumotrabajador_listar(request):
     return render(request,"inventarios/consumo_trabajador/listar.html",context)
 @login_required
 def consumotrabajador_modificar(request,pk):
-    titulo="ConsumoTrabajador"
+    titulo="Consumo Trabajador"
     consumotrabajador=ConsumoTrabajador.objects.get(id=pk)
     if request.method=='POST':
         form=ConsumoTrabajadorUpdateForm(request.POST,instance=consumotrabajador)

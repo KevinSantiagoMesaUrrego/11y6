@@ -55,6 +55,12 @@ html, body {
   .footer {
     padding: 20px;
   }
+  .table-responsive {
+      overflow: auto;
+  }
+  .table {
+      max-width: 100%;
+  }
   
 
 

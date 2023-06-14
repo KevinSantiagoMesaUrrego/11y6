@@ -72,7 +72,7 @@ def compra_eliminar(request, pk):
 # views de tabla detalle_compra
 @login_required
 def detalle_compra_crear(request):
-    titulo = "Detalle_compra"
+    titulo = "Detalle compra"
     if request.method == 'POST':
         form = Detalle_compraForm(request.POST)
         if form.is_valid():
@@ -92,7 +92,7 @@ def detalle_compra_crear(request):
 
 @login_required
 def detalle_compra_listar(request):
-    titulo = "Detalle_compra"
+    titulo = "Detalle compra"
     modulo="compras"
     detalle_compra = Detalle_compra.objects.all()
     context = {
@@ -104,7 +104,7 @@ def detalle_compra_listar(request):
 
 @login_required
 def detalle_compra_modificar(request, pk):
-    titulo = "Detalle_compra"
+    titulo = "Detalle compra"
     detalle_compra = Detalle_compra.objects.get(id=pk)
     if request.method == 'POST':
         form = Detalle_compraUpdateForm(request.POST, instance=detalle_compra)

@@ -62,7 +62,7 @@ def venta_eliminar(request,pk):
 #DETALLE VENTA
 @login_required
 def detalle_venta_crear (request):
-    titulo="Detalle_venta"
+    titulo="Detalle venta"
     if request.method=='POST':
         form=Detalle_ventaForm(request.POST)
         if form.is_valid():
@@ -80,7 +80,7 @@ def detalle_venta_crear (request):
     return render(request,"ventas/detalle_venta/crear.html",context)
 @login_required
 def detalle_venta_listar(request):
-    titulo="Detalle_venta"
+    titulo="Detalle venta"
     modulo="ventas"
     detalle_venta=Detalle_venta.objects.all()
     context={
@@ -91,7 +91,7 @@ def detalle_venta_listar(request):
     return render(request,"ventas/detalle_venta/listar.html",context)
 @login_required
 def detalle_venta_modificar(request,pk):
-    titulo="Detalle_venta"
+    titulo="Detalle venta"
     detalle_venta=Detalle_venta.objects.get(id=pk)
     if request.method== 'POST':
         form= Detalle_ventaUpadteForm(request.POST, instance=detalle_venta)
