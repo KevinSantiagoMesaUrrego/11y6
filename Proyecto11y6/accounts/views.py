@@ -12,7 +12,6 @@ def register(request):
             register.activo = False
             return redirect('inicio')
         else:
-            messages.error(request, form.error_messages)
             return render(request, 'partials/register.html', {'form': form})
 
 def cerrar_sesion(request):
