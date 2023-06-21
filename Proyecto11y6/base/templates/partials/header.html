@@ -1,4 +1,4 @@
-{% load static %}
+z{% load static %}
 <link rel="stylesheet" href="/static/css/style.css">
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-black ">
 <div class="row justify-content-center align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none ">
@@ -87,18 +87,24 @@
     </li>
   </ul>
 </div></li>
+
 </ul>
+
 <div class="col-md-3 ">
-  <button class="color_dorado btn btn.secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-   {{ request.user.username }}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li> <div class="dropdown rounded color_dorado">
+  <button class="color_dorado btn btn.secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    {{ request.user.username }}
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu color_dorado ">
+{#    <li>#}
+{#        <span href="#" class="dropdown-item color_dorado">Tu rol es: {{ rol }}</span>#}
+{#    </li>#}
     <li>
       <a href="{% url 'cerrar_sesion' %}" class="dropdown-item color_dorado">Cerrar sesión</a>
     </li>
+  </ul>
+</div></li>
     </ul>
-
-{#        <p>Bienvenido, {{ usuario.username }}! <br> Tu rol es: {{ rol }}</p>#}
-
-   </div>
+</div>
 </header>
