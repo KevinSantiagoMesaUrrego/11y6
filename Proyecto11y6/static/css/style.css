@@ -62,6 +62,14 @@ html, body {
   .table {
       max-width: 100%;
   }
-  
+
+  .gradient-form-body{
+      background-image: url("/static/img/tipos-de-abares.jpg");
+      background-size: cover;
+  }
+  .d-flex {
+      position: sticky;}
+
+
 
 
