@@ -54,6 +54,15 @@
                       <button type="button" class="btn btn-outline-danger">Registrarse</button>
                       </a>
                     </div>
+
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">Necesitas Ayuda?</p>
+
+                      <a href="{% url 'help' %}">
+                      <button type="button" class="btn btn-outline-danger">Ayuda</button>
+                      </a>
+
+                    </div>
   
                   </form>
                 {% if form.non_field_errors %}
