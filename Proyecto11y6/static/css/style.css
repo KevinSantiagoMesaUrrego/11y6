@@ -4,6 +4,9 @@
 .color_negro{
     background-color:#000000;
 
+}.color_negro_header{
+    background-color:#000000 !important;
+
 }
 .color_dorado{
     background-color:#E89E2E;
@@ -33,6 +36,9 @@
 
 .color_blanco{
     color:#ffffff;
+}
+.color_blanco_footer{
+    color:#ffffff !important;
 }
 
 .color_blanco:hover{
@@ -67,9 +73,21 @@ html, body {
       background-image: url("/static/img/tipos-de-abares.jpg");
       background-size: cover;
   }
-  .d-flex {
-      position: sticky;}
 
 
+.pdf-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+  }
 
+  .pdf-iframe {
+    width: 1200px;
+    height: 950px;
+  }
 
+  .centered-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;}

@@ -1,13 +1,22 @@
-{% extends 'partials/body.html' %}
+{% extends 'partials/body-login.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% block contenido %}
+    <link rel="stylesheet" href="Absolute Path">
 
-    <section class="color_blanco">
+    <section class="h-125 gradient-form ">
+
+
+
+    <section class="color_blanco ">
  <h2>Ayuda al Usuario</h2>
     </section>
 
-  <iframe src="{% static 'Archivos/AprendicesnAprobados___24639ba3d830efb___.pdf' %}" width="500" height="600"></iframe>
-  <br>
-  <a href="/" class="color_dorado btn btn">Volver</a>
+<div class="pdf-container">
+  <iframe class="pdf-iframe" src="{% static 'Archivos/AprendicesnAprobados___24639ba3d830efb___.pdf' %}"></iframe>
+</div>
+        <div class="centered-button">
+      <a href="/" class="color_dorado btn btn">Volver</a>
+        </div>
+    </section>
 {% endblock %}

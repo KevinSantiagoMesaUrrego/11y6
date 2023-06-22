@@ -3,12 +3,12 @@
 <!-- jQuery -->
 <script src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
 
-<!-- Bootstrap 4 -->
+<!-- Bootstrap 5 -->
 <script src="{% static '/node_modules/bootstrap/dist/js/bootstrap.bundle.js' %}"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="{% static '/node_modules/datatables.net/js/jquery.dataTables.min.js' %}"></script>
-<script src="{% static '/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static '/node_modules/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"></script>
 <script src="{% static '/node_modules/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
 <script src="{% static '/node_modules/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
 <script src="{% static '/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
@@ -31,6 +31,10 @@ $( document ).ready(function() { // Cuando cargue la pagina completamente
         var cafebar = $(this).data("cafe-bar");
         changeURL(cafebar);
     });
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 });
 
 </script>
@@ -290,5 +294,6 @@ $( document ).ready(function() { // Cuando cargue la pagina completamente
         },
         "buttons": ["print", "pdf", "excel", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+    });
+
   </script>
