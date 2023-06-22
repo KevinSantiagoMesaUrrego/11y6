@@ -1,0 +1,18 @@
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+  <h2>Ayuda Al Usuario</h2>
+     <embed src="ruta_a_tu_archivo.pdf" width="500" height="600" type="application/pdf">
+  <br>
+  <form method="post">
+    {% csrf_token %}
+    <table>
+       <tr>
+          <td>
+              <a href="/" class="btn btn-outline-danger">Volver</a>
+
+          </td>
+      </tr>
+   </table>
+  </form>
+{% endblock %}
