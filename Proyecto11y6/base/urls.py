@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts import views
 
-from base.views import principal, logout_user
+from base.views import principal, logout_user ,ayuda
 # para las iamgenes
 from django.conf import settings
 from django.conf.urls.static import static
@@ -42,8 +42,8 @@ urlpatterns = [
     path('inventarios/',include('inventario.urls')),
     path('templates/partials/', include('accounts.urls')),
     path('account-register',  views.register, name='Registrarse'),
-    path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion')
-
+    path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
+    path('ayuda/',ayuda ,name="help"),
 
 ]
 if settings.DEBUG:
