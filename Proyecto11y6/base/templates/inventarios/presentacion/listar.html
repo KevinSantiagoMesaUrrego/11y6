@@ -1,68 +1,84 @@
 {% extends 'partials/body.html' %}
-{% load bootstrap_icons %} 
+{% load bootstrap_icons %}
 {% block contenido %}
-<div class="wrapper">
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-              <h3 class="card-title"> {{titulo}} </h3>
-                  <a href="{% url 'presentacion-crear' %}" class="btn color_dorado w-25">Crear {{titulo}}</a>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped table-dark">
-                <thead>
-                  <tr>
-                    <th>Presentacion</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-      
-                  </tr>
-              </thead>
-            <tbody>
-              {% for presentacion in presentaciones %} {% if presentacion.estado != "0" %}
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h3 class="card-title"> {{ titulo }} </h3>
+                                <a href="{% url 'presentacion-crear' %}"
+                                   class="btn color_dorado w-25">Crear {{ titulo }}</a>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex justify-content-end">
+                                                <ol class="breadcrumb float-sm-right">
+                                                    <li class="breadcrumb-item"><a
+                                                            href="{% url 'index' %}">Inicio</a></li>
+                                                    <li class="breadcrumb-item active"><a
+                                                            href="{% url 'presentacion' %}">{{ modulo }}</a></li>
+                                                    <li class="breadcrumb-item active">{{ titulo }} </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table id="example1" class="table table-bordered table-striped table-dark">
+                                        <thead>
+                                        <tr>
+                                            <th>Presentacion</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
 
-              <tr>
-                <td>{{presentacion.presentacion}}</td>
-                <td>{{presentacion.get_estado_display}}</td>
-                <td>
-                  <button type="button" data-cafe-bar="{{presentacion.id}}" class="btnEliminar btn btn-danger"
-                  data-bs-toggle="modal" data-bs-target="#modalConf">
-                  {% bs_icon 'trash' %}
-              </button>
-                  <a
-                    class="btn btn-primary"
-                    href="{% url 'presentacion-modificar' presentacion.id %}"
-                    >Modificar</a
-                  >
-                </td>
-              </tr>
-              {% endif %} {% endfor %}
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Nombre</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for presentacion in presentaciones %} {% if presentacion.estado != "0" %}
 
-              </tr>
-            </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+                                            <tr>
+                                                <td>{{ presentacion.presentacion }}</td>
+                                                <td>{{ presentacion.get_estado_display }}</td>
+                                                <td>
+                                                    <button type="button" data-cafe-bar="{{ presentacion.id }}"
+                                                            class="btnEliminar btn btn-danger"
+                                                            data-bs-toggle="modal" data-bs-target="#modalConf">
+                                                        {% bs_icon 'trash' %}
+                                                    </button>
+                                                    <a
+                                                            class="btn btn-primary"
+                                                            href="{% url 'presentacion-modificar' presentacion.id %}"
+                                                    >Modificar</a
+                                                    >
+                                                </td>
+                                            </tr>
+                                        {% endif %} {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
     </div>
-    <!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
-</div>
 {% endblock contenido %}
