@@ -44,19 +44,19 @@
                     </div>
   
                     <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-title="Raul gay" type="submit">Ingresar</button>
+                      <button class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-title="Ingresar" type="submit">Ingresar</button>
                     </div>
 
-                      <div><a class="d-flex align-items-center justify-content-center pb-4" href="{% url 'password_reset' %}">Olvide mi contraseña?</a>
+                      <div><a class="d-flex align-items-center justify-content-center pb-4" href="{% url 'password_reset' %}" data-bs-toggle="tooltip" data-bs-title="Recuperar contraseña">Olvide contraseña?</a>
 
                     </div>
   
                     <div class="d-flex align-items-center justify-content-center pb-4">
-                    <a href="account-register">  <p class="mb-0 me-2">No estoy Registrado?</p></a>
+                    <a href="account-register" data-bs-toggle="tooltip" data-bs-title="Registrar">  <p class="mb-0 me-2">No estoy Registrado?</p></a>
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center pb-4">
-                     <a href="{% url 'help' %}"> <p class="mb-0 me-2"><abbr title="Hypertext Markup Language">Ayuda</abbr></p></a>
+                     <a href="{% url 'help' %}"> <p class="mb-0 me-2" data-bs-toggle="tooltip" data-bs-title="Manual"><abbr title="Hypertext Markup Language">Ayuda</abbr></p></a>
 
                     </div>
 
