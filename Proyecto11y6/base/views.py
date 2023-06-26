@@ -53,4 +53,4 @@ def logout_user(request):
     return redirect('inicio')
 def ayuda(request):
 
-    return render(request,"ayuda.html")
+    return render(request, "partials/ayuda.html")

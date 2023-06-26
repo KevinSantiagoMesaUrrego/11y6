@@ -96,13 +96,16 @@
   <button class="color_dorado btn btn.secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
     {{ request.user.username }}
   </button>
-  <ul class="dropdown-menu color_dorado ">
+  <ul class="dropdown-menu">
 {#    <li>#}
 {#        <span href="#" class="dropdown-item color_dorado">Tu rol es: {{ rol }}</span>#}
 {#    </li>#}
     <li>
       <a href="{% url 'cerrar_sesion' %}" class="dropdown-item color_dorado">Cerrar sesión</a>
     </li>
+      <li>
+          <a href="{% url 'help' %}" class="dropdown-item color_dorado">Ayuda</a>
+      </li>
   </ul>
 </div></li>
     </ul>
