@@ -62,6 +62,9 @@
     "sweetalert2": "^11.7.10",
     "tempusdominus-bootstrap-4": "^5.39.2",
     "toastr": "^2.1.4",
-    "uplot": "^1.6.24"
+    "uplot": "^1.6.24",
+    "font-awesome": "^4.7.0",
+    "fontawesome-free-v6": "^1.0.1"
+
   }
 }
