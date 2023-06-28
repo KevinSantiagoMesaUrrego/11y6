@@ -95,3 +95,21 @@ html, body {
 div.card.glass-card {
     --bs-card-bg: #ffffffa1 !important;
 }
+.gradient-form3 {
+       background-image: url('/static/img/462280.jpg');
+    height: 665px;
+    background-size: cover;
+    background-position: center;
+
+}
+.container {
+    background-image: url('static/img/logo11y6.png');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+.custom-img {
+    width: 100px;  /* Ajusta el ancho de la imagen según tus necesidades */
+    height: 100px; /* Permite que la altura se ajuste automáticamente para mantener la proporción de aspecto */
+}
+
