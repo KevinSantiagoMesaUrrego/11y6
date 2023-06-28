@@ -1,20 +1,21 @@
 {% extends 'partials/body.html' %}
 {% load bootstrap_icons %}
 {% block contenido %}
-<div class="wrapper">
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-heade d-flex justify-content-between align-items-center">
-              <h3 class="card-title"> {{titulo}} </h3>
-                <a href="{% url 'proveedor-crear' %}" class="btn color_dorado w-25">Crear {{titulo}}</a>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-            <div class="container">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card glass-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h3 class="card-title"> {{ titulo }} </h3>
+                                <a href="{% url 'proveedor-crear' %}"
+                                   class="btn color_dorado w-25">Crear {{ titulo }}</a>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="container">
                                     <div class="row">
                                         <div class="col">
                                             <div class="d-flex justify-content-end">
@@ -28,69 +29,70 @@
                                             </div>
                                         </div>
                                     </div>
-              <table id="example1" class="table table-bordered table-striped table-dark">
-                <thead>
-                  <tr>
-                    <th>Tipo De Identificacion</th>
-                    <th>Nombre Del Proveedor</th>
-                    <th>Apellido Del Proveedor</th>
-                    <th>Telefono Del Proveedor</th>
-                    <th>Correo Del Proveedor</th>
-                    <th>Direccion Del Proveedor</th>
-                    <th>Estado Del Proveedor</th>
-                    <th>Acciones</th>
-                  </tr>
-              </thead>
-            <tbody>
-              {% for proveedor in proveedores %} {% if proveedor.estado != "0" %}
+                                    <table id="example1" class="table table-bordered table-striped table-dark">
+                                        <thead>
+                                        <tr>
+                                            <th>Tipo De Identificacion</th>
+                                            <th>Nombre Del Proveedor</th>
+                                            <th>Apellido Del Proveedor</th>
+                                            <th>Telefono Del Proveedor</th>
+                                            <th>Correo Del Proveedor</th>
+                                            <th>Direccion Del Proveedor</th>
+                                            <th>Estado Del Proveedor</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for proveedor in proveedores %} {% if proveedor.estado != "0" %}
 
-              <tr>
-                <td>{{proveedor.tipo_identificacion}}</td>
-                <td>{{proveedor.nombre_proveedor}}</td>
-                <td>{{proveedor.apellido_proveedor}}</td>
-                <td>{{proveedor.telefono}}</td>
-                <td>{{proveedor.correo_proveedor}}</td>
-                <td>{{proveedor.direccion_proveedor}}</td>
-                <td>{{proveedor.get_estado_proveedor_display}}</td>
-                <td>
-                  <button  type="button" data-cafe-bar="{{proveedor.id}}" class="btnEliminar btn btn-danger"
-                  data-bs-toggle="modal" data-bs-target="#modalConf">
-                  {% bs_icon 'trash' %}
-              </button>
-                  <a
-                    class="btn btn-primary"
-                    href="{% url 'proveedor-modificar' proveedor.id %}"
-                    >Modificar</a
-                  >
-                </td>
-              </tr>
-              {% endif %} {% endfor %}
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Tipo De Identificacion</th>
-                <th>Nombre Del Proveedor</th>
-                <th>Apellido Del Proveedor</th>
-                <th>Telefono Del Proveedor</th>
-                <th>Correo Del Proveedor</th>
-                <th>Direccion Del Proveedor</th>
-                <th>Estado Del Proveedor</th>
-                <th>Acciones</th>
-              </tr>
-            </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+                                            <tr>
+                                                <td>{{ proveedor.tipo_identificacion }}</td>
+                                                <td>{{ proveedor.nombre_proveedor }}</td>
+                                                <td>{{ proveedor.apellido_proveedor }}</td>
+                                                <td>{{ proveedor.telefono }}</td>
+                                                <td>{{ proveedor.correo_proveedor }}</td>
+                                                <td>{{ proveedor.direccion_proveedor }}</td>
+                                                <td>{{ proveedor.get_estado_proveedor_display }}</td>
+                                                <td>
+                                                    <button type="button" data-cafe-bar="{{ proveedor.id }}"
+                                                            class="btnEliminar btn btn-danger"
+                                                            data-bs-toggle="modal" data-bs-target="#modalConf">
+                                                        {% bs_icon 'trash' %}
+                                                    </button>
+                                                    <a
+                                                            class="btn btn-primary"
+                                                            href="{% url 'proveedor-modificar' proveedor.id %}"
+                                                    >Modificar</a
+                                                    >
+                                                </td>
+                                            </tr>
+                                        {% endif %} {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Tipo De Identificacion</th>
+                                            <th>Nombre Del Proveedor</th>
+                                            <th>Apellido Del Proveedor</th>
+                                            <th>Telefono Del Proveedor</th>
+                                            <th>Correo Del Proveedor</th>
+                                            <th>Direccion Del Proveedor</th>
+                                            <th>Estado Del Proveedor</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
     </div>
-    <!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
-</div>
 {% endblock contenido %}
 

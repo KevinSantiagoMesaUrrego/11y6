@@ -91,3 +91,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;}
+
+div.card.glass-card {
+    --bs-card-bg: #ffffffa1 !important;
+}

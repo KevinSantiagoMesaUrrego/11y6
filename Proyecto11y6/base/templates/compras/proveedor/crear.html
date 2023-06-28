@@ -1,8 +1,35 @@
-{% extends 'partials/body.html' %} 
-{% load crispy_forms_tags %} 
+{% extends 'partials/body.html' %}
 {% block contenido %}
-<form action="" method="POST">
-  {% csrf_token %} {{form|crispy}}
-  <input type="submit"  class="btn color_dorado w-25" value="Agregar {{titulo}}" />
-</form>
+    <div class="wrapper">
+        <div class="card glass-card">
+            <div class="card-header text-black-500">
+                Crear {{ titulo }}
+            </div>
+            <div class="card-body">
+                <form class="row g-3" action="" method="POST">
+                    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+                         aria-label="breadcrumb" class="d-flex justify-content-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'proveedor' %}">{{ titulo }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Crear {{ titulo }}</li>
+                        </ol>
+                    </nav>
+
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="col-md-6">
+                            <label for="{{ field.name }}" class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <div class="col-12">
+                        <input type="submit" class="btn color_dorado w-25" value="Agregar {{ titulo }}"/>
+                        <a href="{% url 'proveedor' %}" class="btn color_dorado w-25">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 {% endblock contenido %}
