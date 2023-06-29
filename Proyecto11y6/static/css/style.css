@@ -112,4 +112,15 @@ div.card.glass-card {
     width: 100px;  /* Ajusta el ancho de la imagen según tus necesidades */
     height: 100px; /* Permite que la altura se ajuste automáticamente para mantener la proporción de aspecto */
 }
-
+    .gradient-form4 {
+        background-image: url('/static/img/462280.jpg');
+        height: 665px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+ .form-container {
+        margin: 20px;
+    }
