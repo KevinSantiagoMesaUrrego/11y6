@@ -70,13 +70,10 @@ class Trabajador(models.Model):
         INACTIVO='0',_("Inactivo")
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
     turno_trabajador=models.ForeignKey(Turno, on_delete=models.CASCADE,verbose_name="Turno Trabajador")
-    def __str__(self):
-        return "%s"%(self.turno_trabajador)
     eps_trabajador=models.ForeignKey(Eps, on_delete=models.CASCADE,verbose_name="Eps Trabajador")
     def __str__(self):
-        return "%s "%(self.eps_trabajador)
-    def __str__(self):
-        return "%s %s"%(self.nombre,self.documento)
+        return "%s %s %s %s"%(self.turno_trabajador, self.eps_trabajador, self.nombre,self.documento)
+
     class Meta:
         verbose_name_plural = "Trabajadores"
 

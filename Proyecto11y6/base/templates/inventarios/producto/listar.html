@@ -37,10 +37,14 @@
                                         <th>Oferta</th>
                                         <th>Stock</th>
                                         <th>Estado</th>
+                                        <th>Marca</th>
+                                        <th>Presentacion</th>
+                                        <th>Medida</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {% if productos %}
                                     {% for producto in productos %} {% if producto.estado != "0" %}
 
                                         <tr>
@@ -50,6 +54,9 @@
                                             <td>{{ producto.oferta }}</td>
                                             <td>{{ producto.stock }}</td>
                                             <td>{{ producto.get_estado_display }}</td>
+                                            <td>{{ producto.marca_producto.nombre }}</td>
+                                            <td>{{ producto.presentacion_producto.presentacion }}</td>
+                                            <td>{{ producto.medida_producto.unidadmedida }}</td>
                                             <td>
                                                 <button type="button" data-cafe-bar="{{ eps.id }}"
                                                         class="btnEliminar btn btn-danger"
@@ -64,6 +71,7 @@
                                             </td>
                                         </tr>
                                     {% endif %} {% endfor %}
+                                    {% endif %}
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -73,6 +81,9 @@
                                         <th>Oferta</th>
                                         <th>Stock</th>
                                         <th>Estado</th>
+                                        <th>Marca</th>
+                                        <th>Presentacion</th>
+                                        <th>Medida</th>
                                         <th>Acciones</th>
 
                                     </tr>

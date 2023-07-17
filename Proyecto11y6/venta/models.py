@@ -35,8 +35,6 @@ class Reserva(models.Model):
     pago_total=models.FloatField()
     fecha_pago_total=models.DateField(verbose_name="Fecha Pago Total",help_text="MM/DD/AAAA")
     ubicacion_nombre=models.ForeignKey(Ubicacion, on_delete=models.CASCADE,verbose_name="ubicación nombre")
+    detalle_venta_cantidad_producto = models.ForeignKey(Detalle_venta, on_delete=models.CASCADE,verbose_name="detalle venta cantidad producto")
     def __str__(self):
-        return "%s "%(self.ubicacion_nombre)
-    detalle_venta_cantidad_producto=models.ForeignKey(Detalle_venta, on_delete=models.CASCADE,verbose_name="detalle venta cantidad producto")
-    def __str__(self):
-        return "%s "%(self.detalle_venta_cantidad_producto)
+        return "%s %s "%(self.ubicacion_nombre, self.detalle_venta_cantidad_producto)
