@@ -124,3 +124,10 @@ div.card.glass-card {
  .form-container {
         margin: 20px;
     }
+  .background-image {
+    background-image: url('/static/img/462280.jpg'); /* Reemplaza '/static/img/fondo.jpg' con la URL de tu imagen de fondo */
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+  }
+
