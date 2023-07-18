@@ -47,7 +47,7 @@
 
 .gradient-form {
     background-image: url('/static/img/462280.jpg');
-    background-size: cover;
+    background-size: contain;
 }
 html, body {
     height: 100%;
