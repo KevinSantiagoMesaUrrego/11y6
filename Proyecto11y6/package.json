@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@sweetalert2/theme-bootstrap-4": "^5.0.15",
+    "accessibility": "^4.5.7",
     "bootstrap": "^5.2.3",
     "bootstrap-colorpicker": "^3.4.0",
     "bootstrap-icons": "^1.10.5",
@@ -35,7 +36,9 @@
     "filterizr": "^2.2.4",
     "flag-icon-css": "^4.1.7",
     "flot": "^4.2.3",
+    "font-awesome": "^4.7.0",
     "fontawesome-free": "^1.0.4",
+    "fontawesome-free-v6": "^1.0.1",
     "fullcalendar": "^6.1.8",
     "icheck-bootstrap": "^3.0.1",
     "inputmask": "^5.0.8",
@@ -62,9 +65,6 @@
     "sweetalert2": "^11.7.10",
     "tempusdominus-bootstrap-4": "^5.39.2",
     "toastr": "^2.1.4",
-    "uplot": "^1.6.24",
-    "font-awesome": "^4.7.0",
-    "fontawesome-free-v6": "^1.0.1"
-
+    "uplot": "^1.6.24"
   }
 }
