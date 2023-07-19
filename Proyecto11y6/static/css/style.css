@@ -76,10 +76,8 @@ html, body {
 
 
 .pdf-container {
-    display: flex;
     justify-content: center;
     align-items: center;
-    height: 150vh;
   }
 
   .pdf-iframe {
@@ -130,4 +128,14 @@ div.card.glass-card {
     background-position: center center;
     min-height: 100vh;
   }
+
+  .sectionGlass {
+    display: grid;
+    place-items: center;
+}
+
+  .tamaño_login{
+  height: 100%;
+  }
+
 

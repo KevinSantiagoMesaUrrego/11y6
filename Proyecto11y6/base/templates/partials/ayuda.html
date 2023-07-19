@@ -4,19 +4,23 @@
 {% block contenido %}
     <link rel="stylesheet" href="Absolute Path">
 
-    <section class="h-125 gradient-form ">
+<section class="h-125 gradient-form justify-content-center sectionGlass" >
+  <div class="card rounded-3 text-black glass-card text-center" >
+    <h2 class="color_negro_letra">Ayuda al Usuario</h2>
 
+    <div class="pdf-container">
+      <iframe class="pdf-iframe" src="{% static 'Archivos/Manual proyecto.pdf' %}"></iframe>
+    </div>
 
-
-    <section class="color_blanco ">
- <h2>Ayuda al Usuario</h2>
-    </section>
-
-<div class="pdf-container">
-  <iframe class="pdf-iframe" src="{% static 'Archivos/Manual proyecto.pdf' %}"></iframe>
-</div>
-        <div class="centered-button">
+    <div class="centered-button">
       <a href="{% url 'index' %}" class="color_dorado btn btn">Volver</a>
-        </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+
+{% include 'partials/footer.html' %}
+
+
+
 {% endblock %}
