@@ -5,10 +5,9 @@ from usuario.models import Turno
 from usuario.models import Trabajador
 from usuario.forms import PersonaForm,PersonaUpdateForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 def persona_crear(request):
     titulo="Persona"
     if request.method== 'POST':
@@ -26,7 +25,7 @@ def persona_crear(request):
         "form":form
         }
     return render(request,"usuarios/persona/crear.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
+
 @login_required
 def persona_listar(request):
     titulo="Persona"
@@ -38,7 +37,6 @@ def persona_listar(request):
         "personas":persona
     }
     return render(request,"usuarios/persona/listar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def persona_modificar(request,pk):
     titulo="Persona"
@@ -56,7 +54,6 @@ def persona_modificar(request,pk):
         "form":form
         }
     return render(request,"usuarios/persona/modificar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def persona_eliminar(request,pk):
     persona= Persona.objects.filter(id=pk)
@@ -68,7 +65,6 @@ def persona_eliminar(request,pk):
 
 
 #views de tabla eps
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def eps_crear(request):
     titulo="Eps"
@@ -87,7 +83,6 @@ def eps_crear(request):
         "form":form
         }
     return render(request,"usuarios/eps/crear.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def eps_listar(request):
     titulo="Eps"
@@ -99,7 +94,6 @@ def eps_listar(request):
         "eps":eps
     }
     return render(request,"usuarios/eps/listar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def eps_modificar(request,pk):
     titulo="Eps"
@@ -117,7 +111,6 @@ def eps_modificar(request,pk):
         "form":form
         }
     return render(request,"usuarios/eps/modificar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def eps_eliminar(request,pk):
     eps= Eps.objects.filter(id=pk)
@@ -128,7 +121,6 @@ def eps_eliminar(request,pk):
     return redirect('eps')
 
 #views de tabla turno
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def turno_crear(request):
     titulo="Turno"
@@ -147,7 +139,6 @@ def turno_crear(request):
         "form":form
         }
     return render(request,"usuarios/turno/crear.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def turno_listar(request):
     titulo="Turno"
@@ -159,7 +150,6 @@ def turno_listar(request):
         "turnos":turnos
     }
     return render(request,"usuarios/turno/listar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def turno_modificar(request,pk):
     titulo="Turno"
@@ -177,7 +167,6 @@ def turno_modificar(request,pk):
         "form":form
         }
     return render(request,"usuarios/turno/modificar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def turno_eliminar(request,pk):
     turno= Turno.objects.filter(id=pk)
@@ -188,7 +177,6 @@ def turno_eliminar(request,pk):
     return redirect('turno')
 
 #views de tabla trabajador
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def trabajador_crear(request):
     titulo="Trabajador"
@@ -207,7 +195,6 @@ def trabajador_crear(request):
         "form":form
         }
     return render(request,"usuarios/trabajador/crear.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def trabajador_listar(request):
     titulo="Trabajador"
@@ -219,7 +206,6 @@ def trabajador_listar(request):
         "trabajadores":trabajadores
     }
     return render(request,"usuarios/trabajador/listar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def trabajador_modificar(request,pk):
     titulo="Trabajador"
@@ -237,7 +223,6 @@ def trabajador_modificar(request,pk):
         "form":form
         }
     return render(request,"usuarios/trabajador/modificar.html", context)
-@user_passes_test(lambda u: u.groups.filter(name='NombreDelGrupo').exists())
 @login_required
 def trabajador_eliminar(request,pk):
     trabajador= Trabajador.objects.filter(id=pk)
