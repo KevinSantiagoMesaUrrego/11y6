@@ -1,40 +1,48 @@
-from django import forms  
-from django.contrib.auth.models import User  
-from django.contrib.auth.forms import UserCreationForm  
-from django.core.exceptions import ValidationError  
-from django.forms.fields import EmailField  
-from django.forms.forms import Form
+# forms.py
+from django import forms
+from django.contrib.auth.models import User,Group
+from django.contrib.auth.forms import UserCreationForm
+from .models import Register
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Usuario', min_length=5, max_length=150)  
+    username = forms.CharField(label='Usuario', min_length=5, max_length=150)
     email = forms.EmailField(label='Correo')
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
-    def username_clean(self):
-        username = self.cleaned_data['Usuario'].lower()  
-        new = User.objects.filter(username = username)  
-        if new.count():  
-            raise ValidationError("El Usuario ya Existe")  
-        return username  
-  
-    def email_clean(self):  
-        email = self.cleaned_data['Correo'].lower()  
-        new = User.objects.filter(email=email)  
-        if new.count():  
-            raise ValidationError(" El Correo ya Existe")  
-        return email  
-  
-    def clean_password2(self):  
-        password1 = self.cleaned_data['password1']  
-        password2 = self.cleaned_data['password2']  
-  
-        if password1 and password2 and password1 != password2:  
-            raise ValidationError("Las Contraseñas no Coinciden")
-        return password2  
-    def save(self, commit = True):  
-        user = User.objects.create_user(  
-            self.cleaned_data['username'],  
-            self.cleaned_data['email'],  
-            self.cleaned_data['password1']  
-        )  
-        return user  
+    activo = forms.BooleanField(initial=False, widget=forms.HiddenInput, required=False)
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Grupo', required=False)
+
+    class Meta(UserCreationForm.Meta):
+        # Asegurarse de que el modelo sea User
+        model = User
+        fields = UserCreationForm.Meta.fields + ('group',)  # Agregar el nuevo campo al formulario
+
+    def clean_username(self):
+        username = self.cleaned_data['username'].lower()
+        new = User.objects.filter(username=username)
+        if new.count():
+            raise forms.ValidationError("El Usuario ya Existe")
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("El Correo ya Existe")
+        return email
+
+    def clean_password2(self):
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Las Contraseñas no Coinciden")
+        return password2
+
+    def save(self, commit=True):
+        username = self.cleaned_data['username']  # Obtener el nombre de usuario
+        email = self.cleaned_data['email']
+        password = self.cleaned_data['password1']
+        user = User.objects.create_user(username=username, email=email, password=password)
+        register = Register.objects.create(usuario=username, activo=False)  # Pasar el nombre de usuario
+        register.save()
+        return user

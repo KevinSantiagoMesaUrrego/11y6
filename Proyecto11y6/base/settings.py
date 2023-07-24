@@ -61,8 +61,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_dump_die.middleware.DumpAndDieMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',  # Asegúrate de tener esta línea en tus middlewares
+    'django.middleware.common.CommonMiddleware',
 ]
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 ROOT_URLCONF = 'base.urls'
 
 TEMPLATES = [
