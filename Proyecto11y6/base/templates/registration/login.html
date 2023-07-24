@@ -15,11 +15,11 @@
                                     </div>
                                     <form method="post">
                                         {% csrf_token %}
-                                        <p>Por favor ingrese su Usuario:</p>
+                                        <p>Por favor ingrese sus datos:</p>
                                         <div class="form-outline mb-4">
                                             <input type="text" name="{{ form.username.name }}" id="form2Example11"
                                                    class="form-control"
-                                                   placeholder="Ingrese su Usuario"/>
+                                                   placeholder="Usuario"/>
                                             <label class="form-label" for="form2Example11"></label>
                                             {% if form.username.errors %}
                                                 <div class="alert alert-danger" role="alert">
@@ -46,9 +46,9 @@
 
                                         <div><a class="d-flex align-items-center justify-content-center pb-1"
                                                 href="{% url 'password_reset' %}" data-bs-toggle="tooltip"
-                                                data-bs-title="Recuperar contraseña">Olvide contraseña?</a>
+                                                data-bs-title="Recuperar contraseña">Recuperar contraseña?</a>
                                             <a href="account-register" data-bs-toggle="tooltip"
-                                               data-bs-title="Registrar"><p class="mb-0 me-2">No estoy Registrado?</p>
+                                               data-bs-title="Registrar"><p class="mb-0 me-2">Resgistrarse?</p>
                                             </a>
                                             <a href="{% url 'help' %}"><p class="mb-0 me-2" data-bs-toggle="tooltip"
                                                                           data-bs-title="Manual"><abbr
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 d-flex align-items-center justify-content-center gradient-custom-2">
-                                <img src="static/img/logo11y6.png"
+                                <img src="/static/img/logo11y6.png"
                                      style="width: 300px;" alt="logo">
                             </div>
                         </div>
