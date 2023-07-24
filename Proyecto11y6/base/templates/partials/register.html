@@ -1,26 +1,54 @@
 {% extends 'partials/register-body.html' %}
 {% load crispy_forms_tags %}
 {% block contenido %}
+
     <link rel="stylesheet" href="/static/css/style.css">
     <section class="h-125 gradient-form4 ">
         <div class="card glass-card">
             <div class="form-container ">
                 <h2>Registro de usuario</h2>
-                <form method="post">
+                <!-- register.html -->
+                <form method="post" class="row g-3 custom-form">
                     {% csrf_token %}
-                    <table>
-                       {{ form.as_p }}
-                        <tr>
-                            <td>
-                                <a href="/" class="btn  color_dorado">Volver</a>
-                                <input type="submit" class="btn  color_dorado" name="submit" value="Registrar"/>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.username|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.email|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.password1|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.password2|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.group|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="btn-container">
+                            <a href="/" class="btn color_dorado">Volver</a>
+                            <input type="submit" class="btn color_dorado" name="submit" value="Registrar"/>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 {% endblock %}
-
