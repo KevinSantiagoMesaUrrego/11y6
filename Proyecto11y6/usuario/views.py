@@ -25,6 +25,7 @@ def persona_crear(request):
         "form":form
         }
     return render(request,"usuarios/persona/crear.html", context)
+
 @login_required
 def persona_listar(request):
     titulo="Persona"

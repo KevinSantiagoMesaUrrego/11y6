@@ -3,8 +3,8 @@ from usuario.models import Persona, Eps, Turno, Trabajador
 from venta.models import Venta,Detalle_venta, Reserva, Ubicacion
 from compra.models import Compra, Detalle_compra, Evento, Proveedor
 from inventario.models import Presentacion, Marca, ConsumoTrabajador, Producto, UnidadMedida
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 @login_required
 def principal(request):
 

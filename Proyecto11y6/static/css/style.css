@@ -137,5 +137,17 @@ div.card.glass-card {
   .tamaño_login{
   height: 100%;
   }
+  .alert-custom {
+    position: fixed;
+    top: 50%;
+    right: 20px; /* Ajustar la posición a la derecha según tus necesidades */
+    transform: translateY(-50%);
+    z-index: 9999; /* Asegurarse de que la alerta esté en la parte superior */
+    padding: 15px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
 
