@@ -204,3 +204,6 @@ div.card.glass-card {
         max-width: 500px; /* Ajusta este valor para cambiar el ancho máximo del formulario */
         margin: 0 auto; /* Centra el formulario horizontalmente */
     }
+    .bloquear{
+        position: static;
+    }

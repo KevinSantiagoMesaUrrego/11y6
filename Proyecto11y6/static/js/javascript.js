@@ -61,11 +61,7 @@
             color: '#fff',
             useEmojis: false,
             img: "accessible",
-            position: {
-                bottom: { size: 2, units: 'vh' },
-                right: { size: 2, units: '%' },
-                type: 'absolute'
-            }
+
         },
     };
     options.textToSpeechLang = 'es-ES';
