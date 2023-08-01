@@ -5,9 +5,12 @@ from usuario.models import Turno
 from usuario.models import Trabajador
 from usuario.forms import PersonaForm,PersonaUpdateForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+
+
 # Create your views here.
 @login_required
+@permission_required("usuario.add_persona", login_url="index")
 def persona_crear(request):
     titulo="Persona"
     if request.method== 'POST':
@@ -27,6 +30,7 @@ def persona_crear(request):
     return render(request,"usuarios/persona/crear.html", context)
 
 @login_required
+@permission_required("usuario.view_persona", login_url="index")
 def persona_listar(request):
     titulo="Persona"
     modulo="Usuarios"
@@ -38,6 +42,7 @@ def persona_listar(request):
     }
     return render(request,"usuarios/persona/listar.html", context)
 @login_required
+@permission_required("usuario.change_persona", login_url="index")
 def persona_modificar(request,pk):
     titulo="Persona"
     persona= Persona.objects.get(id=pk)
@@ -55,6 +60,7 @@ def persona_modificar(request,pk):
         }
     return render(request,"usuarios/persona/modificar.html", context)
 @login_required
+@permission_required("usuario.delete_persona", login_url="index")
 def persona_eliminar(request,pk):
     persona= Persona.objects.filter(id=pk)
     persona.update(
@@ -66,6 +72,7 @@ def persona_eliminar(request,pk):
 
 #views de tabla eps
 @login_required
+@permission_required("usuario.add_eps", login_url="index")
 def eps_crear(request):
     titulo="Eps"
     if request.method== 'POST':
@@ -84,6 +91,7 @@ def eps_crear(request):
         }
     return render(request,"usuarios/eps/crear.html", context)
 @login_required
+@permission_required("usuario.view_eps", login_url="index")
 def eps_listar(request):
     titulo="Eps"
     modulo="Usuarios"
@@ -95,6 +103,7 @@ def eps_listar(request):
     }
     return render(request,"usuarios/eps/listar.html", context)
 @login_required
+@permission_required("usuario.change_eps", login_url="index")
 def eps_modificar(request,pk):
     titulo="Eps"
     eps= Eps.objects.get(id=pk)
@@ -112,6 +121,7 @@ def eps_modificar(request,pk):
         }
     return render(request,"usuarios/eps/modificar.html", context)
 @login_required
+@permission_required("usuario.delete_eps", login_url="index")
 def eps_eliminar(request,pk):
     eps= Eps.objects.filter(id=pk)
     eps.update(
@@ -122,6 +132,7 @@ def eps_eliminar(request,pk):
 
 #views de tabla turno
 @login_required
+@permission_required("usuario.add_turno", login_url="index")
 def turno_crear(request):
     titulo="Turno"
     if request.method== 'POST':
@@ -140,6 +151,7 @@ def turno_crear(request):
         }
     return render(request,"usuarios/turno/crear.html", context)
 @login_required
+@permission_required("usuario.view_turno", login_url="index")
 def turno_listar(request):
     titulo="Turno"
     modulo="Usuarios"
@@ -151,6 +163,7 @@ def turno_listar(request):
     }
     return render(request,"usuarios/turno/listar.html", context)
 @login_required
+@permission_required("usuario.change_turno", login_url="index")
 def turno_modificar(request,pk):
     titulo="Turno"
     turno= Turno.objects.get(id=pk)
@@ -168,6 +181,7 @@ def turno_modificar(request,pk):
         }
     return render(request,"usuarios/turno/modificar.html", context)
 @login_required
+@permission_required("usuario.delete_turno", login_url="index")
 def turno_eliminar(request,pk):
     turno= Turno.objects.filter(id=pk)
     turno.update(
@@ -178,6 +192,7 @@ def turno_eliminar(request,pk):
 
 #views de tabla trabajador
 @login_required
+@permission_required("usuario.add_trabajador", login_url="index")
 def trabajador_crear(request):
     titulo="Trabajador"
     if request.method== 'POST':
@@ -196,6 +211,7 @@ def trabajador_crear(request):
         }
     return render(request,"usuarios/trabajador/crear.html", context)
 @login_required
+@permission_required("usuario.view_trabajador", login_url="index")
 def trabajador_listar(request):
     titulo="Trabajador"
     modulo="Usuarios"
@@ -207,6 +223,7 @@ def trabajador_listar(request):
     }
     return render(request,"usuarios/trabajador/listar.html", context)
 @login_required
+@permission_required("usuario.change_trabajador", login_url="index")
 def trabajador_modificar(request,pk):
     titulo="Trabajador"
     trabajador= Trabajador.objects.get(id=pk)
@@ -224,6 +241,7 @@ def trabajador_modificar(request,pk):
         }
     return render(request,"usuarios/trabajador/modificar.html", context)
 @login_required
+@permission_required("usuario.delete_trabajador", login_url="index")
 def trabajador_eliminar(request,pk):
     trabajador= Trabajador.objects.filter(id=pk)
     trabajador.update(

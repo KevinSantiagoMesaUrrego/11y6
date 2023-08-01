@@ -1,143 +1,160 @@
-.tamaño_logo{
+.tamaño_logo {
     width: 50px;
 }
-.color_negro{
-    background-color:#000000;
 
-}.color_negro_header{
-    background-color:#000000 !important;
+.color_negro {
+    background-color: #000000;
 
 }
-.color_dorado{
-    background-color:#E89E2E;
+
+.color_negro_header {
+    background-color: #000000 !important;
+
+}
+
+.color_dorado {
+    background-color: #E89E2E;
     color: #000000;
 }
-.color_dorado:hover{
-    background-color:#ffffff;
+
+.color_dorado:hover {
+    background-color: #ffffff;
     color: #000000;
 }
 
-.color_plata{
-    background-color:#F2F3F7;
-}
-.color_verde{
-    background-color:#3F6C51;
-}
-.color_rojo{
-    background-color:#C03221;
+.color_plata {
+    background-color: #F2F3F7;
 }
 
-.color_toggle{
+.color_verde {
+    background-color: #3F6C51;
+}
+
+.color_rojo {
+    background-color: #C03221;
+}
+
+.color_toggle {
     background-color: #E89E2E;
 }
-.ancho_imagen{
+
+.ancho_imagen {
     width: 90%;
 }
 
-.color_blanco{
-    color:#ffffff;
-}
-.color_blanco_footer{
-    color:#ffffff !important;
+.color_blanco {
+    color: #ffffff;
 }
 
-.color_blanco:hover{
-    color:#ffffff;
+.color_blanco_footer {
+    color: #ffffff !important;
+}
+
+.color_blanco:hover {
+    color: #ffffff;
 }
 
 .gradient-form {
-    background-image: url('/static/img/462280.jpg');
     background-size: contain;
 }
+
 html, body {
-    height: 100%;
-  }
-  
-  .wrapper {
+    background-image: url('/static/img/462280.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.wrapper {
     min-height: 100%;
     /* Opcional: agrega margen inferior para separar el contenido del footer */
     margin-bottom: 60px; /* Ajusta el valor según sea necesario */
-  }
-  
-  .footer {
-    padding: 20px;
-  }
-  .table-responsive {
-      overflow: auto;
-  }
-  .table {
-      max-width: 100%;
-  }
+}
 
-  .gradient-form-body{
-      background-image: url("/static/img/tipos-de-abares.jpg");
-      background-size: cover;
-  }
+.footer {
+    padding: 20px;
+}
+
+.table-responsive {
+    overflow: auto;
+}
+
+.table {
+    max-width: 100%;
+}
+
+.gradient-form-body {
+    background-image: url("/static/img/tipos-de-abares.jpg");
+    background-size: cover;
+}
 
 
 .pdf-container {
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .pdf-iframe {
+.pdf-iframe {
     width: 1200px;
     height: 950px;
-  }
+}
 
-  .centered-button {
+.centered-button {
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+}
 
 div.card.glass-card {
     --bs-card-bg: #ffffffa1 !important;
 }
+
 .gradient-form3 {
-       background-image: url('/static/img/462280.jpg');
+    background-image: url('/static/img/462280.jpg');
     height: 665px;
     background-size: cover;
     background-position: center;
 
 }
+
 .container {
-    background-image: url('static/img/logo11y6.png');
     background-size: cover;
     background-position: center;
     padding: 20px;
 }
+
 .custom-img {
-    width: 100px;  /* Ajusta el ancho de la imagen según tus necesidades */
+    width: 100px; /* Ajusta el ancho de la imagen según tus necesidades */
     height: 100px; /* Permite que la altura se ajuste automáticamente para mantener la proporción de aspecto */
 }
-    .gradient-form4 {
-        background-image: url('/static/img/462280.jpg');
-        height: 665px;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
- .form-container {
-        margin: 20px;
-    }
-  .background-image {
+
+.gradient-form4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    margin: 20px;
+}
+
+.background-image {
     background-image: url('/static/img/462280.jpg'); /* Reemplaza '/static/img/fondo.jpg' con la URL de tu imagen de fondo */
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
-  }
+}
 
-  .sectionGlass {
+.sectionGlass {
     display: grid;
     place-items: center;
 }
 
-  .tamaño_login{
-  height: 100%;
-  }
-  .alert-custom {
+.tamaño_login {
+    height: 100%;
+}
+
+.alert-custom {
     position: fixed;
     top: 50%;
     right: 20px; /* Ajustar la posición a la derecha según tus necesidades */
@@ -150,4 +167,40 @@ div.card.glass-card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+    /* Estilos para los campos de entrada */
+    .custom-form input[type="text"],
+    .custom-form input[type="email"],
+    .custom-form input[type="password"],
+    .custom-form select {
+        width: 100%;
+        max-width: 300px; /* Ajusta este valor para cambiar el tamaño máximo de los inputs */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    }
 
+    /* Estilos para las alertas de error */
+    .alert {
+        margin-top: 5px;
+    }
+
+    /* Estilos para los botones */
+    .btn-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column; /* Coloca los botones uno debajo del otro */
+    }
+
+    .btn-container .btn {
+        width: 100%;
+        padding: 6px 12px; /* Ajusta estos valores para cambiar el tamaño de los botones */
+        margin-bottom: 5px; /* Espacio entre los botones */
+    }
+
+    /* Estilos para el formulario */
+    .custom-form {
+        max-width: 500px; /* Ajusta este valor para cambiar el ancho máximo del formulario */
+        margin: 0 auto; /* Centra el formulario horizontalmente */
+    }

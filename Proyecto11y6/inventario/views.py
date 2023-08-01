@@ -2,11 +2,14 @@ from django.shortcuts import render,redirect
 from inventario.models import Producto,Marca,Presentacion,UnidadMedida,ConsumoTrabajador
 from inventario.forms import Productoform,ProductoUpdateForm,Marcaform,MarcaUpdateForm,Presentacionform,PresentacionUpdateForm,UnidadMedidaform,UnidadMedidaUpdateForm,ConsumoTrabjadorform,ConsumoTrabajadorUpdateForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+
+
 # Create your views here.
 
 #PRODUCTO
 @login_required
+@permission_required("inventario.add_producto", login_url="index")
 def producto_crear (request):
     titulo="Producto"
     if request.method=='POST':
@@ -25,6 +28,7 @@ def producto_crear (request):
     }
     return render(request,"inventarios/producto/crear.html",context)
 @login_required
+@permission_required("inventario.view_producto", login_url="index")
 def producto_listar(request):
     titulo="Producto"
     modulo="inventarios"
@@ -36,6 +40,7 @@ def producto_listar(request):
     }
     return render(request,"inventarios/producto/listar.html",context)
 @login_required
+@permission_required("inventario.change_producto", login_url="index")
 def producto_modificar(request,pk):
     titulo="Producto"
     producto=Producto.objects.get(id=pk)
@@ -53,6 +58,7 @@ def producto_modificar(request,pk):
         }
     return render(request,"inventarios/producto/modificar.html", context)
 @login_required
+@permission_required("inventario.delete_producto", login_url="index")
 def producto_eliminar(request,pk):
     producto= Producto.objects.filter(id=pk)
     producto.delete()
@@ -63,6 +69,7 @@ def producto_eliminar(request,pk):
 
 #MARCA
 @login_required
+@permission_required("inventario.add_marca", login_url="index")
 def marca_crear (request):
     titulo="Marca"
     if request.method=='POST':
@@ -82,6 +89,7 @@ def marca_crear (request):
     }
     return render(request,"inventarios/marca/crear.html",context)
 @login_required
+@permission_required("inventario.view_marca", login_url="index")
 def marca_listar(request):
     titulo="Marca"
     modulo="inventarios"
@@ -93,6 +101,7 @@ def marca_listar(request):
     }
     return render(request,"inventarios/marca/listar.html",context)
 @login_required
+@permission_required("inventario.change_marca", login_url="index")
 def marca_modificar(request,pk):
     titulo="Marca"
     marca=Marca.objects.get(id=pk)
@@ -110,6 +119,7 @@ def marca_modificar(request,pk):
         }
     return render(request,"inventarios/marca/modificar.html", context)
 @login_required
+@permission_required("inventario.delete_marca", login_url="index")
 def marca_eliminar(request,pk):
     marca= Marca.objects.filter(id=pk)
     marca.delete()
@@ -120,6 +130,7 @@ def marca_eliminar(request,pk):
 
 #PRESENTACION
 @login_required
+@permission_required("inventario.add_presentacion", login_url="index")
 def presentacion_crear (request):
     titulo="Presentacion"
     if request.method=='POST':
@@ -138,6 +149,7 @@ def presentacion_crear (request):
     }
     return render(request,"inventarios/presentacion/crear.html",context)
 @login_required
+@permission_required("inventario.view_presentacion", login_url="index")
 def presentacion_listar(request):
     titulo="Presentacion"
     modulo="inventarios"
@@ -149,6 +161,7 @@ def presentacion_listar(request):
     }
     return render(request,"inventarios/presentacion/listar.html",context)
 @login_required
+@permission_required("inventario.change_presentacion", login_url="index")
 def presentacion_modificar(request,pk):
     titulo="Presentacion"
     presentacion=Presentacion.objects.get(id=pk)
@@ -166,6 +179,7 @@ def presentacion_modificar(request,pk):
         }
     return render(request,"inventarios/presentacion/modificar.html", context)
 @login_required
+@permission_required("inventario.delete_presentacion", login_url="index")
 def presentacion_eliminar(request,pk):
     presentacion= Presentacion.objects.filter(id=pk)
     presentacion.delete()
@@ -176,6 +190,7 @@ def presentacion_eliminar(request,pk):
 
 #UNIDADMEDIDA
 @login_required
+@permission_required("inventario.add_unidad_medida", login_url="index")
 def unidadmedida_crear (request):
     titulo="Unidad Medida"
     if request.method=='POST':
@@ -194,6 +209,7 @@ def unidadmedida_crear (request):
         }
     return render(request,"inventarios/unidad_medida/crear.html",context)
 @login_required
+@permission_required("inventario.view_unidad_medida", login_url="index")
 def unidadmedida_listar(request):
     titulo="Unidad Medida"
     modulo="inventarios"
@@ -205,6 +221,7 @@ def unidadmedida_listar(request):
     }
     return render(request,"inventarios/unidad_medida/listar.html",context)
 @login_required
+@permission_required("inventario.change_unidad_medida", login_url="index")
 def unidadmedida_modificar(request,pk):
     titulo="Unidad Medida"
     unidadmedida=UnidadMedida.objects.get(id=pk)
@@ -222,6 +239,7 @@ def unidadmedida_modificar(request,pk):
         }
     return render(request,"inventarios/unidad_medida/modificar.html", context)
 @login_required
+@permission_required("inventario.delete_unidad_medida", login_url="index")
 def unidadmedida_eliminar(request,pk):
     unidadmedida= UnidadMedida.objects.filter(id=pk)
     unidadmedida.delete()
@@ -232,6 +250,7 @@ def unidadmedida_eliminar(request,pk):
 
 #CONSUMOTRABAJADOR
 @login_required
+@permission_required("inventario.add_consumo_trabajador", login_url="index")
 def consumotrabajador_crear (request):
     titulo="Consumo Trabajador"
     if request.method=='POST':
@@ -250,6 +269,7 @@ def consumotrabajador_crear (request):
         }
     return render(request,"inventarios/consumo_trabajador/crear.html",context)
 @login_required
+@permission_required("inventario.view_consumo_trabajador", login_url="index")
 def consumotrabajador_listar(request):
     titulo="Consumo Trabajador"
     modulo="inventarios"
@@ -261,6 +281,7 @@ def consumotrabajador_listar(request):
     }
     return render(request,"inventarios/consumo_trabajador/listar.html",context)
 @login_required
+@permission_required("inventario.change_consumo_trabajador", login_url="index")
 def consumotrabajador_modificar(request,pk):
     titulo="Consumo Trabajador"
     consumotrabajador=ConsumoTrabajador.objects.get(id=pk)
@@ -278,6 +299,7 @@ def consumotrabajador_modificar(request,pk):
         }
     return render(request,"inventarios/consumo_trabajador/modificar.html", context)
 @login_required
+@permission_required("inventario.delete_consumo_trabajador", login_url="index")
 def consumotrabajador_eliminar(request,pk):
     consumotrabajador= ConsumoTrabajador.objects.filter(id=pk)
     consumotrabajador.delete()

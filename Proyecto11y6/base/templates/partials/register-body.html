@@ -2,29 +2,29 @@
 {% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% bootstrap_css %} {% bootstrap_javascript %}
     <script
-      src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"
+            src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"
     ></script>
     <!-- Incluye el plugin slick -->
     <!-- Libreria sweetalert2 no borrar-->
     <!-- DataTables no borrar de aqui para abajo-->
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}"><link rel="stylesheet" href="{% static '/node_modules/datatables.net-responsive/css/responsive.bootstrap4.min.css' %}">
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}">
-
+    <link rel="stylesheet"
+          href="{% static '/node_modules/datatables.net-responsive/css/responsive.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <title>11y6 - Cafe-bar</title>
-  </head>
-  <body>
+</head>
+<body>
 
-      <div class="row g-5">{% block contenido %} {% endblock contenido %}</div>
+<div class="row">{% block contenido %} {% endblock contenido %}</div>
 
-    {% include 'partials/modal.html' %}
+{% include 'partials/modal.html' %}
 
 
-
-  </body>
+</body>
 </html>

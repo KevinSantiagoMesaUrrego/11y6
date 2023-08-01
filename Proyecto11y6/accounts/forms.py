@@ -5,12 +5,12 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Register
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Usuario', min_length=5, max_length=150)
-    email = forms.EmailField(label='Correo')
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput)
+    username = forms.CharField(label='Usuario', min_length=5, max_length=150, widget=forms.TextInput(attrs={'class': 'custom-input', 'placeholder':'Nombre de Usuario'}))
+    email = forms.EmailField(label='Correo', widget=forms.EmailInput(attrs={'class': 'custom-input','placeholder':'Correo Electronico'}))
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(attrs={'class': 'custom-input','placeholder':'Contraseña'}))
+    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(attrs={'class': 'custom-input','placeholder':'Confirmar Contraseña'}))
     activo = forms.BooleanField(initial=False, widget=forms.HiddenInput, required=False)
-    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Grupo', required=False)
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Rol', required=False )
 
     class Meta(UserCreationForm.Meta):
         # Asegurarse de que el modelo sea User

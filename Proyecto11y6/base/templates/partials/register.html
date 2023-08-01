@@ -1,26 +1,76 @@
 {% extends 'partials/register-body.html' %}
-{% load crispy_forms_tags %}
+{% load i18n %}
 {% block contenido %}
-    <link rel="stylesheet" href="/static/css/style.css">
-    <section class="h-125 gradient-form4 ">
-        <div class="card glass-card">
-            <div class="form-container ">
-                <h2>Registro de usuario</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    <table>
-                       {{ form.as_p }}
-                        <tr>
-                            <td>
-                                <a href="/" class="btn  color_dorado">Volver</a>
-                                <input type="submit" class="btn  color_dorado" name="submit" value="Registrar"/>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
 
+    <link rel="stylesheet" href="/static/css/style.css">
+    <section class="gradient-form4 mt-4 row justify-content-center">
+        <div class="card glass-card col-lg-8">
+            <div class="form-container">
+                <div class="col-lg-12 text-center mb-4">
+                    {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong> Los siguientes campos tienen errores. <br>
+                            {% for key, value in form.errors.items %}
+                                {% if key == "password2" %}
+                                    <strong>Contraseña: </strong>{{ value|striptags }}<br>
+                                {% else %}
+                                    <strong>{% trans key as input %} {{ input|title }} </strong>: {{ value|striptags }}<br>
+                                {% endif %}
+                            {% endfor %}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                        </div>
+                    {% endif %}
+                </div>
+                <h2 class="text-center mb-4">Registro de usuario</h2>
+                <!-- register.html -->
+                <form method="post" class="row g-3 custom-form">
+                    {% csrf_token %}
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.password1.label_tag }}
+                            {{ form.password1 }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.password2.label_tag }}
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.group.label_tag }}
+                            {{ form.group }}
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center pt-1 mb-5 pb-1">
+                        <div class="btn-container text-center">
+                            <a href="/" class="btn color_dorado">Volver</a>
+                            <input type="submit" class="btn color_dorado" name="submit" value="Registrar"/>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 {% endblock %}
-
