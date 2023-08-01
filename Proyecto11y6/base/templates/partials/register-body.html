@@ -13,16 +13,15 @@
     <!-- Incluye el plugin slick -->
     <!-- Libreria sweetalert2 no borrar-->
     <!-- DataTables no borrar de aqui para abajo-->
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
     <link rel="stylesheet"
           href="{% static '/node_modules/datatables.net-responsive/css/responsive.bootstrap4.min.css' %}">
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <title>11y6 - Cafe-bar</title>
 </head>
 <body>
 
-<div class="row g-5">{% block contenido %} {% endblock contenido %}</div>
+<div class="row">{% block contenido %} {% endblock contenido %}</div>
 
 {% include 'partials/modal.html' %}
 

@@ -55,12 +55,14 @@
 }
 
 .gradient-form {
-    background-image: url('/static/img/462280.jpg');
     background-size: contain;
 }
 
 html, body {
-    height: 100%;
+    background-image: url('/static/img/462280.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 .wrapper {
@@ -116,7 +118,6 @@ div.card.glass-card {
 }
 
 .container {
-    background-image: url('static/img/logo11y6.png');
     background-size: cover;
     background-position: center;
     padding: 20px;
@@ -128,10 +129,6 @@ div.card.glass-card {
 }
 
 .gradient-form4 {
-    background-image: url('/static/img/462280.jpg');
-    height: 665px;
-    background-size: cover;
-    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,12 +202,5 @@ div.card.glass-card {
     /* Estilos para el formulario */
     .custom-form {
         max-width: 500px; /* Ajusta este valor para cambiar el ancho máximo del formulario */
-        margin: 0 auto; /* Centra el formulario horizontalmente */
+        margin: 0 auto; /* Centra el formulario horizontalmente */
     }
-
-
-
-
-
-
-
