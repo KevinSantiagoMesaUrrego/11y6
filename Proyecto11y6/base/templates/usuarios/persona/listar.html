@@ -51,17 +51,12 @@
                                             {% for persona in personas %} {% if persona.estado != "0" %}
 
                                                 <tr>
-                                                    <td>{{ persona.id }}</td>
-                                                    <td>{{ persona.nombre }}</td>
-                                                    <td>{{ persona.apellido }}</td>
-                                                    <td>{{ persona.get_tipo_documento_display }}</td>
-                                                    <td>{{ persona.documento }}</td>
-                                                    <td>{{ persona.get_rol_display }}</td>
-                                                    <td>{{ persona.direccion }}</td>
-                                                    <td>{{ persona.correo }}</td>
-                                                    <td>{{ persona.usuario }}</td>
-                                                    <td>{{ persona.contrasena }}</td>
-                                                    <td>{{ persona.salario }}</td>
+                                                    <td>{{ user.id }}</td>
+                                                    <td>{{ user.username }}</td>
+                                                    <td>{{ user.email }}</td>
+                                                    <td>{{ user.password }}</td>
+                                                    <td>{{ user.group }}</td>
+
                                                     <td>{{ persona.get_estado_display }}</td>
                                                     <td>
                                                         <button type="button" onclick="changeURL('{{ persona.id }}')"
