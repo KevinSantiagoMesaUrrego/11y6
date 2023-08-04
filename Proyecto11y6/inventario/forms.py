@@ -1,69 +1,131 @@
 from django import forms
 from django.forms import ModelForm
-from inventario.models import Producto,Marca,Presentacion,UnidadMedida,ConsumoTrabajador
+from inventario.models import Producto, Marca, Presentacion, UnidadMedida, ConsumoTrabajador
 
-#PRODUCTO
+
+# PRODUCTO
 
 class Productoform(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=Producto
-        fields="__all__"
-        exclude=('estado',)
+        model = Producto
+        fields = "__all__"
+        exclude = ('estado',)
+
+
 class ProductoUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=Producto
-        fields="__all__"
-        exclude=('estado',)
-#MARCA
+        model = Producto
+        fields = "__all__"
+        exclude = ('estado',)
+
+
+# MARCA
 
 class Marcaform(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=Marca
-        fields="__all__"
-        exclude=('estado',)
+        model = Marca
+        fields = "__all__"
+        exclude = ('estado',)
+
 
 class MarcaUpdateForm(ModelForm):
-    class Meta:
-        model=Marca
-        fields="__all__"
-        exclude=('estado',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
 
-#PRESENTACION
+    class Meta:
+        model = Marca
+        fields = "__all__"
+        exclude = ('estado',)
+
+
+# PRESENTACION
 
 class Presentacionform(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=Presentacion
-        fields="__all__"
-        exclude=('estado',)
+        model = Presentacion
+        fields = "__all__"
+        exclude = ('estado',)
+
 
 class PresentacionUpdateForm(ModelForm):
-    class Meta:
-        model=Presentacion
-        fields="__all__"
-        exclude=('estado',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
 
-#UNIDADMEDIDA
+    class Meta:
+        model = Presentacion
+        fields = "__all__"
+        exclude = ('estado',)
+
+
+# UNIDADMEDIDA
 
 class UnidadMedidaform(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=UnidadMedida
-        fields="__all__"
-        exclude=('estado',)
+        model = UnidadMedida
+        fields = "__all__"
+        exclude = ('estado',)
+
 
 class UnidadMedidaUpdateForm(ModelForm):
-    class Meta:
-        model=UnidadMedida
-        fields="__all__"
-        exclude=('estado',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
 
-#CONSUMOTRABJADOR
+    class Meta:
+        model = UnidadMedida
+        fields = "__all__"
+        exclude = ('estado',)
+
+
+# CONSUMOTRABJADOR
 
 class ConsumoTrabjadorform(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=ConsumoTrabajador
-        fields="__all__"
+        model = ConsumoTrabajador
+        fields = "__all__"
+
 
 class ConsumoTrabajadorUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
-        model=ConsumoTrabajador
-        fields="__all__"
+        model = ConsumoTrabajador
+        fields = "__all__"

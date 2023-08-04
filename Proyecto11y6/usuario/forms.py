@@ -8,8 +8,7 @@ class PersonaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
-            # visible.field.widget.attrs['placeholder'] = visible.field.label
+            visible.field.widget.attrs['class'] = 'form-control small-input'
 
     class Meta:
         model = Persona
@@ -18,6 +17,11 @@ class PersonaForm(forms.ModelForm):
 
 
 class PersonaUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Persona
         fields = "__all__"
@@ -25,6 +29,11 @@ class PersonaUpdateForm(ModelForm):
 
 
 class EpsForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Eps
         fields = "__all__"
@@ -32,6 +41,11 @@ class EpsForm(ModelForm):
 
 
 class EpsUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Eps
         fields = "__all__"
@@ -39,6 +53,11 @@ class EpsUpdateForm(ModelForm):
 
 
 class TurnoForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Turno
         fields = "__all__"
@@ -50,6 +69,11 @@ class TurnoForm(ModelForm):
 
 
 class TurnoUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Turno
         fields = "__all__"
@@ -61,6 +85,11 @@ class TurnoUpdateForm(ModelForm):
 
 
 class TrabajadorForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Trabajador
         fields = "__all__"
@@ -70,6 +99,11 @@ class TrabajadorForm(ModelForm):
 
 
 class TrabajadorUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
+
     class Meta:
         model = Trabajador
         fields = "__all__"

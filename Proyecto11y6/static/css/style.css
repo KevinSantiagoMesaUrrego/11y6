@@ -167,43 +167,50 @@ div.card.glass-card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-    /* Estilos para los campos de entrada */
-    .custom-form input[type="text"],
-    .custom-form input[type="email"],
-    .custom-form input[type="password"],
-    .custom-form select {
-        width: 100%;
-        max-width: 300px; /* Ajusta este valor para cambiar el tamaño máximo de los inputs */
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-bottom: 10px;
-        box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    }
+/* Estilos para los campos de entrada */
+.custom-form input[type="text"],
+.custom-form input[type="email"],
+.custom-form input[type="password"],
+.custom-form select {
+    width: 100%;
+    max-width: 300px; /* Ajusta este valor para cambiar el tamaño máximo de los inputs */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
 
-    /* Estilos para las alertas de error */
-    .alert {
-        margin-top: 5px;
-    }
+/* Estilos para las alertas de error */
+.alert {
+    margin-top: 5px;
+}
 
-    /* Estilos para los botones */
-    .btn-container {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column; /* Coloca los botones uno debajo del otro */
-    }
+/* Estilos para los botones */
+.btn-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Coloca los botones uno debajo del otro */
+}
 
-    .btn-container .btn {
-        width: 100%;
-        padding: 6px 12px; /* Ajusta estos valores para cambiar el tamaño de los botones */
-        margin-bottom: 5px; /* Espacio entre los botones */
-    }
+.btn-container .btn {
+    width: 100%;
+    padding: 6px 12px; /* Ajusta estos valores para cambiar el tamaño de los botones */
+    margin-bottom: 5px; /* Espacio entre los botones */
+}
 
-    /* Estilos para el formulario */
-    .custom-form {
-        max-width: 500px; /* Ajusta este valor para cambiar el ancho máximo del formulario */
-        margin: 0 auto; /* Centra el formulario horizontalmente */
-    }
-    .bloquear{
-        position: static;
-    }
+/* Estilos para el formulario */
+.custom-form {
+    max-width: 500px; /* Ajusta este valor para cambiar el ancho máximo del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+}
+
+.bloquear {
+    position: static;
+}
+
+.small-input {
+    width: 300px; /* Ajusta el ancho a tu preferencia */
+    display: flex;
+    justify-content: center;
+}
