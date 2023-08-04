@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(attrs={'class': 'custom-input','placeholder':'Contraseña'}))
     password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(attrs={'class': 'custom-input','placeholder':'Confirmar Contraseña'}))
     activo = forms.BooleanField(initial=False, widget=forms.HiddenInput, required=False)
-    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Rol', required=False )
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Rol', required=True )
 
     class Meta(UserCreationForm.Meta):
         # Asegurarse de que el modelo sea User

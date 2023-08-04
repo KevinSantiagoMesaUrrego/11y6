@@ -2,55 +2,58 @@
 {% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.css' %}">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static '/node_modules/bootstrap/dist/css/bootstrap.css' %}">
     <script
-      src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
+            src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
     <!-- Incluye el plugin slick -->
     <!-- Libreria sweetalert2 no borrar-->
     <link rel="stylesheet" href="{% static '/node_modules/sweetalert2/dist/sweetalert2.min.css' %}">
     <!-- DataTables no borrar de aqui para abajo-->
     <link rel="stylesheet" href="{% static '/node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}">
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css ' %}">
-    <link rel="stylesheet" href="{% static '/node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static '/node_modules/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css ' %}">
+    <link rel="stylesheet"
+          href="{% static '/node_modules/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' %}">
+    <title>11y6 Cafe-bar</title>
+</head>
 
-    <title>11y6  Cafe-bar</title>
-  </head>
-
-  <body>
-    <section class="h-125 gradient-form">
-      {% include 'partials/header.html' %}
+<body>
+<section class="h-125 gradient-form">
+    {% include 'partials/header.html' %}
     <div class="container wrapper">
-      <div class="row g-5">{% block contenido %} {% endblock contenido %}
-      </div>
+        <div class="row g-5">{% block contenido %} {% endblock contenido %}
+        </div>
     </div>
-    {% include 'partials/modal.html' %}  
+    {% include 'partials/modal.html' %}
     {% include 'partials/footer.html' %}
     {% if messages %}
-    {% for message in messages %}
-    
-        <script class="bloquear">
-            Swal.fire(
-                {position: 'top-end',
-            toast: true,
-            showConfirmButton: false,
-            timer:10000,
-            timerProgressBar: true,
-            background: '#fffff',        
-            icon:'{{ message.tags }}',
-            text:'{{ message }}',
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }        });
-        </script>
-    {% endfor %}
-{% endif %}
+        {% for message in messages %}
+
+            <script class="bloquear">
+                Swal.fire(
+                    {
+                        position: 'top-end',
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        background: '#fffff',
+                        icon: '{{ message.tags }}',
+                        text: '{{ message }}',
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+            </script>
+        {% endfor %}
+    {% endif %}
 </section>
-  <script src="/static/js/javascript.js"></script>
-  </body> 
-  
+<script src="/static/js/javascript.js"></script>
+</body>
+
 </html>
