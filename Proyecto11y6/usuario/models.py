@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+
 #Create your models here.
 
 class Persona(models.Model):
@@ -59,12 +60,17 @@ class Turno(models.Model):
 class Trabajador(models.Model):
     nombre= models.CharField(max_length=45,verbose_name="Nombre:")
     apellido= models.CharField(max_length=45,verbose_name="Apellido:")
-    documento=models.IntegerField(max_length=10,verbose_name="Documento:")
+    documento=models.IntegerField(verbose_name="Documento:")
     telefono=models.CharField(max_length=10,verbose_name="Telefono")
     correo=models.CharField(max_length=45,verbose_name="Correo electronico:")
     direccion=models.CharField(max_length=45,verbose_name="Dirección:")
     usuario=models.CharField(max_length=45,verbose_name="Usuario:")
     contrasena=models.CharField(max_length=45,verbose_name="Contraseña:")
+
+    def __str__(self):
+        return "%s" % (self.nombre)
+
+
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
         INACTIVO='0',_("Inactivo")

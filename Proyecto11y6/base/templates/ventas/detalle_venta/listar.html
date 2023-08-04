@@ -32,6 +32,7 @@
                                     <table id="example1" class="table table-bordered table-striped table-dark">
                                         <thead>
                                         <tr>
+                                            <th>Producto</th>
                                             <th>Cantidad Producto</th>
                                             <th>valor Total</th>
                                             <th>Acciones</th>
@@ -40,6 +41,7 @@
                                         <tbody>
                                         {% for detalle_venta in detalle_ventas %}
                                             <tr>
+                                                <td>{{ detalle_venta.id_producto }}</td>
                                                 <td>{{ detalle_venta.cantidad_producto }}</td>
                                                 <td>{{ detalle_venta.valor_total }}</td>
 
@@ -61,6 +63,7 @@
                                         </tbody>
                                         <tfoot>
                                         <tr>
+                                            <th>Producto</th>
                                             <th>Cantidad Producto</th>
                                             <th>valor Total</th>
                                             <th>Acciones</th>

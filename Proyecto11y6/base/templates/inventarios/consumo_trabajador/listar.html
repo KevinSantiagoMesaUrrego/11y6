@@ -34,6 +34,8 @@
                                         <tr>
                                             <th>Nombre Trabajador</th>
                                             <th>Documento Trabajador</th>
+                                            <th>Producto</th>
+                                            <th>Detalle</th>
                                             <th>Acciones</th>
 
                                         </tr>
@@ -43,8 +45,10 @@
                                             {% if consumotrabajador.estado != "0" %}
 
                                                 <tr>
-                                                    <td>{{ consumotrabajador.trabajador.nombre }}</td>
+                                                    <td>{{ consumotrabajador.trabajador.nombre}}</td>
                                                     <td>{{ consumotrabajador.trabajador.documento }}</td>
+                                                    <td>{{ consumotrabajador.nombre_producto}}</td>
+                                                    <td>{{ consumotrabajador.detalle_venta}}</td>
                                                     <td>
                                                         <button type="button" data-cafe-bar="{{ consumotrabajador.id }}"
                                                                 class="btnEliminar btn btn-danger"
@@ -64,6 +68,8 @@
                                         <tr>
                                             <th>Nombre Trabajador</th>
                                             <th>Documento Trabajador</th>
+                                            <th>Producto</th>
+                                            <th>Detalle</th>
                                             <th>Acciones</th>
 
                                         </tr>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from inventario.models import Producto
 
 
 # Create your models here.
@@ -21,8 +22,7 @@ class Proveedor(models.Model):
         ACTIVO = '1', _("Activo")
         INACTIVO = '0', _("Inactivo")
 
-    estado_proveedor = models.CharField(max_length=1, choices=Estado_proveedor.choices, default=Estado_proveedor.ACTIVO,
-                                        verbose_name="Estado Proveedor")
+    estado_proveedor = models.CharField(max_length=1, choices=Estado_proveedor.choices, default=Estado_proveedor.ACTIVO,verbose_name="Estado Proveedor")
 
     def clean(self):
         self.nombre_proveedor = self.nombre_proveedor.title()
@@ -37,8 +37,10 @@ class Proveedor(models.Model):
 
 
 class Compra(models.Model):
+    from usuario.models import Persona
     fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
     id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
+    id_Persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
 
     def __str__(self):
         return "%s %s" % (self.id, self.fecha_compra)
@@ -48,8 +50,9 @@ class Compra(models.Model):
 
 
 class Detalle_compra(models.Model):
-    cantidad_producto = models.IntegerField(max_length=45, verbose_name="Cantidad Producto")
+    cantidad_producto = models.IntegerField(verbose_name="Cantidad Producto")
     valor_total = models.FloatField(max_length=45, verbose_name="Valor Total Compra")
+    nombre_producto = models.ForeignKey(Producto, on_delete=models.CASCADE, verbose_name="Nombre Producto")
 
     def __str__(self):
         return "%s %s" % (self.cantidad_producto, self.valor_total)
@@ -59,6 +62,8 @@ class Detalle_compra(models.Model):
 
 
 class Compra(models.Model):
+    from usuario.models import Persona
+    nombre_persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
     fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
     id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
     id_detalle_compra = models.ForeignKey(Detalle_compra, on_delete=models.CASCADE, verbose_name="Valor Compra")
@@ -75,6 +80,7 @@ class Evento(models.Model):
     fecha_inicio = models.DateField(verbose_name="Fecha Incio Evento", help_text="MM/DD/AAAA")
     fecha_fin = models.DateField(verbose_name="Fecha Fin Evento", help_text="MM/DD/AAAA")
     descripcion = models.CharField(max_length=200, verbose_name="Descripción Evento")
+
 
     class Estado_evento(models.TextChoices):
         ACTIVO = '1', _("Activo")

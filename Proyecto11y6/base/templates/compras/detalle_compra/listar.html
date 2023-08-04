@@ -36,6 +36,7 @@
                                 <table id="example1" class="table table-bordered table-striped table-dark">
                                     <thead>
                                     <tr>
+                                        <th>Producto</th>
                                         <th>Cantidad Producto</th>
                                         <th>Valor Total</th>
                                         <th>Acciones</th>
@@ -45,6 +46,7 @@
                                     {% for detalle_compra in detalle_compras %}
 
                                         <tr>
+                                            <td>{{ detalle_compra.nombre_producto}}</td>
                                             <td>{{ detalle_compra.cantidad_producto }}</td>
                                             <td>{{ detalle_compra.valor_total }}</td>
 
@@ -65,6 +67,7 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
+                                        <th>Producto</th>
                                         <th>Cantidad Producto</th>
                                         <th>Valor Total</th>
                                         <th>Acciones</th>

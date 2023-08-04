@@ -31,6 +31,7 @@
                                     <table id="example1" class="table table-bordered table-striped table-dark">
                                         <thead>
                                         <tr>
+                                            <th>Persona</th>
                                             <th>Fecha Reserva</th>
                                             <th>Hora Inicio</th>
                                             <th>Hora Fin</th>
@@ -48,6 +49,7 @@
                                         <tbody>
                                         {% for reserva in reservas %}
                                             <tr>
+                                                <td>{{ reserva.Persona}}</td>
                                                 <td>{{ reserva.fecha_reserva }}</td>
                                                 <td>{{ reserva.hora_inicio }}</td>
                                                 <td>{{ reserva.hora_fin }}</td>
@@ -76,6 +78,7 @@
                                         </tbody>
                                         <tfoot>
                                         <tr>
+                                            <th>Persona</th>
                                             <th>Fecha Reserva</th>
                                             <th>Hora Inicio</th>
                                             <th>Hora Fin</th>
