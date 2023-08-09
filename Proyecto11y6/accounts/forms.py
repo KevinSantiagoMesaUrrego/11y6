@@ -1,16 +1,21 @@
 # forms.py
 from django import forms
-from django.contrib.auth.models import User,Group
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Register
 
+
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label='Usuario', min_length=5, max_length=150, widget=forms.TextInput(attrs={'class': 'custom-input', 'placeholder':'Nombre de Usuario'}))
-    email = forms.EmailField(label='Correo', widget=forms.EmailInput(attrs={'class': 'custom-input','placeholder':'Correo Electronico'}))
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(attrs={'class': 'custom-input','placeholder':'Contraseña'}))
-    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(attrs={'class': 'custom-input','placeholder':'Confirmar Contraseña'}))
+    username = forms.CharField(label='Usuario', min_length=5, max_length=150, widget=forms.TextInput(
+        attrs={'class': 'custom-input', 'placeholder': 'Nombre de Usuario'}))
+    email = forms.EmailField(label='Correo', widget=forms.EmailInput(
+        attrs={'class': 'custom-input', 'placeholder': 'Correo Electronico'}))
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(
+        attrs={'class': 'custom-input', 'placeholder': 'Contraseña'}))
+    password2 = forms.CharField(label='Confirmar Contraseña', widget=forms.PasswordInput(
+        attrs={'class': 'custom-input', 'placeholder': 'Confirmar Contraseña'}))
     activo = forms.BooleanField(initial=False, widget=forms.HiddenInput, required=False)
-    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Rol', required=True )
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), label='Rol', required=True)
 
     class Meta(UserCreationForm.Meta):
         # Asegurarse de que el modelo sea User
@@ -46,3 +51,4 @@ class CustomUserCreationForm(UserCreationForm):
         register = Register.objects.create(usuario=username, activo=False)  # Pasar el nombre de usuario
         register.save()
         return user
+

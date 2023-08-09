@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from accounts.models import Register
+from accounts.forms import User, Group
 from django.contrib.auth import logout
 from django.template import RequestContext
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 
 def register(request):
     if request.method == 'POST':
@@ -37,5 +39,22 @@ def vista_protegida(request):
         'rol': rol,
     }
     return render(request, 'index.html', context)
+@login_required
+def persona_listar(request):
+    titulo="Usuarios"
+    modulo="Accounts"
+    groups_users = {
+        "Administrador" : User.objects.filter(groups__name="Administrador"),
+        "Cajero" : User.objects.filter(groups__name="Cajero"),
+        "Empleado" : User.objects.filter(groups__name="Empleado"),
+    }
+
+    context={
+        "titulo":titulo,
+        "modulo":modulo,
+        "users":groups_users,
+    }
+    #dd(groups_users)
+    return render(request,"usuarios/persona/listar.html", context)
 
 

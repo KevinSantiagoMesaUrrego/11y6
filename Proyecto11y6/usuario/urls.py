@@ -1,5 +1,6 @@
 from django.urls import path
-from usuario.views import persona_listar, persona_crear, persona_modificar, persona_eliminar
+from accounts.views import persona_listar
+from usuario.views import persona_crear, persona_modificar, persona_eliminar
 from usuario.views import eps_listar, eps_crear, eps_modificar, eps_eliminar
 from usuario.views import turno_listar, turno_crear, turno_modificar, turno_eliminar
 from usuario.views import trabajador_listar, trabajador_crear, trabajador_modificar, trabajador_eliminar

@@ -30,65 +30,39 @@
                                     </div>
                                     <div class="table-responsive">
                                         <table id="example1" class="table table-bordered table-striped table-dark">
-                                            <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nombre Completo</th>
-                                                <th>Apellido Completo</th>
-                                                <th>Tipo de Documento</th>
-                                                <th>Documento</th>
-                                                <th>Rol</th>
-                                                <th>Dirección</th>
-                                                <th>Correo</th>
-                                                <th>Usuario</th>
-                                                <th>Contraseña</th>
-                                                <th>Salario</th>
-                                                <th>Estado</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                            </thead>
                                             <tbody>
-                                            {% for persona in personas %} {% if persona.estado != "0" %}
+
+                                            {% for rol, users in users.items %}
+                                                {% for user in users %}
 
                                                 <tr>
                                                     <td>{{ user.id }}</td>
                                                     <td>{{ user.username }}</td>
                                                     <td>{{ user.email }}</td>
-                                                    <td>{{ user.password }}</td>
-                                                    <td>{{ user.group }}</td>
-
+                                                    <td>{{ user.is_active|yesno:'Activo,Inactivo' }}</td>
+                                                    <td>{{ rol }}</td>
                                                     <td>{{ persona.get_estado_display }}</td>
-                                                    <td>
-                                                        <button type="button" onclick="changeURL('{{ persona.id }}')"
-                                                                data-cafe-bar="{{ persona.id }}"
-                                                                class="btnEliminar btn btn-danger"
-                                                                data-bs-toggle="modal" data-bs-target="#modalConf">
-                                                            {% bs_icon 'trash' %}
-
-                                                        </button>
-                                                        <a
-                                                                class="btn btn-primary"
-                                                                href="{% url 'persona-modificar' persona.id %}"
-                                                        >Modificar</a
-                                                        >
-                                                    </td>
                                                 </tr>
-                                            {% endif %} {% endfor %}
+                                                {% endfor %}
+                                            {% endfor %}
                                             </tbody>
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre de Usuario</th>
+                                                <th>Correo</th>
+                                                <th>Estado</th>
+                                                <th>Rol</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                            </thead>
                                             <tfoot>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Nombre Completo</th>
-                                                <th>Apellido Completo</th>
-                                                <th>Tipo de Documento</th>
-                                                <th>Documento</th>
-                                                <th>Rol</th>
-                                                <th>Dirección</th>
+                                                <th>Nombre de Usuario</th>
                                                 <th>Correo</th>
-                                                <th>Usuario</th>
-                                                <th>Contraseña</th>
-                                                <th>Salario</th>
                                                 <th>Estado</th>
+                                                <th>Rol</th>
                                                 <th>Acciones</th>
                                             </tr>
                                             </tfoot>

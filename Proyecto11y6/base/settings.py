@@ -12,11 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -28,7 +25,6 @@ SECRET_KEY = 'django-insecure-!hvf1coa+smd!*2hlh0i(601o2=3$9i0y5eewk4^@+38#s=zyq
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -44,14 +40,14 @@ INSTALLED_APPS = [
     'inventario',
     'venta',
     'accounts',
-    'django_bootstrap5',#pip install django-bootstrap5
-    'crispy_forms',#pip install django-crispy-forms
-    'crispy_bootstrap5', #pip install crispy-bootstrap5
-    'django_bootstrap_icons', #pip install django-bootstrap5-icons
+    'django_bootstrap5',  # pip install django-bootstrap5
+    'crispy_forms',  # pip install django-crispy-forms
+    'crispy_bootstrap5',  # pip install crispy-bootstrap5
+    'django_bootstrap_icons',  # pip install django-bootstrap5-icons
     'django_dump_die',
 ]
-CRISPY_ALLOWED_TEMPLATE_PACKS= "bootstrap5"
-CRISPY_TEMPLATE_PACK= "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'base.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -95,7 +90,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -115,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -127,17 +120,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS= [
-    os.path.join(BASE_DIR,"static"),
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
     ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
 
 ]
-STATIC_ROOT ="/static"
+STATIC_ROOT = "/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

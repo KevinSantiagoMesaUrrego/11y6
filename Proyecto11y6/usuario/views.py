@@ -30,18 +30,6 @@ def persona_crear(request):
     return render(request,"usuarios/persona/crear.html", context)
 
 @login_required
-@permission_required("usuario.view_persona", login_url="index")
-def persona_listar(request):
-    titulo="Persona"
-    modulo="Usuarios"
-    persona= Persona.objects.all()
-    context={
-        "titulo":titulo,
-        "modulo":modulo,
-        "personas":persona
-    }
-    return render(request,"usuarios/persona/listar.html", context)
-@login_required
 @permission_required("usuario.change_persona", login_url="index")
 def persona_modificar(request,pk):
     titulo="Persona"
