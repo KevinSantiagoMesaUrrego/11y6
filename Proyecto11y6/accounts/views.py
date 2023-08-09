@@ -56,5 +56,11 @@ def persona_listar(request):
     }
     #dd(groups_users)
     return render(request,"usuarios/persona/listar.html", context)
-
+def persona_eliminar(request,pk):
+    user= User.objects.filter(id=pk)
+    user.update(
+        estado="0"
+    )
+    messages.success(request,'La persona se elimino correctamente.')
+    return redirect('persona')
 
