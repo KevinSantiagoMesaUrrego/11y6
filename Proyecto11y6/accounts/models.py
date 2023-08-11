@@ -7,7 +7,6 @@ class Register(SafeDeleteModel):
     usuario = models.CharField(max_length=45, verbose_name="Usuario:")
     contraseña = models.CharField(max_length=45, verbose_name="Contraseña:")
     activo = models.BooleanField(default=False)
-
     def clean(self):
         self.correo = self.correo.title()
         self.usuario = self.usuario.title()
