@@ -44,7 +44,13 @@ INSTALLED_APPS = [
     'crispy_forms',  # pip install django-crispy-forms
     'crispy_bootstrap5',  # pip install crispy-bootstrap5
     'django_bootstrap_icons',  # pip install django-bootstrap5-icons
+
+
+]
+THIRD_PARTY_APPS = [
+
     'django_dump_die',
+    'django_dump_load_utf8',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -84,12 +90,22 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.mysql",
+        "OPTIONS": {
+            "read_default_file": 'my.cnf',
+            "init_command": "SET default_storage_engine=INNODB",
+        },
     }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

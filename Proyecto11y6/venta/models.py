@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from inventario.models import Producto
+from safedelete.models import SafeDeleteModel
 
 
 # Create your models here.
-class Detalle_venta(models.Model):
+class Detalle_venta(SafeDeleteModel):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE, verbose_name="producto")
     cantidad_producto = models.IntegerField(verbose_name="Cantidad Producto")
     valor_total = models.FloatField(max_length=45, verbose_name="Valor Total venta")
@@ -17,7 +18,7 @@ class Detalle_venta(models.Model):
         verbose_name_plural = "detalle_ventas"
 
 
-class Venta(models.Model):
+class Venta(SafeDeleteModel):
 
     fecha_venta = models.DateField(verbose_name="fecha venta", help_text="MM/DD/AAAA")
     detalle_venta_cantidad_producto = models.ForeignKey(Detalle_venta, on_delete=models.CASCADE,verbose_name="detalle venta cantidad producto")
@@ -25,7 +26,7 @@ class Venta(models.Model):
         return "%s " % (self.detalle_venta_cantidad_producto)
 
 
-class Ubicacion(models.Model):
+class Ubicacion(SafeDeleteModel):
     nombre = models.CharField(max_length=45, verbose_name="Nombre")
 
     class Estado(models.TextChoices):
@@ -41,7 +42,7 @@ class Ubicacion(models.Model):
         verbose_name_plural = "ubicaciones"
 
 
-class Reserva(models.Model):
+class Reserva(SafeDeleteModel):
     from usuario.models import Persona
     nombre_persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
     fecha_reserva = models.DateField(verbose_name="Fecha Reserva", help_text="MM/DD/AAAA")

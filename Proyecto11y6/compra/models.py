@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from inventario.models import Producto
-
+from safedelete.models import SafeDeleteModel
 
 # Create your models here.
 
-class Proveedor(models.Model):
+class Proveedor(SafeDeleteModel):
     class Tipo_identificacion(models.TextChoices):
         CEDULA = 'CC', _("Cédula")
         CEDULA_EXTRANJERIA = 'CE', _("Cédula de Extranjería")
@@ -36,20 +36,7 @@ class Proveedor(models.Model):
         verbose_name_plural = "Proveedores"
 
 
-class Compra(models.Model):
-    from usuario.models import Persona
-    fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
-    id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
-    id_Persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
-
-    def __str__(self):
-        return "%s %s" % (self.id, self.fecha_compra)
-
-    class Meta:
-        verbose_name_plural = "Compras"
-
-
-class Detalle_compra(models.Model):
+class Detalle_compra(SafeDeleteModel):
     cantidad_producto = models.IntegerField(verbose_name="Cantidad Producto")
     valor_total = models.FloatField(max_length=45, verbose_name="Valor Total Compra")
     nombre_producto = models.ForeignKey(Producto, on_delete=models.CASCADE, verbose_name="Nombre Producto")
@@ -61,7 +48,7 @@ class Detalle_compra(models.Model):
         verbose_name_plural = "detalles_compras"
 
 
-class Compra(models.Model):
+class Compra(SafeDeleteModel):
     from usuario.models import Persona
     nombre_persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
     fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
@@ -75,7 +62,7 @@ class Compra(models.Model):
         verbose_name_plural = "Compras"
 
 
-class Evento(models.Model):
+class Evento(SafeDeleteModel):
     nombre_evento = models.CharField(max_length=45, verbose_name="Nombre Evento")
     fecha_inicio = models.DateField(verbose_name="Fecha Incio Evento", help_text="MM/DD/AAAA")
     fecha_fin = models.DateField(verbose_name="Fecha Fin Evento", help_text="MM/DD/AAAA")

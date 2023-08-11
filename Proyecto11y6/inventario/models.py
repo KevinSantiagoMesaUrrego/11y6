@@ -1,12 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from usuario.models import Trabajador
-
-
-
+from safedelete.models import SafeDeleteModel
 
 # Create your models here.
-class Marca(models.Model):
+class Marca(SafeDeleteModel):
     nombre = models.CharField(max_length=45, verbose_name="Marca")
 
     class Estado(models.TextChoices):
@@ -16,7 +14,7 @@ class Marca(models.Model):
     estado = models.CharField(max_length=1, choices=Estado.choices, verbose_name="Estado", default=Estado.ACTIVO)
 
 
-class Presentacion(models.Model):
+class Presentacion(SafeDeleteModel):
     presentacion = models.CharField(max_length=45, verbose_name="Presentacion")
 
     class Estado(models.TextChoices):
@@ -26,7 +24,7 @@ class Presentacion(models.Model):
     estado = models.CharField(max_length=1, choices=Estado.choices, verbose_name="Estado", default=Estado.ACTIVO)
 
 
-class UnidadMedida(models.Model):
+class UnidadMedida(SafeDeleteModel):
     unidadmedida = models.CharField(max_length=45, verbose_name="Medida")
 
     class Estado(models.TextChoices):
@@ -38,7 +36,7 @@ class UnidadMedida(models.Model):
 
 
 
-class Producto(models.Model):
+class Producto(SafeDeleteModel):
     nombre = models.CharField(max_length=45, verbose_name="Nombre")
     descripcion = models.CharField(max_length=45, verbose_name="Descripcion")
     precio = models.FloatField(verbose_name="Precio")
@@ -59,7 +57,7 @@ class Producto(models.Model):
 
 
 
-class ConsumoTrabajador(models.Model):
+class ConsumoTrabajador(SafeDeleteModel):
     from venta.models import Detalle_venta
     trabajador = models.ForeignKey(Trabajador, on_delete=models.CASCADE, verbose_name="Nombre Trabajador")
     nombre_producto = models.ForeignKey(Producto, on_delete=models.CASCADE, verbose_name="Producto")

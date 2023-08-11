@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from safedelete.models import SafeDeleteModel
 
 
 #Create your models here.
 
-class Persona(models.Model):
+class Persona(SafeDeleteModel):
     nombre= models.CharField(max_length=45,verbose_name="Nombres Completo:")
     apellido= models.CharField(max_length=45,verbose_name="Apellidos Completos:")
     class TipoDocumento(models.TextChoices):
@@ -34,7 +34,7 @@ class Persona(models.Model):
         return "%s %s"%(self.nombre,self.apellido)
     class Meta:
         verbose_name_plural = "Personas"
-class Eps(models.Model):
+class Eps(SafeDeleteModel):
     nombre=models.CharField(max_length=45,verbose_name="Nombre EPS:")
     class Estado(models.TextChoices):
         ACTIVO='1',_("Activo")
@@ -45,7 +45,7 @@ class Eps(models.Model):
     class Meta:
         verbose_name_plural = "Eps"
 
-class Turno(models.Model):
+class Turno(SafeDeleteModel):
     fecha_ingreso= models.DateTimeField(verbose_name="Fecha de Ingreso", help_text="HH/MM/SS")
     fecha_salida= models.DateTimeField(verbose_name="Fecha de Salida", help_text="HH/MM/SS")
     class Estado(models.TextChoices):
@@ -57,7 +57,7 @@ class Turno(models.Model):
     class Meta:
         verbose_name_plural = "Turnos"
 
-class Trabajador(models.Model):
+class Trabajador(SafeDeleteModel):
     nombre= models.CharField(max_length=45,verbose_name="Nombre:")
     apellido= models.CharField(max_length=45,verbose_name="Apellido:")
     documento=models.IntegerField(verbose_name="Documento:")

@@ -1,8 +1,8 @@
 # models.py
 from django.db import models
 from django.contrib.auth.models import User
-
-class Register(models.Model):
+from safedelete.models import SafeDeleteModel
+class Register(SafeDeleteModel):
     correo = models.EmailField(max_length=45, verbose_name="Correo:")
     usuario = models.CharField(max_length=45, verbose_name="Usuario:")
     contraseña = models.CharField(max_length=45, verbose_name="Contraseña:")
