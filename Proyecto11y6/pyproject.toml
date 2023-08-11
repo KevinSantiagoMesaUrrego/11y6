@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "proyecto11y6"
+version = "0.1.0"
+description = ""
+authors = ["william00936 <wsamado0@soy.sena.edu.co>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
