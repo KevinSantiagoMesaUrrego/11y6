@@ -44,17 +44,12 @@ class Ubicacion(SafeDeleteModel):
 
 class Reserva(SafeDeleteModel):
     from usuario.models import Persona
-    nombre_persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
     fecha_reserva = models.DateField(verbose_name="Fecha Reserva", help_text="MM/DD/AAAA")
     hora_inicio = models.DateTimeField(verbose_name="Hora de Inicio", help_text="HH/MM/SS")
     hora_fin = models.DateTimeField(verbose_name="Hora de fin", help_text="HH/MM/SS")
     costo = models.FloatField()
     abono = models.FloatField()
     fecha_abono = models.DateField(verbose_name="Fecha Abono", help_text="MM/DD/AAAA")
-    pago_total = models.FloatField()
-    fecha_pago_total = models.DateField(verbose_name="Fecha Pago Total", help_text="MM/DD/AAAA")
     ubicacion_nombre = models.ForeignKey(Ubicacion, on_delete=models.CASCADE, verbose_name="ubicación nombre")
-    detalle_venta_cantidad_producto = models.ForeignKey(Detalle_venta, on_delete=models.CASCADE,verbose_name="detalle venta cantidad producto")
-
     def __str__(self):
         return "%s %s " % (self.ubicacion_nombre, self.detalle_venta_cantidad_producto)
