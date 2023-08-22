@@ -43,7 +43,6 @@ class Ubicacion(SafeDeleteModel):
 
 
 class Reserva(SafeDeleteModel):
-    from usuario.models import Persona
     fecha_reserva = models.DateField(verbose_name="Fecha Reserva", help_text="MM/DD/AAAA")
     hora_inicio = models.DateTimeField(verbose_name="Hora de Inicio", help_text="HH/MM/SS")
     hora_fin = models.DateTimeField(verbose_name="Hora de fin", help_text="HH/MM/SS")

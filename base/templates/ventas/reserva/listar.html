@@ -31,36 +31,26 @@
                                     <table id="example1" class="table table-bordered table-striped table-dark">
                                         <thead>
                                         <tr>
-                                            <th>Persona</th>
                                             <th>Fecha Reserva</th>
                                             <th>Hora Inicio</th>
                                             <th>Hora Fin</th>
                                             <th>Costo</th>
                                             <th>Abono</th>
                                             <th>Fecha Abono</th>
-                                            <th>Pago Total</th>
-                                            <th>Fecha Pago Total</th>
                                             <th>ubicación</th>
-                                            <th>cantidad producto</th>
-                                            <th>valor Total</th>
                                             <th>Acciones</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         {% for reserva in reservas %}
                                             <tr>
-                                                <td>{{ reserva.Persona}}</td>
                                                 <td>{{ reserva.fecha_reserva }}</td>
                                                 <td>{{ reserva.hora_inicio }}</td>
                                                 <td>{{ reserva.hora_fin }}</td>
                                                 <td>{{ reserva.costo }}</td>
                                                 <td>{{ reserva.abono }}</td>
                                                 <td>{{ reserva.fecha_abono }}</td>
-                                                <td>{{ reserva.pago_total }}</td>
-                                                <td>{{ reserva.fecha_pago_total }}</td>
                                                 <td>{{ reserva.ubicacion_nombre }}</td>
-                                                <td>{{ reserva.detalle_venta_cantidad_producto.cantidad_producto }}</td>
-                                                <td>{{ reserva.detalle_venta_cantidad_producto.valor_total }}</td>
                                                 <td>
                                                     <button type="button" data-cafe-bar="{{ reserva.id }}"
                                                             class="btnEliminar btn btn-danger"
@@ -70,26 +60,20 @@
                                                     <a
                                                             class="btn btn-primary"
                                                             href="{% url 'reserva-modificar' reserva.id %}"
-                                                    >Modificar</a
-                                                    >
+                                                    >Modificar</a>
                                                 </td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <th>Persona</th>
                                             <th>Fecha Reserva</th>
                                             <th>Hora Inicio</th>
                                             <th>Hora Fin</th>
                                             <th>Costo</th>
                                             <th>Abono</th>
                                             <th>Fecha Abono</th>
-                                            <th>Pago Total</th>
-                                            <th>Fecha Pago Total</th>
                                             <th>ubicación</th>
-                                            <th>cantidad producto</th>
-                                            <th>valor Total</th>
                                             <th>Acciones</th>
                                         </tr>
                                         </tfoot>
