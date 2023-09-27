@@ -47,6 +47,7 @@ def persona_listar(request):
         "Administrador" : User.objects.filter(groups__name="Administrador"),
         "Cajero" : User.objects.filter(groups__name="Cajero"),
         "Empleado" : User.objects.filter(groups__name="Empleado"),
+        "SuperAdministrador": User.objects.filter(is_superuser=True)
     }
 
     context={
