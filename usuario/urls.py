@@ -7,7 +7,7 @@ from usuario.views import trabajador_listar, trabajador_crear, trabajador_modifi
 urlpatterns = [
     path('persona/', persona_listar, name="persona" ),
     path('persona/modificar/<int:pk>/', persona_modificar, name="persona-modificar" ),
-    path('persona/eliminar/<int:pk>/', persona_eliminar, name="persona-eliminar" ),
+    path('persona/eliminar/<int:pk>/', persona_eliminar, name="persona-eliminar"),
     path('eps/', eps_listar, name="eps" ),
     path('eps/crear/', eps_crear, name="eps-crear" ),
     path('eps/modificar/<int:pk>/', eps_modificar, name="eps-modificar" ),

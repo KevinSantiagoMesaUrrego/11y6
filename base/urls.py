@@ -41,7 +41,7 @@ urlpatterns = [
     path('compras/', include('compra.urls')),
     path('inventarios/',include('inventario.urls')),
     path('templates/partials/', include('accounts.urls')),
-    path('account-register',  views.register, name='Registrarse'),
+    path('account-register/',  views.register, name='Registrarse'),
     path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
     path('ayuda/',ayuda ,name="help"),
 

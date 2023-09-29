@@ -42,8 +42,8 @@ def vista_protegida(request):
 @login_required
 @permission_required("persona.view_persona", login_url="index")
 def persona_listar(request):
-    titulo="Usuarios"
-    modulo="Accounts"
+    titulo="Persona"
+    modulo="Usuarios"
     groups_users = {
         "Administrador" : User.objects.filter(groups__name="Administrador"),
         "Cajero" : User.objects.filter(groups__name="Cajero"),
@@ -58,13 +58,19 @@ def persona_listar(request):
     }
     #dd(groups_users)
     return render(request, "usuarios/persona/listar.html", context)
-def persona_eliminar(request,pk):
-    user= User.objects.filter(id=pk)
-    user.update(
-        estado="0"
-    )
-    messages.success(request,'La persona se elimino correctamente.')
-    return redirect('persona')
+def persona_eliminar(request, pk):
+    try:
+        user = User.objects.get(id=pk)
+        if user.is_active:
+            user.is_active = False  # Desactivar al usuario en lugar de cambiar "estado"
+            user.save()
+            messages.success(request, 'El usuario se desactivó correctamente.')
+        else:
+            messages.info(request, 'El usuario ya está inactivo.')
+    except User.DoesNotExist:
+        messages.error(request, 'No se encontró el usuario a desactivar.')
+
+    return redirect('persona')# Redirige de vuelta a la lista de personas
 def persona_modificar(request,pk):
     titulo="Persona"
     persona= User.objects.get(id=pk)
