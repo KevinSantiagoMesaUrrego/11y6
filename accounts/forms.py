@@ -52,3 +52,5 @@ class CustomUserCreationForm(UserCreationForm):
         register.save()
         return user
 
+
+

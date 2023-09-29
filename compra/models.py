@@ -49,8 +49,6 @@ class Detalle_compra(SafeDeleteModel):
 
 
 class Compra(SafeDeleteModel):
-    from usuario.models import Persona
-    nombre_persona = models.ForeignKey(Persona, on_delete=models.CASCADE, verbose_name="Persona")
     fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
     id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
     id_detalle_compra = models.ForeignKey(Detalle_compra, on_delete=models.CASCADE, verbose_name="Valor Compra")
