@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, UpdateUserForm
 from accounts.models import Register
 from accounts.forms import User, Group
 from django.contrib.auth import logout
@@ -65,19 +65,22 @@ def persona_eliminar(request,pk):
     )
     messages.success(request,'La persona se elimino correctamente.')
     return redirect('persona')
-def persona_modificar(request):
-    if request.method == 'POST':
-        form = PersonaUpdateForm(request.POST)
+def persona_modificar(request,pk):
+    titulo="Persona"
+    persona= User.objects.get(id=pk)
+    if request.method== 'POST':
+        form= UpdateUserForm(request.POST, instance=persona)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            group = form.cleaned_data['group']  # Obtener el grupo seleccionado en el formulario
-            messages.success(request, 'El usuario se creo correctamente.')
-            if group:
-                user.groups.add(group)  # Agregar el usuario al grupo seleccionado
-            return redirect('inicio')
+            form.save()
+            messages.success(request, 'El formulario se ha modificado correctamente.')
+            return redirect('persona')
     else:
-        form = CustomUserCreationForm()
-    return render(request, 'partials/register.html', {'form': form})
+        form= UpdateUserForm(instance=persona)
+    context={
+        "titulo":titulo,
+        "form":form
+        }
+    return render(request, "usuarios/persona/modificar.html", context)
+
+
 

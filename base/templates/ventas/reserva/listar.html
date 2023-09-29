@@ -57,10 +57,10 @@
                                                             data-bs-toggle="modal" data-bs-target="#modalConf">
                                                         {% bs_icon 'trash' %}
                                                     </button>
-                                                    <a
-                                                            class="btn btn-primary"
-                                                            href="{% url 'reserva-modificar' reserva.id %}"
-                                                    >Modificar</a>
+                                                    <a class="btn btn-primary"
+                                                               href="{% url 'persona-modificar' user.id %}">
+                                                                {% bs_icon 'pencil-square' %}
+                                                            </a>
                                                 </td>
                                             </tr>
                                         {% endfor %}

@@ -3,60 +3,12 @@ from usuario.models import Persona
 from usuario.models import Eps
 from usuario.models import Turno
 from usuario.models import Trabajador
-from usuario.forms import PersonaForm,PersonaUpdateForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
+from usuario.forms import PersonaForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
-@login_required
-@permission_required("usuario.add_persona", login_url="index")
-def persona_crear(request):
-    titulo="Persona"
-    if request.method== 'POST':
-        form= PersonaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request,'La persona se creo correctamente.')
-            return redirect('persona')
-        else:
-            messages.error(request, 'El formulario tiene errores.')
-    else:
-        form= PersonaForm()
-    context={
-        "titulo":titulo,
-        "form":form
-        }
-    return render(request, "usuarios/persona/crear.html", context)
-
-@login_required
-@permission_required("usuario.change_persona", login_url="index")
-def persona_modificar(request,pk):
-    titulo="Persona"
-    persona= Persona.objects.get(id=pk)
-    if request.method== 'POST':
-        form= PersonaUpdateForm(request.POST, instance=persona)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'El formulario se ha modificado correctamente.')
-            return redirect('persona')
-    else:
-        form= PersonaUpdateForm(instance=persona)
-    context={
-        "titulo":titulo,
-        "form":form
-        }
-    return render(request, "usuarios/persona/modificar.html", context)
-@login_required
-@permission_required("usuario.delete_persona", login_url="index")
-def persona_eliminar(request,pk):
-    persona= Persona.objects.filter(id=pk)
-    persona.update(
-        estado="0"
-    )
-    messages.success(request,'La persona se elimino correctamente.')
-    return redirect('persona')
-
 
 #views de tabla eps
 @login_required

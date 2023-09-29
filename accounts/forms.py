@@ -52,5 +52,22 @@ class CustomUserCreationForm(UserCreationForm):
         register.save()
         return user
 
+class UpdateUserForm(UserChangeForm):
+    # Agrega un campo de selección de grupo
+    class Meta(UserChangeForm.Meta):
+        # Asegúrate de que el modelo sea User
+        model = User
+        fields = ('username', 'email')  # Incluye el campo 'group' en los campos del formulario
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        # Excluye al usuario actual en la comprobación
+        if User.objects.filter(email=email).exclude(id=self.instance.id).exists():
+            raise forms.ValidationError("El Correo ya Existe")
+        return email
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control small-input'
 
+    # Resto del código del formulario

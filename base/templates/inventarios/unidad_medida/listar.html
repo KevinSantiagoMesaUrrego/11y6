@@ -49,11 +49,10 @@
                                                         data-bs-toggle="modal" data-bs-target="#modalConf">
                                                     {% bs_icon 'trash' %}
                                                 </button>
-                                                <a
-                                                        class="btn btn-primary"
-                                                        href="{% url 'unidadmedida-modificar' unidadmedida.id %}"
-                                                >Modificar</a
-                                                >
+                                                <a class="btn btn-primary"
+                                                               href="{% url 'persona-modificar' user.id %}">
+                                                                {% bs_icon 'pencil-square' %}
+                                                            </a>
                                             </td>
                                         </tr>
                                     {% endif %} {% endfor %}
