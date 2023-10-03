@@ -77,3 +77,16 @@ class Evento(SafeDeleteModel):
 
     def __str__(self):
         return "%s" % (self.id_compra)
+
+class Personalizacion(SafeDeleteModel):
+    nombre = models.CharField(max_length=45, verbose_name="Nombre")
+    descripcion = models.CharField(max_length=45, verbose_name="Descripción")
+    fecha = models.DateField(verbose_name="Fecha", help_text="MM/DD/AAAA", auto_now=True)
+    imagen = models.ImageField(upload_to="productos/", blank=True, null=True,default="productos/default-producto.png")
+    class Estado(models.TextChoices):
+        ACTIVO = '1', _("Activo")
+        INACTIVO = '0', _("Inactivo")
+    estado = models.CharField(max_length=1, choices=Estado.choices, default=Estado.ACTIVO,
+                                         verbose_name="Estado")
+    def __str__(self):
+        return "%s" % (self.nombre)

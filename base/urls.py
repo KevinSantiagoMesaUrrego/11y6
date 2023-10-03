@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts import views
 
-from base.views import principal, logout_user ,ayuda
+from base.views import principal, logout_user, ayuda, personalizar
 # para las iamgenes
 from django.conf import settings
 from django.conf.urls.static import static
@@ -43,7 +43,10 @@ urlpatterns = [
     path('templates/partials/', include('accounts.urls')),
     path('account-register/',  views.register, name='Registrarse'),
     path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
-    path('ayuda/',ayuda ,name="help"),
+    path('personalizar/', personalizar, name="personalizar"),
+    path('personalizar/eliminar/<int:pk>/',
+         personalizar, name="proveedor-eliminar"),
+    path('ayuda/', ayuda, name="help"),
 
 ]
 if settings.DEBUG:

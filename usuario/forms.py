@@ -2,7 +2,13 @@ from django import forms
 
 from django.forms import ModelForm, widgets
 from usuario.models import Persona, Eps, Turno, Trabajador
+from compra.models import Personalizacion
 
+class PersonalizarForm(forms.ModelForm):
+    class Meta:
+        model = Personalizacion
+        fields = "__all__"
+        exclude = ["estado"]
 
 class PersonaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
