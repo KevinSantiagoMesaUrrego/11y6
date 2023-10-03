@@ -211,7 +211,7 @@ def unidadmedida_crear (request):
 @login_required
 @permission_required("inventario.view_unidadmedida", login_url="index")
 def unidadmedida_listar(request):
-    titulo="Unidad Medida"
+    titulo="UnidadMedida"
     modulo="inventarios"
     unidadmedida=UnidadMedida.objects.all()
     context={
@@ -223,7 +223,7 @@ def unidadmedida_listar(request):
 @login_required
 @permission_required("inventario.change_unidadmedida", login_url="index")
 def unidadmedida_modificar(request,pk):
-    titulo="Unidad Medida"
+    titulo="UnidadMedida"
     unidadmedida=UnidadMedida.objects.get(id=pk)
     if request.method=='POST':
         form=UnidadMedidaUpdateForm(request.POST,instance=unidadmedida)
@@ -271,7 +271,7 @@ def consumotrabajador_crear (request):
 @login_required
 @permission_required("inventario.view_consumotrabajador", login_url="index")
 def consumotrabajador_listar(request):
-    titulo="Consumo Trabajador"
+    titulo="ConsumoTrabajador"
     modulo="inventarios"
     consumotrabajador=ConsumoTrabajador.objects.all()
     context={
@@ -284,7 +284,7 @@ def consumotrabajador_listar(request):
 @login_required
 @permission_required("inventario.change_consumotrabajador", login_url="index")
 def consumotrabajador_modificar(request,pk):
-    titulo="Consumo Trabajador"
+    titulo="ConsumoTrabajador"
     consumotrabajador=ConsumoTrabajador.objects.get(id=pk)
     if request.method=='POST':
         form=ConsumoTrabajadorUpdateForm(request.POST,instance=consumotrabajador)

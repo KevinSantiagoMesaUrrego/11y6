@@ -7,8 +7,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 
-@login_required
-@permission_required("register.add_register", login_url="index")
+
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
