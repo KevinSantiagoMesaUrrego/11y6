@@ -57,6 +57,7 @@
     "overlayscrollbars": "^2.2.0",
     "pace-progress": "^1.0.2",
     "pdfmake": "^0.2.7",
+    "pillow": "^0.0.9",
     "popper": "^1.0.1",
     "raphael": "^2.3.0",
     "select2": "^4.1.0-rc.0",
