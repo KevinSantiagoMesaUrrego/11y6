@@ -1,35 +1,35 @@
 {% extends 'partials/body.html' %}
 {% load bootstrap_icons %}
 {% block contenido %}
-    <div class="wrapper">
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card glass-card">
-<div class="card-header d-flex justify-content-between align-items-center">
-                                <h3 class="card-title"> {{ titulo }} </h3>
-                            </div>
-                            <!-- /.card-header -->
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex justify-content-end">
-                                                <ol class="breadcrumb float-sm-right">
-                                                    <li class="breadcrumb-item"><a
-                                                            href="{% url 'index' %}">Inicio</a></li>
-                                                    <li class="breadcrumb-item active">{{ titulo }} </li>
-                                                </ol>
-                                            </div>
-                                        </div>
+<div class="wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card glass-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h3 class="card-title"> {{ titulo }} </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-flex justify-content-end">
+                                        <ol class="breadcrumb float-sm-right">
+                                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+                                            <li class="breadcrumb-item active">{{ titulo }} </li>
+                                        </ol>
                                     </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <table id="example1"
-                                                       class="table table-bordered table-striped table-dark">
-                                                    <thead>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                            <table id="example1"
+                                                class="table table-bordered table-striped table-dark">
+                                                <thead>
                                                     <tr>
                                                         <th>Imagen</th>
                                                         <th>Nombre</th>
@@ -37,69 +37,75 @@
                                                         <th>Fecha</th>
                                                         <th>Estado</th>
                                                         <th>Acciones</th>
-
-
                                                     </tr>
-                                                    </thead>
-                                                    <tbody>
+                                                </thead>
+                                                <tbody>
                                                     <tr>
                                                         <form method="POST" enctype="multipart/form-data">
                                                             {% csrf_token %}
-                                                            <td><input type="file" name="imagen" accept="image/*" id="id_imagen"></td>
-                                                            <td><input type="text" name="nombre" maxlength="45" required="" id="id_nombre"></td>
-                                                            <td><input type="text" name="descripcion" maxlength="45" required="" id="id_descripcion"></td>
+                                                            <td><input type="file" name="imagen" accept="image/*"
+                                                                    id="id_imagen"></td>
+                                                            <td><input type="text" name="nombre" maxlength="45"
+                                                                    required="" id="id_nombre"></td>
+                                                            <td><input type="text" name="descripcion" maxlength="45"
+                                                                    required="" id="id_descripcion"></td>
                                                             <td></td>
                                                             <td></td>
                                                             <td>
-                                                                <button type="submit" class="btn btn-success">+</button></td>
+                                                                <button type="submit" class="btn btn-success">+</button>
+                                                            </td>
                                                         </form>
                                                     </tr>
                                                     {% for per in personalizar %}
-                                                        <tr>
-                                                            <td><img src="{{ per.imagen.url }}" class="card-img-top img-fluid w-auto" alt="Imagen de producto" >{{ per }}</td>
-                                                            <td>{{ per.nombre }}</td>
-                                                            <td>{{ per.descripcion }}</td>
-                                                            <td>{{ per.fecha }}</td>
-                                                            <td>{{ per.estado }}</td>
-                                                            <td>
-                                                                <button type="button" data-cafe-bar="{{ per.id }}"
+                                                    <tr>
+                                                        <td>
+                                                            <img src="{{ per.imagen.url }}"
+                                                                class="card-img-top img-fluid w-auto"
+                                                                alt="Imagen de producto">
+                                                        </td>
+                                                        <td>{{ per.nombre }}</td>
+                                                        <td>{{ per.descripcion }}</td>
+                                                        <td>{{ per.fecha }}</td>
+                                                        <td>{{ per.estado|yesno:'Activo,Inactivo'}}</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <button type="button" data-cafe-bar="{{ per.id }}"
                                                                         class="btnEliminar btn btn-danger"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#modalConf">
-                                                                    {% bs_icon 'trash' %}
-                                                                </button>
-                                                                <a
-                                                                        class="btn btn-primary"
-                                                                        href=""
-                                                                >Modificar</a
-                                                                >
-                                                            </td>
-                                                        </tr>
+                                                                        data-bs-toggle="modal" data-bs-target="#modalConf">
+                                                                        {% bs_icon 'trash' %}
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <a class="btn btn-primary"
+                                                                        href="{% url 'personalizar-modificar' per.id %}">
+                                                                        {% bs_icon 'pencil-square' %}
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                     {% endfor %}
-                                                    </tbody>
-
-                                                </table>
-                                            </div>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-
-                                    </div>
-
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
+                            <div class="row">
+                                <!-- Resto de tu contenido -->
+                            </div>
                         </div>
-                        <!-- /.col -->
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.row -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
 {% endblock contenido %}
-

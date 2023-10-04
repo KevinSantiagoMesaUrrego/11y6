@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from usuario.forms import PersonalizarForm
+from usuario.forms import PersonalizarForm, PersonalizarUpdateForm
 from usuario.models import Persona, Eps, Turno, Trabajador
 from venta.models import Venta,Detalle_venta, Reserva, Ubicacion
 from compra.models import Compra, Detalle_compra, Evento, Proveedor, Personalizacion
@@ -59,15 +59,30 @@ def logout_user(request):
     return redirect('inicio')
 def ayuda(request):
     return render(request, "partials/ayuda.html")
+def personalizar_modificar(request,pk):
+    titulo="Personalizar"
+    personalizar= Personalizacion.objects.get(id=pk)
+    if request.method== 'POST':
+        form= PersonalizarUpdateForm(request.POST, instance=personalizar)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'La imagen se modifico correctamente.')
+            return redirect('personalizar')
+    else:
+        form= PersonalizarUpdateForm(instance=personalizar)
+    context={
+        "titulo":titulo,
+        "form":form
+        }
+    return render(request, "personalizar.html",context)
 
 def personalizar_eliminar(request, pk):
     personalizar = Personalizacion.objects.filter(id=pk)
-
     personalizar.update(
     estado="0"
     )
-    messages.success(request,'La compra se elimino correctamente.')
-    return redirect('compra')
+    messages.success(request,'La imagen se desactivo correctamente.')
+    return redirect('personalizar')
 def personalizar(request):
     titulo="Personalizar"
     personalizar=Personalizacion.objects.all()

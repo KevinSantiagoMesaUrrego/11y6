@@ -9,6 +9,11 @@ class PersonalizarForm(forms.ModelForm):
         model = Personalizacion
         fields = "__all__"
         exclude = ["estado"]
+class PersonalizarUpdateForm(ModelForm):
+    class Meta:
+        model = Personalizacion
+        fields = "__all__"
+        exclude = ["estado"]
 
 class PersonaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
