@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
 from usuario.forms import PersonalizarForm, PersonalizarUpdateForm
-from usuario.models import Persona, Eps, Turno, Trabajador
+from usuario.models import  Eps, Turno, Trabajador
 from venta.models import Venta,Detalle_venta, Reserva, Ubicacion
 from compra.models import Compra, Detalle_compra, Evento, Proveedor, Personalizacion
 from inventario.models import Presentacion, Marca, ConsumoTrabajador, Producto, UnidadMedida
@@ -14,7 +14,6 @@ def principal(request):
 
     titulo="Bienvenido al Sistema de william"
     personalizar=Personalizacion.objects.all()
-    persona=Persona.objects.all().count()
     eps=Eps.objects.all().count()
     turno=Turno.objects.all().count()
     trabajador=Trabajador.objects.all().count()
@@ -32,7 +31,6 @@ def principal(request):
     producto=Producto.objects.all().count()
     unidad_medida=UnidadMedida.objects.all().count()
     context={
-        "personas": persona,
         "eps": eps,
         "turnos": turno,
         "trabajadores": trabajador,
@@ -78,8 +76,8 @@ def personalizar_modificar(request,pk):
 
 def personalizar_eliminar(request, pk):
     personalizar = Personalizacion.objects.filter(id=pk)
+    personalizar.delete()
     personalizar.update(
-    estado="0"
     )
     messages.success(request,'La imagen se desactivo correctamente.')
     return redirect('personalizar')
