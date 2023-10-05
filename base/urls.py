@@ -45,7 +45,7 @@ urlpatterns = [
     path('cerrar-sesion/', views.cerrar_sesion, name='cerrar_sesion'),
     path('personalizar/', personalizar, name="personalizar"),
     path('personalizar/modificar/<int:pk>/', personalizar_modificar, name="personalizar-modificar"),
-    path('personalizar/eliminar/<int:pk>/', personalizar_eliminar, name="personalizar-eliminar"),
+    path('base/personalizar/eliminar/<int:pk>/', personalizar_eliminar, name="personalizar-eliminar"),
     path('ayuda/', ayuda, name="help"),
 
 ]
