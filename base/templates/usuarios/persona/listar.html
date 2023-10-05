@@ -1,0 +1,130 @@
+{% extends 'partials/body.html' %}
+{% load bootstrap_icons %}
+{% block contenido %}
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card glass-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h3 class="card-title">  Gestion de Usuarios  </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex justify-content-end">
+                                                <ol class="breadcrumb float-sm-right">
+                                                    <li class="breadcrumb-item"><a
+                                                            href="{% url 'index' %}">Inicio</a></li>
+                                                    <li class="breadcrumb-item active"><a
+                                                            href="{% url 'persona' %}">{{ titulo }}</a></li>
+                                                    <li class="breadcrumb-item active">{{ titulo }} </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="example1" class="table table-bordered table-striped table-dark">
+                                            <tbody>
+
+                                            {% for rol, users in users.items %}
+                                                {% for user in users %}
+
+                                                    <tr>
+                                                        <td>{{ user.id }}</td>
+                                                        <td>{{ user.username }}</td>
+                                                        <td>{{ user.email }}</td>
+                                                        <td>{{ user.is_active|yesno:'Activo,Inactivo' }}</td>
+                                                        <td>{{ rol }}</td>
+                                                        <td>
+                                                            <button type="button" data-cafe-bar="{{ user.id }}"
+                                                                    class="btnEliminar btn btn-danger"
+                                                                    data-bs-toggle="modal" data-bs-target="#modalConf">
+                                                                {% bs_icon 'trash' %}
+                                                            </button>
+                                                            <a class="btn btn-primary"
+                                                               href="{% url 'persona-modificar' user.id %}">
+                                                                {% bs_icon 'pencil-square' %}
+                                                            </a>
+                                                            <!-- Botón para iniciar recuperación de contraseña -->
+                                                            <button type="button"
+                                                                    class="btn btn-info btn-recuperar-contraseña"
+                                                                    data-email="{{ user.email }}">
+                                                                {% bs_icon 'key' %}
+                                                            </button>
+                                                        </td>
+
+
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre de Usuario</th>
+                                                <th>Correo</th>
+                                                <th>Estado</th>
+                                                <th>Rol</th>
+                                                <th class="notexport">Acciones</th>
+                                            </tr>
+                                            </thead>
+                                            <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre de Usuario</th>
+                                                <th>Correo</th>
+                                                <th>Estado</th>
+                                                <th>Rol</th>
+                                                <th class="notexport">Acciones</th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <br>
+        <br>
+        <br>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btn-recuperar-contraseña").click(function () {
+                var email = $(this).data('email');
+
+                $.ajax({
+                    url: "{% url 'password_reset' %}",
+                    type: "POST",
+                    data: {
+                        csrfmiddlewaretoken: "{{ csrf_token }}",
+                        email: email
+                    },
+                    success: function () {
+                        alert("Se ha iniciado el proceso de recuperación de contraseña para " + email);
+                    },
+                    error: function () {
+                        alert("Ha ocurrido un error al iniciar el proceso de recuperación de contraseña.");
+                    }
+                });
+            });
+        });
+    </script>
+
+{% endblock contenido %}
+
