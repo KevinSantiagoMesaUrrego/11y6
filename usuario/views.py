@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
-from usuario.models import Persona
 from usuario.models import Eps
 from usuario.models import Turno
 from usuario.models import Trabajador
-from usuario.forms import PersonaForm,EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
+from usuario.forms import EpsForm,EpsUpdateForm,TurnoForm,TurnoUpdateForm,TrabajadorForm,TrabajadorUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 

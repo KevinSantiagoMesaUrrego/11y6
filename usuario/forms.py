@@ -1,7 +1,7 @@
 from django import forms
 
 from django.forms import ModelForm, widgets
-from usuario.models import Persona, Eps, Turno, Trabajador
+from usuario.models import Eps, Turno, Trabajador
 from compra.models import Personalizacion
 
 class PersonalizarForm(forms.ModelForm):
@@ -15,28 +15,8 @@ class PersonalizarUpdateForm(ModelForm):
         fields = "__all__"
         exclude = ["estado"]
 
-class PersonaForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control small-input'
-
-    class Meta:
-        model = Persona
-        fields = "__all__"
-        exclude = ["estado"]
 
 
-class PersonaUpdateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control small-input'
-
-    class Meta:
-        model = Persona
-        fields = "__all__"
-        exclude = ["estado"]
 
 
 class EpsForm(ModelForm):
