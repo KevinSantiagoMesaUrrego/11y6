@@ -30,8 +30,11 @@ def eps_crear(request):
         }
     return render(request, "usuarios/eps/crear.html", context)
 @login_required
-@permission_required("usuario.view_eps", login_url="index")
 def eps_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.view_eps"):
+        messages.error(request, "No tienes permisos para acceder a Eps.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Eps"
     modulo="Usuarios"
     eps= Eps.objects.all()
@@ -71,8 +74,11 @@ def eps_eliminar(request,pk):
 
 #views de tabla turno
 @login_required
-@permission_required("usuario.add_turno", login_url="index")
 def turno_crear(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.add_turno"):
+        messages.error(request, "No tienes permisos para Crear un Turno.")
+        return redirect("turno")  # Redirige al usuario al índice
     titulo="Turno"
     if request.method== 'POST':
         form= TurnoForm(request.POST)
@@ -90,8 +96,11 @@ def turno_crear(request):
         }
     return render(request, "usuarios/turno/crear.html", context)
 @login_required
-@permission_required("usuario.view_turno", login_url="index")
 def turno_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.view_turno"):
+        messages.error(request, "No tienes permisos para acceder a Turno.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Turno"
     modulo="Usuarios"
     turnos= Turno.objects.all()
@@ -102,8 +111,11 @@ def turno_listar(request):
     }
     return render(request, "usuarios/turno/listar.html", context)
 @login_required
-@permission_required("usuario.change_turno", login_url="index")
 def turno_modificar(request,pk):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.change_turno"):
+        messages.error(request, "No tienes permisos para modificar el Turno.")
+        return redirect("turno")  # Redirige al usuario al índice
     titulo="Turno"
     turno= Turno.objects.get(id=pk)
     if request.method== 'POST':
@@ -120,8 +132,11 @@ def turno_modificar(request,pk):
         }
     return render(request, "usuarios/turno/modificar.html", context)
 @login_required
-@permission_required("usuario.delete_turno", login_url="index")
 def turno_eliminar(request,pk):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.delete_turno"):
+        messages.error(request, "No tienes permisos para eliminar el Turno.")
+        return redirect("turno")  # Redirige al usuario al índice
     turno= Turno.objects.filter(id=pk)
     turno.update(
         estado="0"
@@ -150,8 +165,11 @@ def trabajador_crear(request):
         }
     return render(request, "usuarios/trabajador/crear.html", context)
 @login_required
-@permission_required("usuario.view_trabajador", login_url="index")
 def trabajador_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.view_trabajador"):
+        messages.error(request, "No tienes permisos para acceder a los datos del Trabajador.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Trabajador"
     modulo="Usuarios"
     trabajadores= Trabajador.objects.all()

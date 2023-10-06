@@ -32,8 +32,11 @@ def compra_crear(request):
     return render(request, "compras/compra/crear.html", context)
 
 @login_required
-@permission_required("compra.view_compra", login_url="index")
 def compra_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("compra.view_compra"):
+        messages.error(request, "No tienes permisos para acceder a Compra.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo = "Compra"
     modulo="compras"
     compra = Compra.objects.all()
@@ -98,8 +101,11 @@ def detalle_compra_crear(request):
     return render(request, "compras/detalle_compra/crear.html", context)
 
 @login_required
-@permission_required("compra.view_detalle_compra", login_url="index")
 def detalle_compra_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("compra.view_detalle_compra"):
+        messages.error(request, "No tienes permisos para acceder al Detalle de Compra.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo = "Detalle compra"
     modulo="compras"
     detalle_compra = Detalle_compra.objects.all()
@@ -162,8 +168,11 @@ def evento_crear(request):
     return render(request, "compras/evento/crear.html", context)
 
 @login_required
-@permission_required("compra.view_evento", login_url="index")
 def evento_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("compra.view_evento"):
+        messages.error(request, "No tienes permisos para acceder a los Eventos.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo = "Evento"
     modulo="compras"
     evento = Evento.objects.all()
@@ -229,8 +238,11 @@ def proveedor_crear(request):
     return render(request, "compras/proveedor/crear.html", context)
 
 @login_required
-@permission_required("compra.view_proveedor", login_url="index")
 def proveedor_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("compra.view_proveedor"):
+        messages.error(request, "No tienes permisos para acceder a la Lista de Proveedores.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo = "Proveedor"
     modulo="compras"
     proveedor = Proveedor.objects.all()

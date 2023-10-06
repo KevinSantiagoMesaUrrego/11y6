@@ -28,8 +28,11 @@ def producto_crear (request):
     }
     return render(request, "inventarios/producto/crear.html", context)
 @login_required
-@permission_required("inventario.view_producto", login_url="index")
 def producto_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("inventario.view_producto"):
+        messages.error(request, "No tienes permisos para acceder a la Lista de Productos.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Producto"
     modulo="inventarios"
     producto=Producto.objects.all()
@@ -89,8 +92,11 @@ def marca_crear (request):
     }
     return render(request, "inventarios/marca/crear.html", context)
 @login_required
-@permission_required("inventario.view_marca", login_url="index")
 def marca_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("inventario.view_marca"):
+        messages.error(request, "No tienes permisos para acceder a la Lista de Marcas.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Marca"
     modulo="inventarios"
     marca=Marca.objects.all()
@@ -149,8 +155,11 @@ def presentacion_crear (request):
     }
     return render(request, "inventarios/presentacion/crear.html", context)
 @login_required
-@permission_required("inventario.view_presentacion", login_url="index")
 def presentacion_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("inventario.view_presentacion"):
+        messages.error(request, "No tienes permisos para acceder a la Lista de Presentaciones.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Presentacion"
     modulo="inventarios"
     presentacion=Presentacion.objects.all()
@@ -209,8 +218,11 @@ def unidadmedida_crear (request):
         }
     return render(request, "inventarios/unidad_medida/crear.html", context)
 @login_required
-@permission_required("inventario.view_unidadmedida", login_url="index")
 def unidadmedida_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("inventario.view_unidadmedida"):
+        messages.error(request, "No tienes permisos para acceder a la Lista de Unidades de Medidas.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="UnidadMedida"
     modulo="inventarios"
     unidadmedida=UnidadMedida.objects.all()
@@ -269,8 +281,11 @@ def consumotrabajador_crear (request):
         }
     return render(request, "inventarios/consumo_trabajador/crear.html", context)
 @login_required
-@permission_required("inventario.view_consumotrabajador", login_url="index")
 def consumotrabajador_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("inventario.view_consumotrabajador"):
+        messages.error(request, "No tienes permisos para acceder a los Consumos de los Trabajadores.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="ConsumoTrabajador"
     modulo="inventarios"
     consumotrabajador=ConsumoTrabajador.objects.all()
