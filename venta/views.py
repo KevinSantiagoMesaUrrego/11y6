@@ -10,26 +10,29 @@ from inventario.models import Producto
 #VENTA
 @login_required
 @permission_required("venta.add_venta", login_url="index")
-def venta_crear (request):
-    titulo="Venta"
-    if request.method=='POST':
-        form=VentaForm(request.POST)
+def venta_crear(request):
+    titulo = "Venta"
+    if request.method == 'POST':
+        form = VentaForm(request.POST)
         if form.is_valid():
-            venta=form.save()
-            messages.success(request,'se creo correctamente.')
-            return redirect('detalle_venta', pk=venta.id)
+            venta = form.save()
+            messages.success(request, 'Se creó correctamente.')
+            return redirect('detalle_venta_listar', pk=venta.id)
         else:
             messages.error(request, 'El formulario tiene errores.')
     else:
-        form=VentaForm()
-    context={
-        "titulo":titulo,
-        "form":form,
+        form = VentaForm()
+    context = {
+        "titulo": titulo,
+        "form": form,
     }
     return render(request, "ventas/venta/crear.html", context)
 @login_required
-@permission_required("venta.view_venta", login_url="index")
 def venta_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("venta.view_venta"):
+        messages.error(request, "No tienes permisos para acceder a venta.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Venta"
     modulo="ventas"
     venta=Venta.objects.all()
@@ -44,6 +47,7 @@ def venta_listar(request):
 def venta_modificar(request,pk):
     titulo="Venta"
     venta=Venta.objects.get(id=pk)
+    # Verificar si el usuario tiene permisos
     if request.method== 'POST':
         form= VentaUpadteForm(request.POST, instance=venta)
         if form.is_valid():
@@ -87,8 +91,11 @@ def detalle_venta_crear (request):
     }
     return render(request, "ventas/detalle_venta/crear.html", context)
 @login_required
-@permission_required("venta.view_detalle_venta", login_url="index")
 def detalle_venta_listar(request, pk):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("venta.view_detalle_venta"):
+        messages.error(request, "No tienes permisos para acceder al Detalle de la Venta.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo = "Detalle Venta"
     modulo = "ventas"
     venta = Venta.objects.get(id=pk)
@@ -159,8 +166,11 @@ def reserva_crear (request):
     }
     return render(request, "ventas/reserva/crear.html", context)
 @login_required
-@permission_required("venta.view_reserva", login_url="index")
 def reserva_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("venta.view_reserva"):
+        messages.error(request, "No tienes permisos para Acceder a la Reserva")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Reserva"
     modulo="ventas"
     reserva=Reserva.objects.all()
@@ -216,8 +226,11 @@ def ubicacion_crear (request):
     }
     return render(request, "ventas/ubicacion/crear.html", context)
 @login_required
-@permission_required("venta.view_ubicacion", login_url="index")
 def ubicacion_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("venta.view_ubicacion"):
+        messages.error(request, "No tienes permisos para acceder a la Ubicación.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Ubicacion"
     modulo="ventas"
     ubicacion=Ubicacion.objects.all()

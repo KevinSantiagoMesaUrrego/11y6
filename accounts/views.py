@@ -39,8 +39,11 @@ def vista_protegida(request):
     }
     return render(request, '../base/templates/index.html', context)
 @login_required
-@permission_required("persona.view_persona", login_url="index")
 def persona_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("persona.view_persona"):
+        messages.error(request, "No tienes permisos para acceder a la Lista de Usuarios.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Persona"
     modulo="Usuarios"
     groups_users = {

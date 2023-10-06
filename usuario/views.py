@@ -30,8 +30,11 @@ def eps_crear(request):
         }
     return render(request, "usuarios/eps/crear.html", context)
 @login_required
-@permission_required("usuario.view_eps", login_url="index")
 def eps_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.view_eps"):
+        messages.error(request, "No tienes permisos para acceder a Eps.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Eps"
     modulo="Usuarios"
     eps= Eps.objects.all()
@@ -90,8 +93,11 @@ def turno_crear(request):
         }
     return render(request, "usuarios/turno/crear.html", context)
 @login_required
-@permission_required("usuario.view_turno", login_url="index")
 def turno_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.view_turno"):
+        messages.error(request, "No tienes permisos para acceder a Turno.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Turno"
     modulo="Usuarios"
     turnos= Turno.objects.all()
@@ -150,8 +156,11 @@ def trabajador_crear(request):
         }
     return render(request, "usuarios/trabajador/crear.html", context)
 @login_required
-@permission_required("usuario.view_trabajador", login_url="index")
 def trabajador_listar(request):
+    # Verificar si el usuario tiene permisos
+    if not request.user.has_perm("usuario.view_trabajador"):
+        messages.error(request, "No tienes permisos para acceder a los datos del Trabajador.")
+        return redirect("index")  # Redirige al usuario al índice
     titulo="Trabajador"
     modulo="Usuarios"
     trabajadores= Trabajador.objects.all()
