@@ -16,6 +16,7 @@ class VentaForm(ModelForm):
         widgets = {
             'fecha_venta': widgets.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d')
         }
+        exclude = ["estado", ]
 
 
 class VentaUpadteForm(ModelForm):
@@ -30,6 +31,7 @@ class VentaUpadteForm(ModelForm):
         widgets = {
             'fecha_venta': widgets.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d')
         }
+        exclude = ["estado", ]
 
 
 # DETALLE VENTA
