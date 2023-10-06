@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 
 from usuario.forms import PersonalizarForm, PersonalizarUpdateForm
 from usuario.models import  Eps, Turno, Trabajador
-from venta.models import Venta,Detalle_venta, Reserva, Ubicacion
+from venta.models import Venta, Reserva, Ubicacion
 from compra.models import Compra, Detalle_compra, Evento, Proveedor, Personalizacion
 from inventario.models import Presentacion, Marca, ConsumoTrabajador, Producto, UnidadMedida
 from django.contrib.auth import logout
@@ -18,7 +18,6 @@ def principal(request):
     turno=Turno.objects.all().count()
     trabajador=Trabajador.objects.all().count()
     venta=Venta.objects.all().count()
-    detalle_venta=Detalle_venta.objects.all().count()
     reserva=Reserva.objects.all().count()
     ubicacion=Ubicacion.objects.all().count()
     compra=Compra.objects.all().count()
@@ -35,7 +34,6 @@ def principal(request):
         "turnos": turno,
         "trabajadores": trabajador,
         "ventas": venta,
-        "detalle_ventas": detalle_venta,
         "reservas": reserva,
         "ubicaciones": ubicacion,
         "compras": compra,

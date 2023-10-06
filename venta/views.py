@@ -3,6 +3,7 @@ from venta.models import Venta,Detalle_venta,Reserva,Ubicacion
 from venta.forms import VentaForm,VentaUpadteForm,Detalle_ventaForm,Detalle_ventaUpadteForm,ReservaForm,ReservaUpdateForm,UbicacionForm,UbicacionUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
+from inventario.models import Producto
 
 
 # Create your views here.
@@ -14,9 +15,9 @@ def venta_crear (request):
     if request.method=='POST':
         form=VentaForm(request.POST)
         if form.is_valid():
-            form.save()
+            venta=form.save()
             messages.success(request,'se creo correctamente.')
-            return redirect('venta')
+            return redirect('detalle_venta', pk=venta.id)
         else:
             messages.error(request, 'El formulario tiene errores.')
     else:
@@ -87,19 +88,35 @@ def detalle_venta_crear (request):
     return render(request, "ventas/detalle_venta/crear.html", context)
 @login_required
 @permission_required("venta.view_detalle_venta", login_url="index")
-def detalle_venta_listar(request):
-    titulo="Detalle venta"
-    modulo="ventas"
-    detalle_venta=Detalle_venta.objects.all()
-    context={
-        "titulo":titulo,
-        "modulo":modulo,
-        "detalle_ventas":detalle_venta
+def detalle_venta_listar(request, pk):
+    titulo = "Detalle Venta"
+    modulo = "ventas"
+    venta = Venta.objects.get(id=pk)
+    productos = Producto.objects.filter(estado="1")
+    detalle_ventas = Detalle_venta.objects.filter(venta__id=pk)
+    if request.method == "POST":
+        form = Detalle_ventaForm(request.POST)
+        if form.is_valid():
+            det_venta = form.save(commit=False)
+            det_venta.save()
+            messages.success(request, "El formulario se ha enviado correctamente.")
+            return redirect("detalle_venta", pk)
+        else:
+            messages.error(request, "El formulario tiene errores.")
+    else:
+        form = Detalle_ventaForm()
+    context = {
+        "titulo": titulo,
+        "modulo": modulo,
+        "detalle_ventas": detalle_ventas,
+        "user": request.user,
+        "venta": venta,
+        "productos": productos
     }
     return render(request, "ventas/detalle_venta/listar.html", context)
 @login_required
 @permission_required("venta.add_change_venta", login_url="index")
-def detalle_venta_modificar(request,pk):
+def detalle_venta_modificar(request, pk):
     titulo="Detalle venta"
     detalle_venta=Detalle_venta.objects.get(id=pk)
     if request.method== 'POST':
@@ -120,8 +137,7 @@ def detalle_venta_modificar(request,pk):
 def detalle_venta_eliminar(request,pk):
     detalle_venta= Detalle_venta.objects.filter(id=pk)
     detalle_venta.delete()
-    detalle_venta.update(
-)
+    detalle_venta.update()
     messages.success(request,'El detalle de venta se elimino correctamente.')
     return redirect('detalle_venta')
 #RESERVA

@@ -10,6 +10,7 @@ urlpatterns = [
     path('venta/modificar/<int:pk>/', venta_modificar, name="venta-modificar"),
     path('venta/eliminar/<int:pk>/', venta_eliminar, name="venta-eliminar"),
     path('detalle_venta/', detalle_venta_listar, name="detalle_venta"),
+    path('ventas/detalle_venta/<int:pk>/', detalle_venta_listar, name="detalle_venta"),
     path('detalle_venta/crear/', detalle_venta_crear, name="detalle_venta-crear"),
     path('detalle_venta/modificar/<int:pk>/', detalle_venta_modificar, name="detalle_venta-modificar"),
     path('detalle_venta/eliminar/<int:pk>/', detalle_venta_eliminar, name="detalle_venta-eliminar"),
