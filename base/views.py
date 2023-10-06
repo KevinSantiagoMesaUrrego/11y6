@@ -73,14 +73,12 @@ def personalizar_modificar(request,pk):
     return render(request, "personalizar.html",context)
 
 def personalizar_eliminar(request, pk):
-    personalizar = Personalizacion.objects.filter(id=pk)
-    personalizar.delete()
-    personalizar.update(
-    )
-    messages.success(request,'La imagen se desactivo correctamente.')
+    Personalizacion.objects.filter(id=pk).delete()
+    messages.success(request,'La imagen se eliminó correctamente.')
     return redirect('personalizar')
 def personalizar(request):
     titulo="Personalizar"
+    modulo = "base"
     personalizar=Personalizacion.objects.all()
     if request.method== 'POST':
         form= PersonalizarForm(request.POST,request.FILES)
@@ -95,8 +93,9 @@ def personalizar(request):
     context={
         "titulo":titulo,
         "form":form,
+        "modulo":modulo,
         "personalizar":personalizar,
     }
-    return render(request, "personalizar.html",context)
+    return render(request, "partials/personalizar.html",context)
 
 

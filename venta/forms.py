@@ -18,6 +18,7 @@ class VentaForm(ModelForm):
         }
         exclude = ["estado", ]
 
+
 class VentaUpadteForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -30,6 +31,7 @@ class VentaUpadteForm(ModelForm):
         widgets = {
             'fecha_venta': widgets.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d')
         }
+        exclude = ["estado", ]
 
 
 # DETALLE VENTA
