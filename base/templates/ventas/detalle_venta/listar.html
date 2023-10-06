@@ -1,7 +1,7 @@
 {% extends 'partials/body.html' %}
 {% load static %}
 {% block contenido %}
-{% if request.user.groups.first.name == 'Administrador' or request.user.groups.first.name == 'Cajero' %}
+
     <ol class="breadcrumb px-3 float-sm-right d-flex justify-content-end">
         <li class="breadcrumb-item fw-bolder letras-texto">
             <a href="{% url 'index' %}" style="text-decoration: none; color: #68411d;">Inicio</a>
@@ -10,7 +10,7 @@
     </ol>
     <div class="wrapper">
         <!-- Main content -->
-        <section class="content">
+        <section class="content card glass-card">
             <div class="container-fluid">
                 <div class="row px-1 px-sm-3" style="min-width: 270px;">
                     <div class="col px-1 px-sm-3">
@@ -24,7 +24,7 @@
                                     <b>id de Venta</b> <br>
                                     <p>{{ venta.id }}</p>
                                     <b>Fecha</b> <br>
-                                    <p>{{ venta.fecha }}</p>
+                                    <p>{{ venta.fecha_venta }}</p>
                                     <b>Mesa</b><br>
                                     <p>{{ venta.numero_mesa }}</p>
                                 </div>
@@ -35,30 +35,25 @@
                                         <tr style="background-color: #d4c6b5;text-align: center;">
                                             <th>Producto</th>
                                             <th>Cantidad de Producto</th>
-                                            <th> Valor total</th>
-                                            {% if request.user.groups.first.name == 'Administrador' %}
-                                                <th>Acciones</th>
-                                            {% endif %}
+                                            <th>Acciones</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <xtbody>
                                         {% for detalle_venta in detalle_ventas %}
                                             {% if detalle_venta.estado != '0' %}
                                                 <tr style="background-color: #f3eee9">
                                                     <td style="color: #68411d;text-align: center;">{{ detalle_venta.producto }}</td>
                                                     <td style="color: #68411d;text-align: center;">{{ detalle_venta.cantidad_producto }}</td>
-                                                    <td style="color: #68411d;text-align: center;">{{ detalle_venta.valor_total }}</td>
-                                                    {% if request.user.groups.first.name == 'Administrador' %}
-                                                        <td style="text-align: center;">
-                                                            <button type="button" data-ident="{{ detalle_venta.id }}"
-                                                                    class="btnEliminar animatede-button"
-                                                                    data-bs-toggle="modal" data-bs-target="#modalConf">
-                                                                Eliminar
-                                                            </button>
-                                                            <a class="btn animatedm-button btn-primary"
-                                                               href="{% url 'detalle_venta-modificar' detalle_venta.id %}">Modificar</a>
-                                                        </td>
-                                                    {% endif %}
+                                                    <td style="text-align: center;">
+                                                        <button type="button" data-ident="{{ detalle_venta.id }}"
+                                                                class="btnEliminar animatede-button"
+                                                                data-bs-toggle="modal" data-bs-target="#modalConf">
+                                                            Eliminar
+                                                        </button>
+                                                        <a class="btn animatedm-button btn-primary"
+                                                           href="{% url 'detalle_venta-modificar' detalle_venta.id %}">Modificar</a>
+                                                    </td>
+
                                                 </tr>
                                             {% endif %}
                                         {% endfor %}
@@ -73,24 +68,19 @@
                                                             <option value="{{ producto.id }}">{{ producto }}</option>
                                                         {% endfor %}
                                                     </select>
-                                            </td>
-                                            <td style="color: #68411d;text-align: center;">
-                                                <input type="number" name="producto" class="numberinput form-control"
-                                                       required="" id="id_producto"></td>
-                                            <td style="color: #68411d;text-align: center;">
+                                            <td>
                                                 <input type="number" name="cantidad_producto"
                                                        class="numberinput form-control" required=""
                                                        id="id_cantidad_producto">
                                             </td>
-                                            <td style="color: #68411d;text-align: center;">
-                                                <input type="number" name="Valor_total" class="numberinput form-control"
-                                                       required="" id="id_valor_total"></td>
+
                                             <td>
                                                 <button type="submit" class="btn btn-success">+</button>
                                             </td>
+                                            </td>
                                             </form>
                                         </tr>
-                                        </tbody>
+                                        </xtbody>
                                     </table>
                                 </div>
                             </div>
@@ -106,5 +96,5 @@
         </section>
         <!-- /.content -->
     </div>
-{% endif %}
-{% endblock contenido%}
+
+{% endblock contenido %}

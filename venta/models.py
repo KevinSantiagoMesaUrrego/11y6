@@ -17,7 +17,7 @@ class Detalle_venta(SafeDeleteModel):
     cantidad_producto = models.IntegerField(verbose_name="Cantidad Producto")
 
 
-    def _str_(self):
+    def __str__(self):
         return " %s %s" % (self.cantidad_producto, self.valor_total)
 
 
@@ -27,10 +27,10 @@ class Ubicacion(SafeDeleteModel):
         ACTIVO = '1', _("Activo")
         INACTIVO = '0', _("Inactivo")
     estado = models.CharField(max_length=1, choices=Estado.choices, verbose_name="Estado", default=Estado.ACTIVO)
-    def _str_(self):
+    def __str__(self):
         return "%s " % (self.nombre)
 class Reserva(SafeDeleteModel):
-    ubicacion_nombre = models.ForeignKey(Ubicacion, on_delete=models.CASCADE, verbose_name="ubicación nombre")
+    nombre = models.ForeignKey(Ubicacion, on_delete=models.CASCADE, verbose_name="ubicación nombre")
     cliente= models.CharField(max_length=45, verbose_name="nombre cliente")
-    def _str_(self):
-        return "%s " % (self.ubicacion_nombre)
+    def __str__(self):
+        return "%s " % (self.nombre)

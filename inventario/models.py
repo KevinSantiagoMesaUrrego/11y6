@@ -12,7 +12,8 @@ class Marca(SafeDeleteModel):
         INACTIVO = '0', _("Inactivo")
 
     estado = models.CharField(max_length=1, choices=Estado.choices, verbose_name="Estado", default=Estado.ACTIVO)
-
+    def __str__(self):
+        return "%s " % (self.nombre)
 
 class Presentacion(SafeDeleteModel):
     presentacion = models.CharField(max_length=45, verbose_name="Presentacion")
@@ -22,7 +23,8 @@ class Presentacion(SafeDeleteModel):
         INACTIVO = '0', _("Inactivo")
 
     estado = models.CharField(max_length=1, choices=Estado.choices, verbose_name="Estado", default=Estado.ACTIVO)
-
+    def __str__(self):
+        return "%s " % (self.presentacion)
 
 class UnidadMedida(SafeDeleteModel):
     unidadmedida = models.CharField(max_length=45, verbose_name="Medida")
@@ -32,7 +34,8 @@ class UnidadMedida(SafeDeleteModel):
         INACTIVO = '0', _("Inactivo")
 
     estado = models.CharField(max_length=1, choices=Estado.choices, verbose_name="Estado", default=Estado.ACTIVO)
-
+    def __str__(self):
+        return "%s " % (self.unidadmedida)
 
 
 

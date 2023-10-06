@@ -105,6 +105,7 @@ def detalle_venta_listar(request, pk):
         form = Detalle_ventaForm(request.POST)
         if form.is_valid():
             det_venta = form.save(commit=False)
+            det_venta.venta = venta
             det_venta.save()
             messages.success(request, "El formulario se ha enviado correctamente.")
             return redirect("detalle_venta", pk)
@@ -118,7 +119,8 @@ def detalle_venta_listar(request, pk):
         "detalle_ventas": detalle_ventas,
         "user": request.user,
         "venta": venta,
-        "productos": productos
+        "productos": productos,
+
     }
     return render(request, "ventas/detalle_venta/listar.html", context)
 @login_required
