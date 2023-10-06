@@ -12,12 +12,13 @@ from inventario.models import Producto
 @permission_required("venta.add_venta", login_url="index")
 def venta_crear(request):
     titulo = "Venta"
+
     if request.method == 'POST':
         form = VentaForm(request.POST)
         if form.is_valid():
             venta = form.save()
             messages.success(request, 'Se creó correctamente.')
-            return redirect('detalle_venta_listar', pk=venta.id)
+            return redirect('detalle_venta', pk=venta.id)
         else:
             messages.error(request, 'El formulario tiene errores.')
     else:
