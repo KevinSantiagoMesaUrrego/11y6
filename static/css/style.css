@@ -214,4 +214,6 @@ div.card.glass-card {
     display: flex;
     justify-content: center;
 }
-
+.color_borde_detalle{
+     border: 3px solid black !important;
+}

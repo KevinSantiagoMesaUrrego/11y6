@@ -44,18 +44,18 @@
                                                 <td>{{ venta.fecha_venta }}</td>
                                                 <td>{{ venta.numero_mesa }}</td>
                                                 <td>
-                                                    <button type="button" data-cafe-bar="{{ venta.id }}"
-                                                            class="btnEliminar btn btn-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#modalConf">
-                                                        {% bs_icon 'trash' %}
-                                                    </button>
-                                                    <a class="btn btn-primary"
-                                                               href="{% url 'venta-modificar' user.id %}">
-                                                                {% bs_icon 'pencil-square' %}
-                                                            </a>
+                                                    <a class="btn color_dorado bi-pencil-square"
+                                                       href="{% url 'detalle_venta' venta.id %}">
+                                                    </a>
+                                                    <a class="btn color_dorado  "
+                                                        onclick="toggleVisibility()"
+                                                        href="{% url 'ver_detalle' venta.id %}">
+                                                        ver
+                                                    </a>
+
                                                 </td>
                                             </tr>
-                                        {% endfor %}
+                                          {% endfor %}
                                         </tbody>
                                         <tfoot>
                                         <tr>

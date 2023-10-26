@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from venta.models import Venta,Detalle_venta,Reserva,Ubicacion
 from venta.forms import VentaForm,VentaUpadteForm,Detalle_ventaForm,Detalle_ventaUpadteForm,ReservaForm,ReservaUpdateForm,UbicacionForm,UbicacionUpdateForm
 from django.contrib import messages
@@ -101,7 +101,8 @@ def detalle_venta_listar(request, pk):
     modulo = "ventas"
     venta = Venta.objects.get(id=pk)
     productos = Producto.objects.filter(estado="1")
-    detalle_ventas = Detalle_venta.objects.filter(venta__id=pk)
+    detalle_ventas = Detalle_venta.objects.filter(venta_id=pk)
+
     if request.method == "POST":
         form = Detalle_ventaForm(request.POST)
         if form.is_valid():
@@ -121,9 +122,15 @@ def detalle_venta_listar(request, pk):
         "user": request.user,
         "venta": venta,
         "productos": productos,
-
     }
     return render(request, "ventas/detalle_venta/listar.html", context)
+
+
+
+def venta_finalizar(request, pk):
+    venta=Venta.objects.filter(id=pk)
+    venta.update(estado="0")
+    return redirect("/ventas/venta")
 @login_required
 @permission_required("venta.add_change_venta", login_url="index")
 def detalle_venta_modificar(request, pk):
@@ -150,6 +157,8 @@ def detalle_venta_eliminar(request,pk):
     detalle_venta.update()
     messages.success(request,'El detalle de venta se elimino correctamente.')
     return redirect('detalle_venta')
+
+
 #RESERVA
 @login_required
 @permission_required("venta.add_reserva", login_url="index")
@@ -270,3 +279,18 @@ def ubicacion_eliminar(request,pk):
     )
     messages.success(request,'La ubicación se elimino correctamente.')
     return redirect('ubicacion')
+
+def ver_detalle(request,pk):
+    venta=Venta.objects.get(pk=pk)
+    detalle_venta=Detalle_venta.objects.filter(venta=venta)
+    context = {
+        'titulo': 'Titulo de la venta',
+        'venta' : venta,
+        "detalle_ventas":detalle_venta,
+    }
+    return render(request, 'ventas/venta/venta_final.html', context)
+def eliminar_detalle_venta(request,pk):
+    detalle_venta=get_object_or_404(Detalle_venta,id=pk)
+    detalle_venta.delete()
+    messages.success(request, 'el producto se elimino correctamente.')
+    return redirect('detalle_venta',pk=detalle_venta.venta.pk)

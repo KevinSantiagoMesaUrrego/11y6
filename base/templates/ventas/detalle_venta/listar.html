@@ -8,26 +8,27 @@
         </li>
         <li class="breadcrumb-item active fw-bolder letras-texto" style="color: #7e6c5c;">{{ titulo }}</li>
     </ol>
-    <div class="wrapper">
+    <div class="wrapper card glass-card ">
         <!-- Main content -->
-        <section class="content card glass-card">
+        <section class="content">
             <div class="container-fluid">
-                <div class="row px-1 px-sm-3" style="min-width: 270px;">
+                <div class="row px-1 px-sm-3 " style="min-width: 270px;">
                     <div class="col px-1 px-sm-3">
-                        <div class="px-1 px-sm-3">
+                        <div class="px-1 px-sm-3 ">
                             <div class="fs-1 fw-bold">
                                 <h3 class="py-5">{{ titulo }}</h3>
                             </div>
                             <div class="d-flex">
-                                <div class="p-5 mx-3 "
-                                     style=" background-color: #fcf9f5; border-color: #68411d; border-width: 3px; border-style: solid;">
+                                <div class="p-5 mx-3 card glass-card border color_borde_detalle">
                                     <b>id de Venta</b> <br>
                                     <p>{{ venta.id }}</p>
                                     <b>Fecha</b> <br>
                                     <p>{{ venta.fecha_venta }}</p>
                                     <b>Mesa</b><br>
                                     <p>{{ venta.numero_mesa }}</p>
-                                </div>
+                                    </div>
+
+
                                 <div class="table-responsive p-3 "
                                      style=" background-color: #fcf9f5; border-color: #68411d; border-width: 3px; border-style: solid;">
                                     <table id="example1" class="table table-bordered table-striped py-5">
@@ -38,50 +39,53 @@
                                             <th>Acciones</th>
                                         </tr>
                                         </thead>
-                                        <xtbody>
-                                        {% for detalle_venta in detalle_ventas %}
-                                            {% if detalle_venta.estado != '0' %}
-                                                <tr style="background-color: #f3eee9">
-                                                    <td style="color: #68411d;text-align: center;">{{ detalle_venta.producto }}</td>
-                                                    <td style="color: #68411d;text-align: center;">{{ detalle_venta.cantidad_producto }}</td>
-                                                    <td style="text-align: center;">
-                                                        <button type="button" data-ident="{{ detalle_venta.id }}"
-                                                                class="btnEliminar animatede-button"
-                                                                data-bs-toggle="modal" data-bs-target="#modalConf">
-                                                            Eliminar
-                                                        </button>
-                                                        <a class="btn animatedm-button btn-primary"
-                                                           href="{% url 'detalle_venta-modificar' detalle_venta.id %}">Modificar</a>
-                                                    </td>
+                                        <tbody>
+                                            {% for detalle_venta in detalle_ventas %}
+                                                {% if detalle_venta.estado != '0' %}
+                                                    <tr style="background-color: #f3eee9">
+                                                        <td style="color: #68411d;text-align: center;">{{ detalle_venta.producto }}</td>
+                                                        <td style="color: #68411d;text-align: center;">{{ detalle_venta.cantidad_producto }}</td>
+                                                        <td style="text-align: center;">
+                                                            <a type="button" href="{% url 'eliminar_detalle_venta' detalle_venta.id %}"
+                                       class="btn btn-danger">eliminar
+                                    </a>
+                                                        </td>
 
-                                                </tr>
-                                            {% endif %}
-                                        {% endfor %}
-                                        <tr style="background-color: #f3eee9">
-                                            <td style="color: #68411d;text-align: center;">
-                                                <form method="POST">
-                                                    {% csrf_token %}
-                                                    <select name="producto" class="select form-select" required=""
-                                                            id="id_producto">
-                                                        <option value="" selected="">---------</option>
-                                                        {% for producto in productos %}
-                                                            <option value="{{ producto.id }}">{{ producto }}</option>
-                                                        {% endfor %}
-                                                    </select>
-                                            <td>
-                                                <input type="number" name="cantidad_producto"
-                                                       class="numberinput form-control" required=""
-                                                       id="id_cantidad_producto">
-                                            </td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <tr style="background-color: #f3eee9">
+                                                <td style="color: #68411d;text-align: center;">
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <select name="producto" class="select form-select" required=""
+                                                                id="id_producto">
+                                                            <option value="" selected="">---------</option>
+                                                            {% for producto in productos %}
+                                                                <option value="{{ producto.id }}">{{ producto }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                        <td>
+                                                            <input type="number" name="cantidad_producto"
+                                                                   class="numberinput form-control" required=""
+                                                                   id="id_cantidad_producto">
 
-                                            <td>
-                                                <button type="submit" class="btn btn-success">+</button>
-                                            </td>
-                                            </td>
-                                            </form>
-                                        </tr>
-                                        </xtbody>
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-success">+</button>
+                                                        </td>
+                                                </form>
+                                            </tr>
+                                        </tbody>
+
                                     </table>
+                                <div class="d-flex justify-content-between">
+                                    <a href="/ventas/venta/" class="btn color_dorado">Volver</a>
+                                <a type="button" href="{% url 'venta_finalizar' venta.id %}"
+                                       class="btn color_dorado">terminar
+                                    </a>
+
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
