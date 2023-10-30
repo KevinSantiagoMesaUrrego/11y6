@@ -44,17 +44,17 @@
                                                             <button type="button" data-cafe-bar="{{ user.id }}"
                                                                     class="btnEliminar btn btn-danger"
                                                                     data-bs-toggle="modal" data-bs-target="#modalConf">
-                                                                {% bs_icon 'trash' %}
+                                                                <i class="bi bi-trash"></i>
                                                             </button>
                                                             <a class="btn btn-primary"
                                                                href="{% url 'persona-modificar' user.id %}">
-                                                                {% bs_icon 'pencil-square' %}
+                                                                <i class="bi bi-pencil-square"></i>
                                                             </a>
                                                             <!-- Botón para iniciar recuperación de contraseña -->
                                                             <button type="button"
                                                                     class="btn btn-info btn-recuperar-contraseña"
                                                                     data-email="{{ user.email }}">
-                                                                {% bs_icon 'key' %}
+                                                                <i class="bi bi-key"></i>
                                                             </button>
                                                         </td>
 
