@@ -1,0 +1,15 @@
+[
+{
+    "model": "compra.personalizacion",
+    "pk": 1,
+    "fields": {
+        "deleted": null,
+        "deleted_by_cascade": false,
+        "nombre": "Fondo",
+        "descripcion": "ejemplo",
+        "fecha": "2023-10-06",
+        "imagen": "productos/BRAWL_STARS_2020_Season_3___WELCOME_TO_STARR_PARK__loading_image_Jong_Hwan_OLI2HPh.png",
+        "estado": "1"
+    }
+}
+]

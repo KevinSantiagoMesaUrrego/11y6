@@ -1,6 +1,22 @@
 {
   "name": "Proyecto11y6",
   "version": "1.0.0",
+  "scripts": {
+
+   "bkusuario" : "python manage.py dumpdatautf8 usuario --indent 4 --output usuario/seed/usuario.json",
+    "bkaccounts": "python manage.py dumpdatautf8 accounts --indent 4 --output accounts/seed/accounts.json",
+    "bkinventario": "python manage.py dumpdatautf8 inventario --indent 4 --output inventario/seed/inventario.json",
+    "bkcompra": "python manage.py dumpdatautf8 compra --indent 4 --output compra/seed/compra.json",
+    "bkventa": "python manage.py dumpdatautf8 venta --indent 4 --output venta/seed/venta.json ",
+    "backup": "npm run bkusuario & npm run bkaccounts  & npm run bkinventario  & npm run bkcompra  & npm run bkventa",
+
+    "resusuario": "python manage.py loaddatautf8 usuario/seed/usuario.json",
+    "resaccounts": "python manage.py loaddatautf8 accounts/seed/accounts.json",
+    "resinventario" : "python manage.py loaddatautf8 inventario/seed/inventario.json",
+    "rescompra": "python manage.py loaddatautf8 compra/seed/compra.json",
+    "resventa": "python manage.py loaddatautf8 venta/seed/venta.json",
+    "resdb" : "npm run resusuario & npm run resaccounts & npm run resinventario & npm run rescompra & npm run resventa"
+  },
   "dependencies": {
     "@sweetalert2/theme-bootstrap-4": "^5.0.15",
     "accessibility": "^4.5.7",
