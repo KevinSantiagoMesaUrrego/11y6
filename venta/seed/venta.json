@@ -1,0 +1,33 @@
+[
+{
+    "model": "venta.venta",
+    "pk": 4,
+    "fields": {
+        "deleted": null,
+        "deleted_by_cascade": false,
+        "fecha_venta": "2023-10-06",
+        "numero_mesa": 2,
+        "estado": "1"
+    }
+},
+{
+    "model": "venta.ubicacion",
+    "pk": 1,
+    "fields": {
+        "deleted": null,
+        "deleted_by_cascade": false,
+        "nombre": "Salon AB",
+        "estado": "1"
+    }
+},
+{
+    "model": "venta.reserva",
+    "pk": 1,
+    "fields": {
+        "deleted": null,
+        "deleted_by_cascade": false,
+        "nombre": 1,
+        "cliente": "Raul"
+    }
+}
+]

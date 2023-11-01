@@ -1,0 +1,26 @@
+[
+{
+    "model": "accounts.register",
+    "pk": 1,
+    "fields": {
+        "deleted": null,
+        "deleted_by_cascade": false,
+        "correo": "",
+        "usuario": "prueba",
+        "contraseña": "",
+        "activo": false
+    }
+},
+{
+    "model": "accounts.register",
+    "pk": 2,
+    "fields": {
+        "deleted": null,
+        "deleted_by_cascade": false,
+        "correo": "",
+        "usuario": "cajero",
+        "contraseña": "",
+        "activo": false
+    }
+}
+]
