@@ -44,24 +44,26 @@
                                                 <td>{{ venta.fecha_venta }}</td>
                                                 <td>{{ venta.numero_mesa }}</td>
                                                 <td>
-                                                    <a class="btn color_dorado bi-pencil-square"
-                                                       href="{% url 'detalle_venta' venta.id %}">
-                                                    </a>
-                                                    <a class="btn color_dorado  "
-                                                        onclick="toggleVisibility()"
-                                                        href="{% url 'ver_detalle' venta.id %}">
-                                                        ver
-                                                    </a>
-
+                                                    {% if venta.estado == '0' %}
+                                                        <a class="btn  btn-light bi-eye "
+                                                           onclick="toggleVisibility()"
+                                                           href="{% url 'ver_detalle' venta.id %}">
+                                                            ver
+                                                        </a>
+                                                    {% else %}
+                                                        <a class="btn btn-danger bi-pencil-square"
+                                                           href="{% url 'detalle_venta' venta.id %}">
+                                                        </a>
+                                                    {% endif %}
                                                 </td>
                                             </tr>
-                                          {% endfor %}
+                                        {% endfor %}
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <th>ID</th>
                                             <th>Fecha Venta</th>
-                                            <th>Número Mesa </th>
+                                            <th>Número Mesa</th>
                                             <th class="notexport">Acciones</th>
                                         </tr>
                                         </tfoot>
@@ -79,4 +81,4 @@
         </section>
         <!-- /.content -->
     </div>
-{% endblock contenido%}
+{% endblock contenido %}
