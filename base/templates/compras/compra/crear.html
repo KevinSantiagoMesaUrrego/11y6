@@ -6,7 +6,7 @@
                 Crear {{ titulo }}
             </div>
             <div class="card-body">
-                <form class="row g-3" action="" method="POST">
+                <form class="row g-3"  method="POST">
                     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
                          aria-label="breadcrumb" class="d-flex justify-content-end">
                         <ol class="breadcrumb">
@@ -24,7 +24,8 @@
                         </div>
                     {% endfor %}
                     <div class="col-12">
-                        <input type="submit" class="btn color_dorado w-25" value="Agregar {{ titulo }}"/>
+                        <input  type="submit" class="btn color_dorado w-25" value="Agregar {{ titulo }}"/>
+
                         <a href="{% url 'compra' %}" class="btn color_dorado w-25">Volver</a>
                     </div>
                 </form>

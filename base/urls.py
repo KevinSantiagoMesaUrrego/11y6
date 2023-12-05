@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 # para la gestion de login y contraseña
 from django.contrib.auth import views as auth_views
 from accounts.views import register
+from venta.views import ubicacion_eliminar
 
 urlpatterns = [
     #gestion de login y contraseña

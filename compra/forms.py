@@ -4,8 +4,8 @@ from compra.models import Compra, Detalle_compra, Evento, Proveedor
 
 
 class CompraForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
@@ -15,33 +15,36 @@ class CompraForm(ModelForm):
         widgets = {
             'fecha_compra': widgets.DateInput(attrs={'type': 'date'}, format='%Y-%m-%d')
         }
+        exclude = ["estado",]
 
 
 class CompraUpdateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
     class Meta:
         model = Compra
         fields = "__all__"
+        exclude = ["estado",]
 
 
 class Detalle_compraForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
     class Meta:
         model = Detalle_compra
         fields = "__all__"
+        exclude = ["estado"]
 
 
 class Detalle_compraUpdateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
@@ -51,8 +54,8 @@ class Detalle_compraUpdateForm(ModelForm):
 
 
 class EventoForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
@@ -67,8 +70,8 @@ class EventoForm(ModelForm):
 
 
 class EventoUpdateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
@@ -79,8 +82,8 @@ class EventoUpdateForm(ModelForm):
 
 
 class ProveedorForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
@@ -91,8 +94,8 @@ class ProveedorForm(ModelForm):
 
 
 class ProveedorUpdateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 

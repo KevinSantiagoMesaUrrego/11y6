@@ -29,35 +29,38 @@ class Proveedor(SafeDeleteModel):
         self.apellido_proveedor = self.apellido_proveedor.title()
         self.correo_proveedor = self.correo_proveedor.lower()
 
-    def __str__(self):
+    def _str_(self):
         return "%s %s" % (self.nombre_proveedor, self.apellido_proveedor)
 
     class Meta:
         verbose_name_plural = "Proveedores"
 
+class Compra(SafeDeleteModel):
+    fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA", auto_now_add=True)
+    class Estado_compra(models.TextChoices):
+        ACTIVO = '1', _("Activo")
+        INACTIVO = '0', _("Inactivo")
+    estado_compra = models.CharField(max_length=1, choices=Estado_compra.choices, default=Estado_compra.ACTIVO,verbose_name="Estado Evento")
+    id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
+    def _str_(self):
+        return "%s %s" % (self.id_proveedor, self.fecha_compra)
+    class Meta:
+        verbose_name_plural = "Compras"
 
 class Detalle_compra(SafeDeleteModel):
+    compra=models.ForeignKey(Compra, on_delete=models.CASCADE, verbose_name="compra")
     cantidad_producto = models.IntegerField(verbose_name="Cantidad Producto")
-    valor_total = models.FloatField(max_length=45, verbose_name="Valor Total Compra")
     nombre_producto = models.ForeignKey(Producto, on_delete=models.CASCADE, verbose_name="Nombre Producto")
 
-    def __str__(self):
-        return "%s %s" % (self.cantidad_producto, self.valor_total)
+    def _str_(self):
+        return "%s %s" % (self.cantidad_producto)
 
     class Meta:
         verbose_name_plural = "detalles_compras"
 
 
-class Compra(SafeDeleteModel):
-    fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA")
-    id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
-    id_detalle_compra = models.ForeignKey(Detalle_compra, on_delete=models.CASCADE, verbose_name="Valor Compra")
 
-    def __str__(self):
-        return "%s %s %s" % (self.id_proveedor, self.fecha_compra, self.id_detalle_compra)
 
-    class Meta:
-        verbose_name_plural = "Compras"
 
 
 class Evento(SafeDeleteModel):
@@ -75,7 +78,7 @@ class Evento(SafeDeleteModel):
                                      verbose_name="Estado Evento")
     id_compra = models.ForeignKey(Compra, on_delete=models.CASCADE, verbose_name="Fecha de Compra")
 
-    def __str__(self):
+    def _str_(self):
         return "%s" % (self.id_compra)
 
 class Personalizacion(SafeDeleteModel):
@@ -88,5 +91,5 @@ class Personalizacion(SafeDeleteModel):
         INACTIVO = '0', _("Inactivo")
     estado = models.CharField(max_length=1, choices=Estado.choices, default=Estado.ACTIVO,
                                          verbose_name="Estado")
-    def __str__(self):
+    def _str_(self):
         return "%s" % (self.nombre)

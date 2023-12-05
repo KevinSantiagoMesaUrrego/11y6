@@ -1,11 +1,9 @@
-from django.shortcuts import render, redirect
-from compra.models import Compra
-from compra.models import Detalle_compra
-from compra.models import Evento
-from compra.models import Proveedor
-from compra.forms import CompraForm, CompraUpdateForm, Detalle_compraForm, Detalle_compraUpdateForm, EventoForm, EventoUpdateForm, ProveedorForm, ProveedorUpdateForm
+from django.shortcuts import render,redirect,get_object_or_404
+from compra.models import Compra,Detalle_compra,Proveedor,Evento
+from compra.forms import CompraForm,CompraUpdateForm,Detalle_compraForm,Detalle_compraUpdateForm,ProveedorForm,ProveedorUpdateForm,EventoForm,EventoUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
+from inventario.models import Producto
 
 
 # Create your views here.
@@ -17,20 +15,17 @@ def compra_crear(request):
     if request.method == 'POST':
         form = CompraForm(request.POST)
         if form.is_valid():
-            form.save()
+            compra = form.save()
             messages.success(request,'La Compra se creo correctamente.')
-            return redirect('compra')
+            return redirect('detalle_compra', pk=compra.id)
         else:
             messages.error(request, 'El formulario tiene errores.')
-            return redirect('compra')
-    else:
-        form = CompraForm()
-    context = {
-        "titulo": titulo,
-        "form": form
-    }
-    return render(request, "compras/compra/crear.html", context)
-
+            form = CompraForm()
+        context = {
+            "titulo": titulo,
+            "form": form,
+        }
+        return render(request, "compras/compra/crear.html", context)
 @login_required
 def compra_listar(request):
     # Verificar si el usuario tiene permisos
@@ -39,7 +34,7 @@ def compra_listar(request):
         return redirect("index")  # Redirige al usuario al índice
     titulo = "Compra"
     modulo="compras"
-    compra = Compra.objects.all()
+    compra=Compra.objects.all()
     context = {
         "titulo": titulo,
         "modulo":modulo,
@@ -101,18 +96,34 @@ def detalle_compra_crear(request):
     return render(request, "compras/detalle_compra/crear.html", context)
 
 @login_required
-def detalle_compra_listar(request):
-    # Verificar si el usuario tiene permisos
+def detalle_compra_listar(request,pk):
     if not request.user.has_perm("compra.view_detalle_compra"):
-        messages.error(request, "No tienes permisos para acceder al Detalle de Compra.")
+        messages.error(request, "No tienes permisos para acceder al Detalle de la Compra.")
         return redirect("index")  # Redirige al usuario al índice
-    titulo = "Detalle compra"
-    modulo="compras"
-    detalle_compra = Detalle_compra.objects.all()
+    titulo = "Detalle Compra"
+    modulo = "compras"
+    compra = Compra.objects.get(id=pk)
+    productos = Producto.objects.filter(estado="1")
+    detalle_compras = Detalle_compra.objects.filter(compra_id=pk)
+    if request.method == "POST":
+        form = Detalle_compraForm(request.POST)
+        if form.is_valid():
+            det_compra = form.save(commit=False)
+            det_compra.compra = compra
+            det_compra.save()
+            messages.success(request, "El formulario se ha enviado correctamente.")
+            return redirect("detalle_compra", pk)
+        else:
+            messages.error(request, "El formulario tiene errores.")
+    else:
+        form = Detalle_compraForm()
     context = {
         "titulo": titulo,
         "modulo": modulo,
-        "detalle_compras": detalle_compra
+        "detalle_compras": detalle_compras,
+        "user": request.user,
+        "compra": compra,
+        "productos": productos,
     }
     return render(request, "compras/detalle_compra/listar.html", context)
 
@@ -272,6 +283,11 @@ def proveedor_modificar(request, pk):
     }
     return render(request, "compras/proveedor/modificar.html", context)
 
+def compra_finalizar(request, pk):
+    compra=Compra.objects.filter(id=pk)
+    compra.update(estado="0")
+    return redirect("/compras/compra")
+
 @login_required
 @permission_required("compra.delete_proveedor", login_url="index")
 def proveedor_eliminar(request, pk):
@@ -281,3 +297,18 @@ def proveedor_eliminar(request, pk):
     )
     messages.success(request,'El proveedor se elimino correctamente.')
     return redirect('proveedor')
+
+def ver_detalle(request,pk):
+    compra=Compra.objects.get(pk=pk)
+    detalle_compra=Detalle_compra.objects.filter(compra=compra)
+    context = {
+        'titulo': 'Titulo de la compra',
+        'compra' : compra,
+        "detalle_compras":detalle_compra,
+    }
+    return render(request, 'compras/compra/compra_final.html', context)
+def eliminar_detalle_compra(request,pk):
+    detalle_compra=get_object_or_404(Detalle_compra,id=pk)
+    detalle_compra.delete()
+    messages.success(request, 'el producto se elimino correctamente.')
+    return redirect('detalle_compra',pk=detalle_compra.compra.pk)

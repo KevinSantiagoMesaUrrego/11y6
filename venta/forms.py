@@ -3,6 +3,7 @@ from django.forms import ModelForm, widgets
 from venta.models import Venta, Detalle_venta, Reserva, Ubicacion
 
 
+
 # VENTA
 class VentaForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -102,10 +103,22 @@ class UbicacionForm(ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
+    def clean_nombre(self):
+        nombre = self.cleaned_data['nombre']
+
+        # Verificar si ya existe una ubicación con el mismo nombre
+        if Ubicacion.objects.filter(nombre=nombre).exists():
+            raise forms.ValidationError('Ya existe una ubicación con este nombre.')
+
+        return nombre
     class Meta:
         model = Ubicacion
         fields = "__all__"
         exclude = ["estado", ]
+
+
+
+
 
 
 class UbicacionUpdateForm(ModelForm):
@@ -114,7 +127,11 @@ class UbicacionUpdateForm(ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control small-input'
 
+
+
     class Meta:
         model = Ubicacion
         fields = "__all__"
         exclude = ["estado", ]
+
+

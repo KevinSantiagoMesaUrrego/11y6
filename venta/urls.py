@@ -3,7 +3,8 @@ from venta.views import venta_crear,venta_listar,venta_modificar,venta_eliminar,
 from venta.views import venta_finalizar
 from venta.views import detalle_venta_crear,detalle_venta_listar,detalle_venta_modificar,detalle_venta_eliminar
 from venta.views import reserva_crear,reserva_listar,reserva_modificar,reserva_eliminar,ver_detalle
-from venta.views import ubicacion_crear,ubicacion_listar,ubicacion_modificar
+from venta.views import ubicacion_crear,ubicacion_listar,ubicacion_modificar,ubicacion_eliminar
+
 
 urlpatterns = [
     path('venta/', venta_listar, name="venta" ),
@@ -21,6 +22,7 @@ urlpatterns = [
     path('ubicacion/',ubicacion_listar,name="ubicacion"),
     path('ubicacion/crear/',ubicacion_crear,name="ubicacion-crear"),
     path('ubicacion/modificar/<int:pk>/', ubicacion_modificar,name="ubicacion-modificar"),
+    path('ubicacion/eliminar/<int:pk>/', ubicacion_eliminar,name="ubicacion-eliminar"),
     path('ver_detalle/<int:pk>/', ver_detalle,name='ver_detalle'),
     path('venta/detalle_venta/', detalle_venta_listar ,name='detalle-ventas'),
     path('venta_finalizar/<int:pk>/', venta_finalizar ,name='venta_finalizar'),

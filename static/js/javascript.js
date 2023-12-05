@@ -59,4 +59,27 @@
     };
 
     window.addEventListener('load', function () { new Accessibility(options); }, false);
+
+
 })();
+
+        $(document).ready(function () {
+            $("#frmCrearEvento").submit(function (event) {
+                // Obtener los valores de las fechas
+                var fechaInicio = new Date($("#id_fecha_inicio").val());
+                var fechaFin = new Date($("#id_fecha_fin").val());
+                var fechaActual = new Date();
+
+                // Validar si la fecha de inicio es superior a la fecha actual
+                if (fechaInicio <= fechaActual) {
+                    alert("La fecha de inicio debe ser posterior a la fecha actual.");
+                    event.preventDefault(); // Evitar el envío del formulario
+                }
+
+                // Validar si la fecha de fin es mayor a la fecha de inicio
+                if (fechaFin <= fechaInicio) {
+                    alert("La fecha de fin debe ser posterior a la fecha de inicio.");
+                    event.preventDefault(); // Evitar el envío del formulario
+                }
+            });
+        });
