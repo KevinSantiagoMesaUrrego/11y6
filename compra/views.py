@@ -297,7 +297,7 @@ def proveedor_eliminar(request, pk):
     proveedor.delete()
     proveedor.update(
     )
-    messages.success(request,'El proveedor se elimino correctamente.')
+    messages.success(request,'El proveedor se elimino correctamente...')
     return redirect('proveedor')
 
 def ver_detalle(request,pk):
