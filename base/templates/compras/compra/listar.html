@@ -35,57 +35,38 @@
                                                        class="table table-bordered table-striped table-dark">
                                                     <thead>
                                                     <tr>
-                                                        <th>Nombre Proveedor</th>
-                                                        <th>Fecha De Compra</th>
-                                                        <th>Cantidad Producto</th>
-                                                        <th>Valor Total</th>
-                                                        <th class="notexport">Acciones</th>
-
-
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for compra in compras %}
-                                                        <tr>
-                                                            <td>{{ compra.id_proveedor.nombre_proveedor }}</td>
+                                            <th>ID</th>
+                                            <th>Fecha Compra</th>
+                                            <th class="notexport">Acciones</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for compra in compras %}
+                                            <tr>
+                                                            <td>{{ compra.id_proveedor }}</td>
                                                             <td>{{ compra.fecha_compra }}</td>
-                                                            <td>{{ compra.id_detalle_compra.cantidad_producto }}</td>
-                                                            <td>{{ compra.id_detalle_compra.valor_total }}</td>
                                                             <td>
-                                                                <button type="button" data-cafe-bar="{{ compra.id }}"
-                                                                        class="btnEliminar btn btn-danger"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#modalConf">
-                                                                    {% bs_icon 'trash' %}
-                                                                </button>
-                                                                <a class="btn btn-primary"
-                                                               href="{% url 'persona-modificar' user.id %}">
-                                                                {% bs_icon 'pencil-square' %}
-                                                            </a>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                    <tfoot>
-                                                    <tr>
-                                                        <th>Nombre Proveedor</th>
-                                                        <th>Fecha De Compra</th>
-                                                        <th>Cantidad Producto</th>
-                                                        <th>Valor Total</th>
-                                                        <th class="notexport">Acciones</th>
+                                                               <a class="btn color_dorado bi-pencil-square"
+                                                       href="{% url 'detalle_compra' compra.id %}">
+                                                    </a>
+                                                    <a class="btn color_dorado  "
+                                                        onclick="toggleVisibility()"
+                                                        href="{% url 'ver_detalle' compra.id %}">
+                                                        ver
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                          {% endfor %}
 
-
-                                                    </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-
-                                    </div>
-
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Fecha Compra</th>
+                                            <th class="notexport">Acciones</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -99,5 +80,4 @@
         </section>
         <!-- /.content -->
     </div>
-{% endblock contenido %}
-
+{% endblock contenido%}
