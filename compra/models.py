@@ -35,17 +35,33 @@ class Proveedor(SafeDeleteModel):
     class Meta:
         verbose_name_plural = "Proveedores"
 
+
+from django.db import models
+from django.utils.translation import gettext as _
+from safedelete.models import SafeDeleteModel
+
+
 class Compra(SafeDeleteModel):
     fecha_compra = models.DateField(verbose_name="Fecha Compra", help_text="MM/DD/AAAA", auto_now_add=True)
+
     class Estado_compra(models.TextChoices):
         ACTIVO = '1', _("Activo")
         INACTIVO = '0', _("Inactivo")
-    estado_compra = models.CharField(max_length=1, choices=Estado_compra.choices, default=Estado_compra.ACTIVO,verbose_name="Estado Evento")
-    id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor")
-    def _str_(self):
+
+    estado_compra = models.CharField(
+        max_length=1,
+        choices=Estado_compra.choices,
+        default=Estado_compra.ACTIVO,
+        verbose_name="Estado Evento"
+    )
+
+    id_proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, verbose_name="Nombre Proveedor" )
+    def __str__(self):
         return "%s %s" % (self.id_proveedor, self.fecha_compra)
+
     class Meta:
         verbose_name_plural = "Compras"
+
 
 class Detalle_compra(SafeDeleteModel):
     compra=models.ForeignKey(Compra, on_delete=models.CASCADE, verbose_name="compra")

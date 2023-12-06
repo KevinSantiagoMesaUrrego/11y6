@@ -20,12 +20,13 @@ def compra_crear(request):
             return redirect('detalle_compra', pk=compra.id)
         else:
             messages.error(request, 'El formulario tiene errores.')
-            form = CompraForm()
-        context = {
-            "titulo": titulo,
-            "form": form,
-        }
-        return render(request, "compras/compra/crear.html", context)
+    else:
+        form = CompraForm()
+    context = {
+        "titulo": titulo,
+        "form": form,
+    }
+    return render(request, "compras/compra/crear.html", context)
 @login_required
 def compra_listar(request):
     # Verificar si el usuario tiene permisos
@@ -284,9 +285,10 @@ def proveedor_modificar(request, pk):
     return render(request, "compras/proveedor/modificar.html", context)
 
 def compra_finalizar(request, pk):
-    compra=Compra.objects.filter(id=pk)
-    compra.update(estado="0")
+    compra = Compra.objects.filter(id=pk)
+    compra.update(estado_compra="0")  # Actualizar el campo correcto
     return redirect("/compras/compra")
+
 
 @login_required
 @permission_required("compra.delete_proveedor", login_url="index")
